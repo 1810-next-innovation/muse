@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cart_id: 1
+  grand_total: 1
+  payment_method: 1
+  receiver_id: 1
+  status: MyString
+
+two:
+  cart_id: 1
+  grand_total: 1
+  payment_method: 1
+  receiver_id: 1
+  status: MyString
