@@ -28,7 +28,7 @@
 
   <div class="field">
     <label>Phone_Number </label><br>
-    <%= f.text_field :phone_number %>
+    <%= f.telephone_field :phone_number %>
   </div>
 
   <div class="field">
@@ -37,7 +37,11 @@
   </div>
   <div class="field">
     <label>Birthday </label><br>
-    <%= f.text_field :birthday %>
+    <%= f.date_select(
+          :birthday,
+          start_year: 1930,
+          end_year:   (Time.now.year - 18),
+          default:    Date.new(1989, 1, 1)) %>
   </div>
 
   <div class="field">
