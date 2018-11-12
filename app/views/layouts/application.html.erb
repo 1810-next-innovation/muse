@@ -39,7 +39,7 @@
               <li>
               
                <%= link_to " Logout", destroy_user_session_path, method:  :delete, class:"glyphicon glyphicon-log-out logout" %>
-              </li> 
+              </li>
 
               <li>
               <%= link_to " SEARCH", root_path %>
@@ -86,19 +86,19 @@
           <div>
             <ul>
               <li>
-              <%= link_to " PRIVACY POLICY", root_path %>
+              <%= link_to " PRIVACY POLICY", contacts_path %>
               </li>
               
               <li>
               
-              <%= link_to " ABOUT US" %>
+              <%= link_to " ABOUT US", contacts_about_path %>
               </li>
               <li>
-              <%= link_to " TEAMS OF USE" %>
+              <%= link_to " TEAMS OF USE",contacts_term_path %>
               </li>
 
               <li>
-              <%= link_to " CONTACT", root_path %>
+              <%= link_to " CONTACT", new_contact_path %>
               </li>
 
 
