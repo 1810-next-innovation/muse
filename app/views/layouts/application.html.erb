@@ -12,7 +12,7 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-      <nav class="nav navbar-nav navbar-left"><span>Bookers</span></nav>
+      <nav class="nav navbar-nav navbar-left"><span>MUSE</span></nav>
 
       <nav>
           <div>
@@ -24,7 +24,7 @@
               
               <li>
               
-              <%= link_to " SERVISE", items_about_path %>
+              <%= link_to " SERVICE", items_about_path %>
               </li>
               <li>
               <%= link_to " MY PAGE" %>
@@ -40,7 +40,7 @@
               </li> 
 
               <li>
-              <%= link_to " SERCH", root_path %>
+              <%= link_to " SEARCH", root_path %>
               </li>
 
              <% else %>
@@ -51,20 +51,20 @@
              
              </li>
              <li>
-             <%= link_to " SERVISE", items_about_path %>
+             <%= link_to " SERVICE", items_about_path %>
 
              </li>
              
              <li>
-             <%= link_to " sing up", new_user_registration_path%>
+             <%= link_to " SIGN UP", new_user_registration_path%>
 
              </li>
              <li>
-             <%= link_to " login", new_user_session_path %>
+             <%= link_to " LOG IN", new_user_session_path %>
              </li>
 
              <li>
-              <%= link_to " SERCH", root_path %>
+              <%= link_to " SEARCH", root_path %>
               </li>
 
 
@@ -76,5 +76,36 @@
     </header>
 
     <%= yield %>
+
+    <footer>
+      <div class="container">
+
+      <nav>
+          <div>
+            <ul>
+              <li>
+              <%= link_to " PRIVACY POLICY", root_path %>
+              </li>
+              
+              <li>
+              
+              <%= link_to " ABOUT US" %>
+              </li>
+              <li>
+              <%= link_to " TEAMS OF USE" %>
+              </li>
+
+              <li>
+              <%= link_to " CONTACT", root_path %>
+              </li>
+
+
+            </ul>
+
+            <div>@copyright MUSE</div>
+          </div>
+      </nav>
+    </div>
+    </footer>
   </body>
 </html>
