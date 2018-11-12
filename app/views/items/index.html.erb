@@ -23,7 +23,9 @@
         <% end %>
         <tbody>
       </table>
-	</div>
-  <%= paginate @items, class: "pagenate" %>
+
+  	<%= link_to 'Newページ', new_item_path %>
+  	<%= paginate @items, class: "pagenate" %>
+    </div>  
   </div>
 </div>
