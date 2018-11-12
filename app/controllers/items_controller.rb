@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
+		@item = Item.find(params[:id])
 	end
 
 	def new
@@ -19,6 +20,9 @@ class ItemsController < ApplicationController
 	end
 
 	def index
+		@items = Item.all
+
+		@items = @items.page(params[:page])
 	end
 
 	private
