@@ -4,17 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :receivers, dependent: :destroy
-  has_many :carts,     dependent: :destroy
-  has_many :favorites, dependent: :destroy
 
-  class << self
-  	def search
-  		if search
-  		User.where(['name LIKE ?', "%#{search}%"])
-  	    else
-  	 	User.all
-  	    end
-  	end
-  end
+  has_many :receivers, 							 dependent: :destroy
+  has_many :carts,     							 dependent: :destroy
+  has_many :orders, through: :carts, dependent: :destroy
+  has_many :favorites, 							 dependent: :destroy
 end

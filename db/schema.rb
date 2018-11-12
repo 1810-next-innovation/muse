@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 2018_11_12_040841) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "discs_music_names", id: false, force: :cascade do |t|
+    t.integer "disc_id"
+    t.integer "music_name_id"
+    t.index ["disc_id"], name: "index_discs_music_names_on_disc_id"
+    t.index ["music_name_id"], name: "index_discs_music_names_on_music_name_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "item_id"
