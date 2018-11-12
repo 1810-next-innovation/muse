@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+
     <title>Muse</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +12,102 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+      <nav class="nav navbar-nav navbar-left"><span>MUSE</span></nav>
+
+      <nav>
+          <div>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+              <li>
+              <%= link_to " HOME", root_path %>
+              </li>
+              
+              <li>
+              
+              <%= link_to " SERVICE", items_about_path %>
+              </li>
+              <li>
+              <%= link_to " MY PAGE" %>
+              </li>
+
+              <li>
+              <%= link_to " カート", root_path %>
+              </li>
+
+              <li>
+              
+               <%= link_to " Logout", destroy_user_session_path, method:  :delete, class:"glyphicon glyphicon-log-out logout" %>
+              </li> 
+
+              <li>
+              <%= link_to " SEARCH", root_path %>
+              </li>
+
+             <% else %>
+
+             <li>
+             <%= link_to " HOME", root_path %>
+            
+             
+             </li>
+             <li>
+             <%= link_to " SERVICE", items_about_path %>
+
+             </li>
+             
+             <li>
+             <%= link_to " SIGN UP", new_user_registration_path%>
+
+             </li>
+             <li>
+             <%= link_to " LOG IN", new_user_session_path %>
+             </li>
+
+             <li>
+              <%= link_to " SEARCH", root_path %>
+              </li>
+
+
+             <% end %>
+            </ul>
+          </div>
+      </nav>
+    </div>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <div class="container">
+
+      <nav>
+          <div>
+            <ul>
+              <li>
+              <%= link_to " PRIVACY POLICY", root_path %>
+              </li>
+              
+              <li>
+              
+              <%= link_to " ABOUT US" %>
+              </li>
+              <li>
+              <%= link_to " TEAMS OF USE" %>
+              </li>
+
+              <li>
+              <%= link_to " CONTACT", root_path %>
+              </li>
+
+
+            </ul>
+
+            <div>@copyright MUSE</div>
+          </div>
+      </nav>
+    </div>
+    </footer>
   </body>
 </html>
