@@ -1,1 +1,31 @@
-newページ
+<h1>newページ</h1>
+<h2>商品投稿</h2>
+<%= form_for(@item) do |f| %>
+
+	<h2 class="new-TopHead">New item</h2>
+	<h4 class="new-item-name">Single/Album name</h4>
+	<%= f.text_field :item_name %>
+
+	<h4 class="new-head">Artist name</h4>
+
+	<h4 class="new-head">Release date</h4>
+
+	<h4 class="new-head">Price</h4>
+
+	<h4 class="new-head">Stock</h4>
+	<h4><%= f.text_field :stock %></h4>
+
+	<h4 class="new-head">Item_name</h4>
+
+	<h4 class="new-head">Genre</h4>
+
+	<h4 class="new-head">Label_name</h4>
+
+	<h4 class="new-head">Opinion</h4>
+	<%= f.text_area :opinion %>
+
+	<h4 class="new-head">Music name</h4>
+
+	<%= f.submit 'Create Item', class: "item_create" %>
+
+<% end %>
