@@ -11,6 +11,7 @@
 	<h4 class="new-head">Release date</h4>
 
 	<h4 class="new-head">Price</h4>
+	<h4><%= f.text_field :stock %></h4>
 
 	<h4 class="new-head">Stock</h4>
 	<h4><%= f.text_field :stock %></h4>
@@ -29,3 +30,4 @@
 	<%= f.submit 'Create Item', class: "item_create" %>
 
 <% end %>
+<%= link_to '商品一覧', items_path %>
