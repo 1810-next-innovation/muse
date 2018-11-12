@@ -10,6 +10,71 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+      <nav class="nav navbar-nav navbar-left"><span>Bookers</span></nav>
+
+      <nav>
+          <div>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+              <li>
+              <%= link_to " HOME", root_path %>
+              </li>
+              
+              <li>
+              
+              <%= link_to " SERVISE", items_about_path %>
+              </li>
+              <li>
+              <%= link_to " MY PAGE" %>
+              </li>
+
+              <li>
+              <%= link_to " カート", root_path %>
+              </li>
+
+              <li>
+              
+               <%= link_to " Logout", destroy_user_session_path, method:  :delete, class:"glyphicon glyphicon-log-out logout" %>
+              </li> 
+
+              <li>
+              <%= link_to " SERCH", root_path %>
+              </li>
+
+             <% else %>
+
+             <li>
+             <%= link_to " HOME", root_path %>
+            
+             
+             </li>
+             <li>
+             <%= link_to " SERVISE", items_about_path %>
+
+             </li>
+             
+             <li>
+             <%= link_to " sing up", new_user_registration_path%>
+
+             </li>
+             <li>
+             <%= link_to " login", new_user_session_path %>
+             </li>
+
+             <li>
+              <%= link_to " SERCH", root_path %>
+              </li>
+
+
+             <% end %>
+            </ul>
+          </div>
+      </nav>
+    </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>
