@@ -1,0 +1,47 @@
+<!-- モーダルエリアここから -->
+<section id="open-sign-in" class="modalarea">
+  <div id="modalbg" class="modalbg"></div>
+  <div class="modalwrapper">
+    <div class="modalcontents">
+<!--モーダルエリアここまで -->
+
+    <div class="container">
+        <h2>Log in to your account</h2>
+        <h2>Log In</h2>
+
+        <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="emdw2//jmQMcNvd/aLF11X6a9eGgHGBFXqAbhd6zhc6Xs3R7lliGlFYAyQUgtrr1drE/MMA9YQIN2q08yOTI1A==">
+
+          <div class="field">
+            <label for="user_email">Email</label><br>
+            <input class="email" type="email" value="" name="user[email]" id="user_email">
+          </div>
+
+          <div class="field">
+            <label for="user_password">Password</label><br>
+            <input autocomplete="current-password" class="password" type="password" name="user[password]" id="user_password">
+          </div>
+
+          <div class="field">
+            <input name="user[remember_me]" type="hidden" value="0">
+            <input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+            <label for="user_remember_me">Remember me</label>
+          </div>
+
+          <div class="actions">
+            <input type="submit" name="commit" value="Submit" class="btn btn-primary" data-disable-with="Submit">
+          </div>
+
+          <div class="actions">
+            <input type="submit" name="commit" value="Log in" class="btn btn-primary" data-disable-with="Login">
+          </div>
+        </form>
+    </div>
+
+<!-- モーダルエリアここから -->
+    </div>
+    <div id="closemodal" class="closemodal">
+      ×
+    </div>
+  </div>
+</section>
+<!--モーダルエリアここまで -->
