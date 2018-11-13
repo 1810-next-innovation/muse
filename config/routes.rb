@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
-
+  
+  get 'contacts/about', to: 'contacts#about'
+  get 'contacts/term', to: 'contacts#term'
   resources :contacts
 
   root 'items#top'

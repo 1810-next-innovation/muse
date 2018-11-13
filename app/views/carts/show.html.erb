@@ -1,7 +1,21 @@
-<h1>Carts#show</h1>
+<div class="container">
+  <div class="row">
 
-<%= @cart_items.each do |cart_item| %>
-	<%= cart_item.item.item_name %>
-	<%= cart_item.quantity %>
-	<%= link_to "削除", delete_item_path, method: :delete %>
-<% end %>
+    <div class="col-xs-8">
+			<h3><%= @user.name %>'s Cart</h3>
+	  </div>
+
+	  <div class="col-xs-4">
+	    <h2>Buy these items?</h2>
+	  </div>
+
+
+  <%= @cart_items.each do |cart_item| %>
+    <%= cart_item.item.item_name %>
+    <%= cart_item.quantity %>
+    <%= link_to "削除", delete_item_path, method: :delete %>
+  <% end %>
+
+  </div>
+</div>
+

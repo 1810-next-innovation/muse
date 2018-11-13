@@ -3,6 +3,7 @@ class CartsController < ApplicationController
 
   def show
   	@cart_items = current_cart.cart_items
+    @user = User.find(current_user.id)
   end
 
   def add_item

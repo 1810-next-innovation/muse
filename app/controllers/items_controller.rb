@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+	
 	def top
 	end
 
@@ -31,8 +32,8 @@ class ItemsController < ApplicationController
 		@items = @items.page(params[:page])
 	end
 
-  private
-    def item_params
-      params.require(:item).permit(:item_name, :price, :stock, :opinion)
-    end
+private
+	def item_params
+  	params.require(:item).permit(:item_name, :item_image_id, :price, :stock, :opinion )
+  end
 end
