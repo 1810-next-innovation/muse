@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
 
 	def show
 		@item = Item.find(params[:id])
+		if @cart_item.blank?
+			puts current_cart
+  		@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+  	end
 	end
 
 	def new
@@ -26,9 +30,6 @@ class ItemsController < ApplicationController
 	def index
 		@items = Item.all
 		@items = @items.page(params[:page])
-	end
-
-	def destroy
 	end
 
 private

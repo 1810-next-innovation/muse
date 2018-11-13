@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
-  
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
+  
   get 'contacts/about', to: 'contacts#about'
   get 'contacts/term', to: 'contacts#term'
   resources :contacts
 
   root 'items#top'
   get 'items/about', to: 'items#about'
-  get 'carts/show'
   resources :items
-  # , only: [:index, :show, :new, :create, :edit]
 
-
+  post "/add_item/:item_id", to: "carts#add_item", as: "add_item"
+  patch "/update_item", to: "carts#update_item"
+  delete "/delete_item", to: "carts#delete_item"
+  post "/items/session", to: "items#session_delete"
+  resources :carts, only: [:show]
 end
