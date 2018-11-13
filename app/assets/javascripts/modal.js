@@ -1,11 +1,11 @@
 $(function () {
-  $('.Modal_sing_up').on('click',function(){
-  	$('.modalArea').fadeIn();
+  $('#modal-sign-up').on('click',function(){
+  	$('#open-sign-up').fadeIn();
   });
-  $('.Modal_sing_in').on('click',function(){
-  	$('.modalArea').fadeIn();
+  $('#modal-sign-in').on('click',function(){
+  	$('#open-sign-in').fadeIn();
   });
-  $('.closeModal , #modalBg').on('click',function(){
-  	$('#modalArea').fadeOut();
+  $('.closemodal , #modalbg').on('click',function(){
+  	$('.modalarea').fadeOut();
    });
 });
