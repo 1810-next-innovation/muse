@@ -71,7 +71,3 @@ gem "kaminari"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 
-gem 'cancancan'
-
-gem 'rails_admin'
-
