@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+	attachment :item_image
+
 	has_many :favorites,   dependent: :destroy
 	has_many :cart_items,  dependent: :destroy
 	has_many :cart, through: :cart_items

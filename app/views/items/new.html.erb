@@ -1,33 +1,65 @@
-<h1>newページ</h1>
-<h2>商品投稿</h2>
-<%= form_for(@item) do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+			<h1>newページ</h1>
+			<h2>商品投稿</h2>
+			<%= form_for(@item) do |f| %>
+			<h3>New item</h3>
 
-	<h2 class="new-TopHead">New item</h2>
-	<h4 class="new-item-name">Single/Album name</h4>
-	<%= f.text_field :item_name %>
+				<table>
+					<dt>
+						<label>Single/Album name</label>
+						<%= f.text_field :item_name %>
+					</dt>
 
-	<h4 class="new-head">Artist name</h4>
+					<dt>
+						<label>Cover Image</label>
+						<%= f.attachment_field :item_image %>
+					</dt>
 
-	<h4 class="new-head">Release date</h4>
+					<dt>
+						<label>Artist name</label>
+					</dt>
 
-	<h4 class="new-head">Price</h4>
-	<h4><%= f.text_field :price %></h4>
+					<dt>
+						<label>Release date</label>
+					</dt>
 
-	<h4 class="new-head">Stock</h4>
-	<h4><%= f.text_field :stock %></h4>
+					<dt>
+						<label>Price</label>
+						<%= f.text_field :price %>
+					</dt>
 
-	<h4 class="new-head">Item_name</h4>
+					<dt>
+						<label>Stock</label>
+						<%= f.text_field :stock %>
+					</dt>
 
-	<h4 class="new-head">Genre</h4>
+					<dt>
+						<label>Item_name</label>
+					</dt>
 
-	<h4 class="new-head">Label_name</h4>
+					<dt>
+						<label>Genre</label>
+					</dt>
 
-	<h4 class="new-head">Opinion</h4>
-	<%= f.text_area :opinion %>
+					<dt>
+						<label>Label_name</label>
+					</dt>
 
-	<h4 class="new-head">Music name</h4>
+					<dt>
+						<label>Opinion</label>
+						<%= f.text_area :opinion %>
+					</dt>
 
-	<%= f.submit 'Create Item', class: "item_create" %>
+					<dt>
+						<label>Music name</label>
+					</dt>
+				</table>
+				<%= f.submit 'Create Item', class: "item_create" %>
 
-<% end %>
-<%= link_to '商品一覧', items_path %>
+			<% end %>
+			<%= link_to '商品一覧', items_path %>
+    </div>  
+  </div>
+</div>
