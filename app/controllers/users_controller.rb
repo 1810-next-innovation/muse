@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 		@users = User.search(params[:search])
 	end
 
-	
 
 
 
