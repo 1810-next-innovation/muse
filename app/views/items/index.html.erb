@@ -16,7 +16,7 @@
           <% @items.each do |items| %>
             <tr>
               <td>
-               <%= attachment_image_tag items, :item_image_id, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
+               <%= attachment_image_tag items, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
               </td>
               <td>
                 <%= link_to items.item_name, item_path(items.id) %>
@@ -33,6 +33,12 @@
                 <% else %>
                   <p>Stock: <%= items.stock %></p>
                 <% end %>
+              </td>
+              <td>
+                <%= link_to "Edit", edit_item_path(items.id), class: "btn-sm btn-success" %>
+              </td>
+              <td>
+                <%= link_to "Destroy", item_path(items), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
               </td>
             </tr>
           <% end %>
