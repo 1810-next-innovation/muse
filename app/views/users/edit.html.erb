@@ -16,8 +16,10 @@
 
    <div class="field">
     <label>Gender </label><br>
-    <%= f.radio_button :gender, 1 %> 男
-    <%= f.radio_button :gender, 2 %> 女
+   <%= f.label :man %>
+    <%= f.radio_button :gender, :man %>
+    <%= f.label :woman %>
+    <%= f.radio_button :gender, :woman %>
   </div>
 
   <div class="field">
@@ -47,6 +49,7 @@
           end_year:   (Time.now.year - 18),
           default:    Date.new(1989, 1, 1)) %>
   </div>
+
 
   <div class="field">
     <%= f.label :password %>
