@@ -71,5 +71,3 @@ gem "kaminari"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 
-
-
