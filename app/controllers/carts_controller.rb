@@ -9,7 +9,7 @@ class CartsController < ApplicationController
   	if @cart_item.blank?
   		@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
   	end
-  	@cart_item.quantity += params[:quantity].to_i
+  	@cart_item.quantity += params[:cart_item][:quantity].to_i
   	@cart_item.save
   	redirect_to current_cart
   end
