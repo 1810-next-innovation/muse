@@ -1,13 +1,46 @@
 <h2><%= current_user.name %>'s page</h2>
 
-<ul>
-	<li><%= current_user.japanese_syllabaries %></li>
-	<li><%= current_user.post_code %></li>
-	<li><%= current_user.address %></li>
-	<li><%= current_user.email %></li>
-	<li><%= current_user.phone_number %></li>
-	<li><%= current_user.birthday %></li>
-</ul>
+<table class="table">
+	<tr>
+		<th>Japanese_syllabaries</th>
+		<td><%= current_user.japanese_syllabaries %></td>
+
+	</tr>
+	<tr>
+		<th>Gender</th>
+		<td><%= current_user.gender %></td>
+
+	</tr>
+
+	<tr>
+		<th>Post_code</th>
+		<td><%= current_user.post_code %></td>
+
+	</tr>
+
+	<tr>
+		<th>Address</th>
+		<td><%= current_user.address %></td>
+	</tr>
+
+	<tr>
+		<th>Email</th>
+		<td><%= current_user.email %></td>
+	</tr>
+
+	<tr>
+		<th>Phone_number</th>
+		<td><%= current_user.phone_number %></td>
+	</tr>
+
+	<tr>
+		<th>Birthday</th>
+		<td><%= current_user.birthday %></td>
+	</tr>
+
+	
+
+</table>
 
 
 
