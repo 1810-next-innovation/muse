@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'items/about', to: 'items#about'
   get 'carts/show'
   resources :items
+      resource :favorites, only: [:create, :destroy]
   # , only: [:index, :show, :new, :create, :edit]
 
 
