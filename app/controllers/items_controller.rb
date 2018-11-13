@@ -15,18 +15,20 @@ class ItemsController < ApplicationController
 
 	def create
 		item = Item.new(item_params)
-		item.save
-		redirect_to items_path
+		if item.save
+			redirect_to items_path
+		else
+			render "/items/new"
+		end
 	end
 
 	def index
 		@items = Item.all
-
 		@items = @items.page(params[:page])
 	end
 
-	private
+private
 	def item_params
-  		params.require(:item).permit(:item_name, :stock, :opinion, :price)
-    end
+  	params.require(:item).permit(:item_name, :price, :stock, :opinion)
+  end
 end
