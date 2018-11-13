@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
 
 	def show
 		@item = Item.find(params[:id])
+		if @cart_item.blank?
+			puts current_cart
+  		@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+  	end
 	end
 
 	def new
@@ -27,8 +31,8 @@ class ItemsController < ApplicationController
 		@items = @items.page(params[:page])
 	end
 
-private
-	def item_params
-  	params.require(:item).permit(:item_name, :price, :stock, :opinion)
-  end
+  private
+    def item_params
+      params.require(:item).permit(:item_name, :price, :stock, :opinion)
+    end
 end
