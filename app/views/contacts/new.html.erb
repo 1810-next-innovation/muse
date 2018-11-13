@@ -1,14 +1,14 @@
 <h1>What do you want to contact us ?</h1>
 
-<div class="wrap">
-	<div class="change_tab_menu">
-		<button class="change_tab">Contact</button>
-		<button class="change_tab">Request</button>
-		<button class="change_tab">Quit</button>
-	</div>
-	<ul>
-		<li class="change_panel"><%= render 'contacts/contact', contacts: @Contact %></li>
-		<li class="change_panel"><%= render 'contacts/contact', contacts: @Contact %></li>
-		<li class="change_panel"><%= render 'contacts/contact', contacts: @Contact %></li>
-	</ul>
-</div>
+<div class="tabUI">
+  <ul class="tab">
+    <li class="active">Contact</li>
+    <li>Request</li>
+    <li>Quit</li>
+  </ul>
+
+  <div class="tabContent">
+      <div class="change_panel active"><%= render 'contacts/contact', contacts: @Contact %>
+      </div>
+  </div>
+
