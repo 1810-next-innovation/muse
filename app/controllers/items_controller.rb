@@ -24,7 +24,8 @@ class ItemsController < ApplicationController
 	end
 
 	def index
-		@items = Item.all
+		@items = Item.search(params[:search])
+
 		@items = @items.page(params[:page])
 	end
 
