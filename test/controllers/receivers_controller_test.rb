@@ -1,0 +1,19 @@
+require 'test_helper'
+
+class ReceiversControllerTest < ActionDispatch::IntegrationTest
+  test "should get index" do
+    get receivers_index_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get receivers_new_url
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get receivers_edit_url
+    assert_response :success
+  end
+
+end

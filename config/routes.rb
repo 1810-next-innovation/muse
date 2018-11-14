@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
+  resources :receivers, only: [:index, :new, :create, :edit, :update, :destroy]
+
   resources :contacts
 
   root 'items#top'

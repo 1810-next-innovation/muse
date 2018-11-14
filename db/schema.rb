@@ -105,10 +105,13 @@ ActiveRecord::Schema.define(version: 2018_11_12_040841) do
   end
 
   create_table "receivers", force: :cascade do |t|
+    t.integer "user_id"
     t.string "receiver_name"
+    t.integer "receiver_post_code"
     t.text "receiver_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_receivers_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|

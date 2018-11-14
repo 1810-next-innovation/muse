@@ -7,7 +7,7 @@
 	  <%= f.number_field :quantity %>
 	  <%= f.submit %>
 	<% end %>
-	<%= link_to "削除", delete_item_path(cart_item.id), method: :delete %><br/><br />
+	<%= link_to "削除", delete_item_path(cart_item), method: :delete %><br/><br />
 <% end %>
 
 <%= link_to "購入画面へ", new_order_path %>
