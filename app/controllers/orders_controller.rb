@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
   def new
   	@order = current_cart.build_order
 
+    @receivers = current_user.receivers.all
+
     @cart_items = current_cart.cart_items.all
     sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity }
     @grand_total = sub_total_arry.inject(:+)

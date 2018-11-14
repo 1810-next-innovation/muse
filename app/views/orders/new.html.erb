@@ -9,6 +9,7 @@
 
 <%= form_for(@order) do |f| %>
 	<%= f.number_field :grand_total, value: @grand_total, type: "hidden" %>
+	<%= f.select :receiver_id, @receivers.map { |t| [t.receiver_address, t.id] } %>
 	<%= f.number_field :payment_method %>
 	<%= f.submit "購入" %>
 <% end %>
