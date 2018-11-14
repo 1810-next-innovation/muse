@@ -18,17 +18,11 @@ ActiveRecord::Schema.define(version: 2018_11_12_040841) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "buy_data", force: :cascade do |t|
-    t.integer "cart_item_id"
-    t.integer "buy_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "cart_id"
     t.integer "quantity", default: 0
+    t.integer "buy_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
