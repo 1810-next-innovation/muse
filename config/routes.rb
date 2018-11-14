@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'orders/index'
   get 'orders/show'
   get 'orders/new'
-  devise_for :users
-  resources :users
+
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :contacts
 
