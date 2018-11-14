@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-  	@orders = Order.all
+  	@orders = current_user.orders.all
   end
 
   def show
@@ -8,21 +8,22 @@ class OrdersController < ApplicationController
   end
 
   def new
-  	@order = current_cart.orders.build
+  	@order = current_cart.build_order
+
+    @cart_items = current_cart.cart_items.all
+    sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity }
+    @grand_total = sub_total_arry.inject(:+)
   end
 
   def create
-  	order = current_user.orders.build(order_params)
+  	order = current_cart.build_order(order_params)
+    order[:user_id] = current_user.id
   	order.save
-  	redirect_to root_path
+  	redirect_to orders_path
   end
 
   private
   def order_params
-  	params.require(:order).permit(:cart_id,
-  																:grand_total,
-  																:paymemt_method,
-  																:receiver_id,
-  																:status)
+  	params.require(:order).permit(:grand_total, :payment_method)
   end
 end

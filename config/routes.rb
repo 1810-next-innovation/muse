@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/new'
-
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :contacts
@@ -15,4 +11,6 @@ Rails.application.routes.draw do
   patch "/update_item/:id", to: "carts#update_item", as: "update_item"
   delete "/delete_item/:id", to: "carts#delete_item", as: "delete_item"
   resources :carts, only: [:show]
+
+  resources :orders, only: [:index, :show, :new, :create]
 end
