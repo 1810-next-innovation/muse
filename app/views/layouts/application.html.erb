@@ -3,113 +3,105 @@
   <head>
     <meta charset="utf-8">
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
     <title>Muse</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header >
+    <header>
       <div class="container">
-      <nav class="nav navbar-nav navbar-left"><span>MUSE</span></nav>
 
-      <nav>
-          <div>
-            <ul class="nav navbar-nav navbar-right">
-              <% if user_signed_in? %>
-              <li>
-              <%= link_to " HOME", root_path %>
-              </li>
-              
-              <li>
-              
-              <%= link_to " SERVICE", items_about_path %>
-              </li>
-              <li>
-              <%= link_to " MY PAGE", user_path(current_user.id) %>
-              </li>
+          <nav class="globnav navbar-left">
+            <span class="logo"> MUSE.</span>
+          </nav>
 
-              <li>
-              <%= link_to " カート", carts_show_path(current_user.id) %>
-              </li>
+            <nav class="globnav navbar-right">
+              <ul class="navbar-menu">
 
-              <li>
-              
-               <%= link_to " Logout", destroy_user_session_path, method:  :delete, class:"glyphicon glyphicon-log-out logout" %>
-              </li>
+                <% if user_signed_in? %>
 
-              <li>
-              <%= link_to " SEARCH", items_path %>
-              </li>
+                <li class="header-nav-item">
+                  <%= link_to " HOME", root_path %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " SERVICE", items_about_path %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " MY PAGE", user_path(current_user.id) %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " カート", root_path %>
+                </li>
 
-             <% else %>
+                <li class="header-nav-item">
+                   <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " SEARCH", root_path %>
+                </li>
 
-             <li>
-             <%= link_to " HOME", root_path %>
-            
-             
-             </li>
-             <li>
-             <%= link_to " SERVICE", items_about_path %>
+                <% else %>
 
-             </li>
-
-             <li>
-              <div id="modal-sign-up"> SIGN UP</div>
-              <%= render "devise/registrations/registrations_modal" %>
-            </li>
-
-             <li>
-                <div id="modal-sign-in"> LOG IN</div>
-              <%= render "devise/sessions/sessions_modal" %>
-             </li>
-
-            <li>
-              <%= link_to " SEARCH", items_path %>
-            </li>
-
-
-             <% end %>
-            </ul>
-          </div>
-      </nav>
-    </div>
+                <li class="header-nav-item">
+                 <%= link_to " HOME", root_path %>
+                </li>
+                <li class="header-nav-item">
+                 <%= link_to " SERVICE", items_about_path %>
+                </li>
+                <li class="header-nav-item">
+                  <a><div id="modal-sign-up"> SIGN UP</div></a>
+                  <%= render "devise/registrations/registrations_modal" %>
+                </li>
+                <li class="header-nav-item">
+                  <a><div id="modal-sign-in"> LOG IN</div></a>
+                  <%= render "devise/sessions/sessions_modal" %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " SEARCH", root_path %>
+                </li>
+                <% end %>
+              </ul>
+            </nav>
+        </div>
     </header>
 
-    <%= yield %>
+    <main>
+      <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
+        <%= yield %>
+
+    </main>
 
     <footer>
       <div class="container">
-
-      <nav>
-          <div>
-            <ul>
-              <li>
-              <%= link_to " PRIVACY POLICY", contacts_path %>
+        <nav class="globnav">
+            <ul class="navbar-menu">
+              <li class="footer-nav-item">
+                <%= link_to " PRIVACY POLICY", contacts_path %>
               </li>
-              
-              <li>
-              
-              <%= link_to " ABOUT US", contacts_about_path %>
+              <li class="footer-nav-item">
+                <%= link_to " ABOUT US", contacts_about_path %>
               </li>
-              <li>
-              <%= link_to " TEAMS OF USE",contacts_term_path %>
+              <li class="footer-nav-item">
+                <%= link_to " TEAMS OF USE",contacts_term_path %>
               </li>
-
-              <li>
-              <%= link_to " CONTACT", new_contact_path %>
+              <li class="footer-nav-item">
+                <%= link_to " CONTACT", new_contact_path %>
               </li>
-
-
+              <li class="footer-nav-item">
+               <a> &#169; 2018 MUSE. </a>
+              </li>
             </ul>
 
-            <div>@copyright MUSE</div>
-          </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>
