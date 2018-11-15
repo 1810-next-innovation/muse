@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
 	attachment :item_image
 
+
+	def favorited_by?(user)
+          favorites.where(user_id: user.id).exists?
+    end
 	# has_many :favorites,   dependent: :destroy
 	# has_many :cart_items,  dependent: :destroy
 	# has_many :cart, through: :cart_items

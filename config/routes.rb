@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   root 'items#top'
   get 'items/about', to: 'items#about'
   get 'carts/show'
-  resources :items
-  # , only: [:index, :show, :new, :create, :edit]
+  resources :items do
+    resource :favorites, only: [:create, :destroy]
+  end
+   # , only: [:index, :show, :new, :create, :edit]
 
 
 end
