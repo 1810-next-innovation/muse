@@ -139,7 +139,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_102551) do
     t.string "post_code"
     t.date "birthday"
     t.boolean "delete_flag"
-    t.string "name"
     t.boolean "admin", default: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
