@@ -2,8 +2,8 @@ class CartsController < ApplicationController
   before_action :setup_cart_item!, only:[:add_item, :update_item, :delete_item]
 
   def show
-  	@user = User.find(current_user.id)
   	@cart_items = current_cart.cart_items
+    @user = User.find(current_user.id)
   end
 
   def add_item
