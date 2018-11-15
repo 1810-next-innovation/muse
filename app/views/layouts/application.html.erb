@@ -29,7 +29,7 @@
               <%= link_to " SERVICE", items_about_path %>
               </li>
               <li>
-              <%= link_to " MY PAGE" %>
+              <%= link_to " MY PAGE", user_path(current_user.id) %>
               </li>
 
               <li>
@@ -42,7 +42,7 @@
               </li>
 
               <li>
-              <%= link_to " SEARCH", root_path %>
+              <%= link_to " SEARCH", items_path %>
               </li>
 
              <% else %>
@@ -58,15 +58,17 @@
              </li>
 
              <li>
-              <div class="Modal_sing_up"> SING UP</div>
+              <div id="modal-sign-up"> SIGN UP</div>
+              <%= render "devise/registrations/registrations_modal" %>
             </li>
 
              <li>
-                <div class="Modal_sing_in"> LOG IN</div>
+                <div id="modal-sign-in"> LOG IN</div>
+              <%= render "devise/sessions/sessions_modal" %>
              </li>
 
             <li>
-              <%= link_to " SEARCH", root_path %>
+              <%= link_to " SEARCH", items_path %>
             </li>
 
 

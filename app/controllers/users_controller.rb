@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!
+
+	before_action :correct_user, only: [:edit, :update]
+
+	before_action :admin_user,     only: [:index]
 
 	def index
 		@users = User.search(params[:search])
@@ -28,7 +33,18 @@ class UsersController < ApplicationController
 
 	private 
 
+	def correct_user
+        @user = User.find(params[:id])
+        if current_user != @user
+        redirect_to root_path
+        end
+     end
+
+	def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
 	def user_params
-		params.require(:user).permit(:name, :japanese_syllabaries, :gender, :post_code, :address, :phone_number, :email, :birthday)
+		params.require(:user).permit(:name, :japanese_syllabaries, :gender, :post_code, :address, :phone_number, :email, :birthday, :reviewer_name)
 	end
 end

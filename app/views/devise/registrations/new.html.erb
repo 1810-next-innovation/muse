@@ -1,9 +1,8 @@
-
 <!-- モーダルエリアここから -->
-<section id="modalArea" class="modalArea">
-  <div id="modalBg" class="modalBg"></div>
-  <div class="modalWrapper">
-    <div class="modalContents">
+<section id="open-sign-up" class="modalarea">
+  <div id="modalbg" class="modalbg"></div>
+  <div class="modalwrapper">
+    <div class="modalcontents">
 <!--モーダルエリアここまで -->
 
   <div class="container">
@@ -26,8 +25,10 @@
 
    <div class="field">
     <label>Gender </label><br>
-    <%= f.radio_button :gender, 1 %> 男
-    <%= f.radio_button :gender, 2 %> 女
+    <%= f.label :man %>
+    <%= f.radio_button :gender, :man %>
+    <%= f.label :woman %>
+    <%= f.radio_button :gender, :woman %>
   </div>
 
   <div class="field">
@@ -83,7 +84,7 @@
 <!-- モーダルエリアここから -->
     </div>
 
-    <div id="closeModal" class="closeModal">
+    <div id="closemodal" class="closemodal">
       ×
     </div>
   </div>
