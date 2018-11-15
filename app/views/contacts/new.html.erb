@@ -1,15 +1,25 @@
-<h1>What do you want to contact us ?</h1>
 
-<div class="tabUI">
-  <ul class="tab">
-    <li class="active">Contact</li>
-    <li>Request</li>
-    <li>Quit</li>
-  </ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h1>What do you want to contact us ?</h1>
 
-  <div class="tabContent">
-      <div class="change_panel active">
-      	<%= render 'contacts/contact' %>
+      <div class="col-md-6 col-md-offset-3">
+        <div class="container">
+          <ul class="tab">
+            <li class="active">Contact</li>
+            <li>Request</li>
+            <li>Quit</li>
+          </ul>
+
+          <div class="tabcontent">
+            <div class="change_panel active">
+              <%= render 'contacts/contact' %>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
+</div>
 

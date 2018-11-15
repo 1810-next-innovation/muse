@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   root 'items#top'
   get 'items/about', to: 'items#about'
-  resources :items
+
+  get 'carts/show'
+  resources :items do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   post "/add_item/:item_id", to: "carts#add_item", as: "add_item"
   patch "/update_item/:id", to: "carts#update_item", as: "update_item"
