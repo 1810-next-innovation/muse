@@ -2,16 +2,28 @@
   <div class="row">
     <div class="col-xs-8">
 	    <h1><%= @item.item_name %></h1>
-	  </div>
-	  <div class="col-xs-4">
-	    <h1>カート</h1>
+	    <% if @item.favorited_by?(current_user) %>
+        <li>
+        <%= link_to item_favorites_path(@item), method: :delete do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+        <%= @item.favorites.count %> favorit
+        <% end %>
+        </li>
+        <% else %>
+        <li>
+        <%= link_to item_favorites_path(@item), method: :post do %>
+        <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+        <%= @item.favorites.count %> favorit
+        <% end %>
+        </li>
+        <% end %>
+	    </div>
+	    <div class="col-xs-4">
+
 	    <%= link_to "Edit", edit_item_path(@item) %>
 	    <%= link_to "Destroy", items_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+	 
 	  </div>
   </div>
 </div>
 
-<%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
-  <%= f.number_field :quantity %>
-  <%= f.submit %>
-<% end %>
