@@ -2,30 +2,59 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>商品検索</h2>
+
+      <%= form_tag items_path, :method => 'get' do %> 
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :item_name => nil %>
+      </p>
+      <% end %>
+
       <table class="table table-hover">
         <thead>
           <tr>
+            <th></th>
             <th>Single/Album name</th>
             <th>Opinion</th>
-            <th></th>
+            <th>Price</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-        <% @items.each do |item| %>
-          <tr>
-            <td>
-              <%= link_to item.item_name, item_path(item.id) %>
-            </td>
-            <td>
-              <%= item.opinion %>
-            </td>
-          </tr>
-        <% end %>
+          <% @items.each do |items| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag items, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
+              </td>
+              <td>
+                <%= link_to items.item_name, item_path(items.id) %>
+              </td>
+              <td>
+                <%= items.opinion %>
+              </td>
+              <td>
+                <p>￥<%= items.price %></p>
+              </td>
+              <td>
+                <% if items.stock == 0 %>
+                  <p style="color: red;">Sold Out!!</p>
+                <% else %>
+                  <p>Stock: <%= items.stock %></p>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "Edit", edit_item_path(items.id), class: "btn-sm btn-success" %>
+              </td>
+              <td>
+                <%= link_to "Destroy", item_path(items), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+              </td>
+            </tr>
+          <% end %>
         <tbody>
       </table>
 
+    <%= paginate @items, class: "pagenate" %>
   	<%= link_to 'Newページ', new_item_path %>
-  	<%= paginate @items, class: "pagenate" %>
     </div>  
   </div>
 </div>
