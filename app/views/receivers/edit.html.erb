@@ -1,0 +1,7 @@
+<h1>宛先編集</h1>
+<%= form_for(@receiver) do |f| %>
+	<%= f.text_field :receiver_name %>
+	<%= f.number_field :receiver_post_code %>
+	<%= f.text_area :receiver_address %>
+	<%= f.submit "保存" %>
+<% end %>

@@ -28,7 +28,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.update(user_params)
         redirect_to user_path(@user.id)
-
 	end
 
 
@@ -48,11 +47,4 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:name, :japanese_syllabaries, :gender, :post_code, :address, :phone_number, :email, :birthday, :reviewer_name)
 	end
-
-
-
-
-
-
-
 end

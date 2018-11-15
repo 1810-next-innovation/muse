@@ -37,3 +37,8 @@
   </div>
   <%= link_to 'Back', items_path %>
 </div>
+
+<%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
+  <%= f.number_field :quantity %>
+  <%= f.submit %>
+<% end %>

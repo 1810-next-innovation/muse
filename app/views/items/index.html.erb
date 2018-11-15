@@ -52,9 +52,10 @@
           <% end %>
         <tbody>
       </table>
+      <%= link_to "セッションを消す", "/items/session" %>
 
     <%= paginate @items, class: "pagenate" %>
   	<%= link_to 'Newページ', new_item_path %>
-    </div>  
+    </div>
   </div>
 </div>
