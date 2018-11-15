@@ -33,13 +33,13 @@
               </li>
 
               <li>
-              <%= link_to " カート", root_path %>
+              <%= link_to " カート", cart_path(current_user.id) %>
               </li>
 
               <li>
               
                <%= link_to " Logout", destroy_user_session_path, method:  :delete, class:"glyphicon glyphicon-log-out logout" %>
-              </li> 
+              </li>
 
               <li>
               <%= link_to " SEARCH", root_path %>
@@ -56,18 +56,18 @@
              <%= link_to " SERVICE", items_about_path %>
 
              </li>
-             
-             <li>
-             <%= link_to " SIGN UP", new_user_registration_path%>
-
-             </li>
-             <li>
-             <%= link_to " LOG IN", new_user_session_path %>
-             </li>
 
              <li>
+              <div class="Modal_sing_up"> SING UP</div>
+            </li>
+
+             <li>
+                <div class="Modal_sing_in"> LOG IN</div>
+             </li>
+
+            <li>
               <%= link_to " SEARCH", root_path %>
-              </li>
+            </li>
 
 
              <% end %>
@@ -86,19 +86,19 @@
           <div>
             <ul>
               <li>
-              <%= link_to " PRIVACY POLICY", root_path %>
+              <%= link_to " PRIVACY POLICY", contacts_path %>
               </li>
               
               <li>
               
-              <%= link_to " ABOUT US" %>
+              <%= link_to " ABOUT US", contacts_about_path %>
               </li>
               <li>
-              <%= link_to " TEAMS OF USE" %>
+              <%= link_to " TEAMS OF USE",contacts_term_path %>
               </li>
 
               <li>
-              <%= link_to " CONTACT", root_path %>
+              <%= link_to " CONTACT", new_contact_path %>
               </li>
 
 

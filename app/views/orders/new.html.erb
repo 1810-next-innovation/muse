@@ -1,0 +1,17 @@
+<h1>購入画面</h1>
+
+<%= @cart_items.each do |cart_item| %>
+	<%= cart_item.item.item_name %>
+	<%= cart_item.quantity %>個
+	<%= cart_item.item.price * cart_item.quantity %>円<br>
+<% end %><br>
+合計<%= @grand_total %>円
+
+<%= form_for(@order) do |f| %>
+	<%= f.number_field :grand_total, value: @grand_total, type: "hidden" %>
+	<%= f.select :receiver_id, @receivers.map { |t| [t.receiver_address, t.id] } %>
+	<%= f.number_field :payment_method %>
+	<%= f.submit "購入" %>
+<% end %>
+
+

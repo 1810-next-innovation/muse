@@ -1,0 +1,18 @@
+<h2><%= current_user.name %>'s page</h2>
+
+<ul>
+	<li><%= current_user.japanese_syllabaries %></li>
+	<li><%= current_user.post_code %></li>
+	<li><%= current_user.address %></li>
+	<li><%= current_user.email %></li>
+	<li><%= current_user.phone_number %></li>
+	<li><%= current_user.birthday %></li>
+</ul>
+
+
+
+<div><%= link_to "purchase_history", root_path, class:"btn btn-default btn-lg" %></div>
+
+<div><%= link_to "user edit", edit_user_path(@user), class:"btn btn-default btn-lg" %></div>
+
+<div><%= link_to "favorite", root_path, class:"btn btn-default btn-lg" %></div>

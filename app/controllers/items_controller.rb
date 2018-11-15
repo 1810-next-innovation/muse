@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+	
 	def top
 	end
 
@@ -8,7 +9,7 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		if @cart_item.blank?
-			puts current_cart
+			puts current_cart.nil?
   		@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
   	end
 	end
@@ -27,12 +28,29 @@ class ItemsController < ApplicationController
 	end
 
 	def index
-		@items = Item.all
+		@items = Item.search(params[:search])
+
 		@items = @items.page(params[:page])
 	end
 
-  private
-    def item_params
-      params.require(:item).permit(:item_name, :price, :stock, :opinion)
-    end
+	def edit
+		@item = Item.find(params[:id])
+	end
+
+	def update
+		item = Item.find(params[:id])
+		item.update(item_params)
+		redirect_to item_path(item.id)
+	end
+
+	def destroy
+		@item = Item.find(params[:id])
+		@item.destroy
+		redirect_to items_path
+	end
+
+private
+	def item_params
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion )
+  end
 end
