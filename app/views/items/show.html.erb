@@ -18,9 +18,39 @@
         </li>
         <% end %>
 	    </div>
+
+	    <!-- commennt -->
+
+	    <div>
+        <h4>Rewiew</h4>
+        <div id="reviews_area">
+        <% @item.reviews.each do |review| %>
+        <% unless review.id.nil? %>
+        <p>Reviewer：<%= review.reviewer_name %></p>
+        <p>Review：<%= review.review_text %></p>
+        <p><%= link_to 'コメントを削除する', item_reviews_path(item_id: review.item_id, review_id: review.id), method: :delete %>
+        </p>
+        <% end %>
+        <% end %>
+        </div>
+        <%= form_with(model: [@item, @review] ) do |form| %>
+        <div>
+        <%= form.text_field :reviewer_name %>
+        </div>
+        <div>
+        <%= form.text_area :review_text %>
+        </div>
+        <div class="actions">
+        <%= form.submit "コメントをする" %>
+        </div>
+        <% end %>
+        </div>
+
+        <!-- comment -->
+
+
 	    <div class="col-xs-4">
 
-	   
 	    <%= attachment_image_tag @item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %>
 	    <p>￥<%= @item.price %></p>
 	    <p>stock:<%= @item.stock %></p>
@@ -30,7 +60,6 @@
 	    <h1>カート</h1>
 	    <%= link_to "Edit", edit_item_path(@item), class: "btn-sm btn-success" %>
 	    <%= link_to "Destroy", items_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
-	 
 	  </div>
 
 
