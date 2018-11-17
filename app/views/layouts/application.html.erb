@@ -13,6 +13,7 @@
   </head>
 
   <body>
+
     <header>
       <div class="container">
           <nav class="globnav navbar-left">
@@ -97,9 +98,14 @@
     </header>
 
     <main>
-      <% flash.each do |key, value| %>
+    <% if flash[:sign_up_error] %>
+      <%= flash[:sign_up_error] %>
+      <p><%= flash[:sign_up_error].count %></p>
+    <% else %>
+      <% flash.each do |key, value| %>aa
       <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
+    <% end %>
 
         <%= yield %>
 
