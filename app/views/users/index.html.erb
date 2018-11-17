@@ -1,3 +1,5 @@
+
+
 <%= form_tag users_path, :method => 'get' do %> 
   <p>
     <%= text_field_tag :search, params[:search] %>
@@ -27,10 +29,11 @@
 			<td><%= user.email %></td>
 			<td><%= user.phone_number %></td>
 			<td><%= user.deleted_at %></td>
-			<td><%= link_to "Destroy", users_path(@user), method: :delete, "data-confirm" => "本当に消しますか?" %></td>
+			<td><%= link_to "Destroy", user_path(user), method: :delete, "data-confirm" => "本当に消しますか?" %></td>
 
 		</tr>
 		<% end %>
 
 	</tbody>
 </table>
+
