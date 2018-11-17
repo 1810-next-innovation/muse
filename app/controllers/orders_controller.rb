@@ -21,11 +21,13 @@ class OrdersController < ApplicationController
   	order = current_cart.build_order(order_params)
     order[:user_id] = current_user.id
   	order.save
-    current_cart.cart_items.each do |cart_item|
-      cart_item[:buy_price] = cart_item.item.price
+    current_cart.cart_items.buy_datum.each do |buy_datum|
+      buy_datum[:buy_name] = cart_item.item.item_name
+      buy_datum[:buy_price] = cart_item.item.price
       cart_item.save
     end
-    Cart.create(user_id: current_user.id) #新しくカートを作成
+    binding.pry
+    Cart.create(user_id: current_user.id)
   	redirect_to orders_path
   end
 

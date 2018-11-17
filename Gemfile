@@ -74,3 +74,8 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 gem 'paranoia'
+
+gem 'faker' #サンプルのデータを作成する。通常では本番環境では使わない。
+gem 'gimei' #サンプルのデータを作成する(日本語)。通常では本番環境では使わない。
+# gem 'enumerize' #Enum 定義関連のためのgem
+gem 'activerecord-import' #バルクインサートを使うためのgem
