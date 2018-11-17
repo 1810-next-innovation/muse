@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'carts/show'
   resources :items do
     resource :favorites, only: [:create, :destroy]
+    resource :reviews, only: [:create, :destroy]
   end
 
   post "/add_item/:item_id", to: "carts#add_item", as: "add_item"
