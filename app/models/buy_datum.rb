@@ -1,4 +1,3 @@
 class BuyDatum < ApplicationRecord
-	# belongs_to :cart_item
-	validates :cart_item, presence: true
+	belongs_to :cart_item
 end

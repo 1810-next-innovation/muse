@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :item_name
       t.text :item_image_id
       t.integer :price
-      t.datetime :release_date
+      t.date :release_date
       t.text :opinion
       t.integer :stock
 

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
          acts_as_paranoid
 
 
@@ -14,13 +14,12 @@ class User < ApplicationRecord
   enum gender: {man: 1, woman: 2 }
   has_many :favorites, 							 dependent: :destroy
 
-  def self.search(search) 
-    if search 
+  def self.search(search)
+    if search
       User.where(['name LIKE ?', "%#{search}%"])
     else
-      User.all 
+      User.all
     end
   end
 
-   
 end
