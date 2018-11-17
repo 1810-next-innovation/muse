@@ -6,51 +6,54 @@
 <!--モーダルエリアここまで -->
 
   <div class="container">
-    <h2>WELCOME TO MUSE</h2>
-    <h2>SIGN UP</h2>
+    <div class="modal-heading">
+      <h2 class="modal-heading-text">WELCOME TO MUSE</h2>
+    </div>
+    <div class="modal-heading">
+      <h2 class="modal-heading-text">SIGN UP</h2>
+    </div>
 
 <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="lbhZcW/ZH0h6+rgZsp/E0dpwOvy273IV4TsFAeuaRNV4bF3RBmIA3zDMhmP6mAvx0lvwLdbOc1KyQbO4/c0Jzw==">
 
   <div class="field">
-    <label> Name </label><br>
+    <label> Name</label><br>
     <input type="text" name="user[name]" id="user_name">
   </div>
 
    <div class="field">
-    <label>Japanese Svllabaries </label><br>
+    <label> Japanese Svllabaries </label><br>
     <input type="text" name="user[japanese_syllabaries]" id="user_japanese_syllabaries">
   </div>
 
    <div class="field">
-    <label>Gender </label><br>
-     
+    <label> Gender</label><br>
     <input type="radio" value="man" name="user[gender]" id="user_gender_man"> 男
     <input type="radio" value="woman" name="user[gender]" id="user_gender_woman"> 女
 
   </div>
 
   <div class="field">
-    <label>Post Cord </label><br>
+    <label> Post Cord</label><br>
     <input type="text" name="user[post_code]" id="user_post_code">
   </div>
 
   <div class="field">
-    <label>Address </label><br>
+    <label> Address</label><br>
     <input type="text" name="user[address]" id="user_address">
   </div>
 
   <div class="field">
-    <label>Phone_Number </label><br>
+    <label> Phone_Number</label><br>
     <input type="tel" name="user[phone_number]" id="user_phone_number">
   </div>
 
   <div class="field">
-    <label for="user_email">Email</label><br>
+    <label for="user_email"> Email</label><br>
     <input autofocus="autofocus" autocomplete="email" class="email" type="email" value="" name="user[email]" id="user_email">
   </div>
 
 <div class="field">
-    <label>Birthday </label><br>
+    <label> Birthday</label><br>
     <select id="user_birthday_1i" name="user[birthday(1i)]">
 <option value="1930">1930</option>
 <option value="1931">1931</option>
@@ -174,14 +177,14 @@
 </div>
 
   <div class="field">
-    <label for="user_password">Password</label>
+    <label for="user_password"> Password</label>
     <em>(6 characters minimum)</em>
     <br>
     <input autocomplete="new-password" class="password" type="password" name="user[password]" id="user_password">
   </div>
 
   <div class="field">
-    <label for="user_password_confirmation">Password confirmation</label><br>
+    <label for="user_password_confirmation"> Password confirmation</label><br>
     <input autocomplete="new-password" class="password_confirm" type="password" name="user[password_confirmation]" id="user_password_confirmation">
   </div>
 
