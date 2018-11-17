@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 	before_action :correct_user, only: [:edit, :update]
 
-	before_action :admin_user,     only: [:index]
+	before_action :admin_user,only: [:index]
 
 	def index
 		@users = User.search(params[:search])
