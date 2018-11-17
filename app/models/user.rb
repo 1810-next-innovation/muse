@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-         acts_as_paranoid
+  acts_as_paranoid
 
 
   # has_many :receivers, 							 dependent: :destroy
@@ -13,6 +13,16 @@ class User < ApplicationRecord
 
   enum gender: {man: 1, woman: 2 }
   # has_many :favorites, 							 dependent: :destroy
+
+  # validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20, allow_blank: true}
+  # validates :japanese_syllabaries, presence: true, length: { maximum: 30}
+  # validates :gender, acceptance: true
+  # validates :post_code, presence: true, length: { maximum: 7}
+  # validates :address, presence: true
+  # validates :phone_number, presence: true, length: {maximum: 13}
+  # validates :email, email: {allow_blank: true}
+
+
 
   def self.search(search) 
     if search 

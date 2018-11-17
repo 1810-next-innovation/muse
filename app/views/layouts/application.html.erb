@@ -41,7 +41,7 @@
                    <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
                 </li>
                 <li class="header-nav-item">
-                  <%= link_to " SEARCH", root_path %>
+                  <%= link_to " SEARCH", items_path %>
                 </li>
 
                 <% else %>
@@ -61,7 +61,7 @@
                   <%= render "devise/sessions/sessions_modal" %>
                 </li>
                 <li class="header-nav-item">
-                  <%= link_to " SEARCH", root_path %>
+                  <%= link_to " SEARCH", itens_path %>
                 </li>
                 <% end %>
               </ul>

@@ -74,3 +74,5 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 gem 'paranoia'
+
+gem 'email_validator', '~> 1.6'
