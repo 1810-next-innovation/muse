@@ -18,14 +18,21 @@ class ItemsController < ApplicationController
 
 	def new
 		@item = Item.new
+
+		@labels = Label.all
 	end
 
 	def create
-		item = Item.new(item_params)
-		if item.save
-			redirect_to items_path
+		@item = Item.new(item_params)
+		if @item.save
+			@items = Item.search(params[:search])
+
+			@items = @items.page(params[:page])
+
+			render :index
 		else
-			render "/items/new"
+		@labels = Label.all
+			render :new
 		end
 	end
 
@@ -53,6 +60,6 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion )
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, )
   end
 end
