@@ -238,3 +238,29 @@ h1:after {right: 10px;}
   list-style-type: none;
 }
 
+/* privacy policy */
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-top: 2px solid #eeeeee;
+}
+#pp {
+  width: 84%;
+  line-height: 1.5em;
+  margin: 0 auto;
+}
+
+.pp-title {
+  padding:15px;
+}
+
+.pp-title h4 {
+  color: #a94442b0;
+}
+
+.pp-text {
+  width: 90%;
+  display: block;
+  margin: 7px auto;
+}
