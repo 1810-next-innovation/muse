@@ -23,6 +23,11 @@
 
 					<dt>
 						<label>Release date</label>
+						<%= f.date_select(
+          	:release_date,
+          	start_year: 1930,
+          	end_year:   (Time.now.year),
+          	default:    Date.new(Time.now.year, 1, 1)) %>
 					</dt>
 
 					<dt>
