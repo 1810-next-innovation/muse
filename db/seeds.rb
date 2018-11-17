@@ -19,12 +19,13 @@ User.create!(name: "管理者",
 						 birthday: "20001010",
 						 password: "111111",
 						 admin: true,
-						 delete_flag: 2)
+						 deleted_at: nil)
 Cart.create!(user_id: 1)
 Receiver.create!(user_id: 1,
 								 receiver_name: "管理者",
 								 receiver_post_code: 1234567,
-								 receiver_address: "日本")
+								 receiver_address: "日本",
+								 receiver_address: "09012345678")
 
 # 10.times do |n|
 # 	name =
@@ -43,11 +44,3 @@ Receiver.create!(user_id: 1,
 # 									 receiver_name, "",
 # 									 receiver_post_code, "",)
 # end
-
-# Item.create!(label_id: ,
-# 						 item_name: "",
-# 					   item_image_id: "",
-# 					   price: "",
-# 					   release_date: "",
-# 					   opinion: "",
-# 					   stock: "")

@@ -1,22 +1,13 @@
-# users = []
-# 10.times do |n|
-# 	item_name = Faker::Music.album
-# 	item_image_name = 
-# 	n = 1000
-# 	price_arry = Array.new
-# 	while n <= 3000
-# 		n += 100
-# 		price.push(n)
-# 	end
-# 	price = price_arry.sample
-# 	release_date = Faker::Date.between(20.days.ago, Date.today)
+items = []
+10.times do |n|
+	items << Item.new(
+		label_id: rand(11),
+		item_name: Faker::Music.album,
+		# item_image_id: ,
+		price: rand(4000),
+		release_date: Faker::Date.between(20.days.ago, Date.today),
+		opinion: Faker::Lorem.sentence,
+		stock: rand(30))
+end
 
-# 	Item.create!(
-# 							label_id: 1,
-# 							item_name: ,
-# 							item_image_name: "",
-# 							price: ,
-# 							release_date: "",
-# 							opinion: "",
-# 							stock: "")
-# end
+Item.import items #バルクインサート

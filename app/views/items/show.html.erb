@@ -20,7 +20,7 @@
 	    </div>
 	    <div class="col-xs-4">
 
-	   
+
 	    <%= attachment_image_tag @item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %>
 	    <p>￥<%= @item.price %></p>
 	    <p>stock:<%= @item.stock %></p>
@@ -30,7 +30,7 @@
 	    <h1>カート</h1>
 	    <%= link_to "Edit", edit_item_path(@item), class: "btn-sm btn-success" %>
 	    <%= link_to "Destroy", items_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
-	 
+
 	  </div>
 
 
@@ -39,6 +39,6 @@
 </div>
 
 <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
-  <%= f.number_field :quantity %>
-  <%= f.submit %>
+  <%= f.number_field :quantity, in: 1..10, step: 1 %>
+  <%= f.submit "Add to cart" %>
 <% end %>
