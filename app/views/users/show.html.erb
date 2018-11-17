@@ -1,35 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 clearfix">
-    	<h2><%= current_user.name %>'s page</h2>
+    	<h2><%= @user.name %>'s page</h2>
     	 <table class="table">
     	 	<tr>
     	 		<th>Japanese_syllabaries</th>
-    	 		<td><%= current_user.japanese_syllabaries %></td>
+    	 		<td><%= @user.japanese_syllabaries %></td>
     	 	</tr>
 				<tr>
 					<th>Gender</th>
-					<td><%= current_user.gender %></td>
+					<td><%= @user.gender %></td>
 				</tr>
 				<tr>
 					<th>Post_code</th>
-					<td><%= current_user.post_code %></td>
+					<td><%= @user.post_code %></td>
 				</tr>
 				<tr>
 					<th>Address</th>
-					<td><%= current_user.address %></td>
+					<td><%= @user.address %></td>
 				</tr>
 				<tr>
 					<th>Email</th>
-					<td><%= current_user.email %></td>
+					<td><%= @user.email %></td>
 				</tr>
 				<tr>
 					<th>Phone_number</th>
-					<td><%= current_user.phone_number %></td>
+					<td><%= @user.phone_number %></td>
 				</tr>
 				<tr>
 					<th>Birthday</th>
-					<td><%= current_user.birthday %></td>
+					<td><%= @user.birthday %></td>
 				</tr>
 			</table>
 
