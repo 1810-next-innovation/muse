@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+		<h1>Labels#new</h1>
+		<p>Find me in app/views/labels/new.html.erb</p>
+		<%= form_for(@label) do |l| %>
+			<ul>
+				<li>
+					<label>Label Name</label>
+					<%= l.text_field :label_name %>
+				</li>
+			</ul>
+
+			<%= l.submit 'Create Label' %>
+		<% end %>
+
+    </div>  
+  </div>
+</div>
