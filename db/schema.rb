@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_102551) do
+ActiveRecord::Schema.define(version: 2018_11_15_174635) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "buy_data", force: :cascade do |t|
+    t.integer "cart_item_id"
+    t.string "buy_name"
+    t.integer "buy_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,7 +72,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_102551) do
     t.string "item_name"
     t.text "item_image_id"
     t.integer "price"
-    t.datetime "release_date"
+    t.date "release_date"
     t.text "opinion"
     t.integer "stock"
     t.datetime "created_at", null: false
@@ -116,16 +124,14 @@ ActiveRecord::Schema.define(version: 2018_11_13_102551) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
-    t.string "first_name"
     t.string "japanese_syllabaries"
     t.integer "gender"
     t.string "phone_number"

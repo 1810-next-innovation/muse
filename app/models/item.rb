@@ -7,19 +7,19 @@ class Item < ApplicationRecord
     end
 	has_many :favorites,   dependent: :destroy
 	has_many :cart_items,  dependent: :destroy
-	has_many :cart, through: :cart_items
+	has_many :carts, through: :cart_items
 	has_many :discs,       dependent: :destroy
-	has_many :music_names, dependent: :destroy
+	# has_many :music_names, dependent: :destroy
 	has_many :reviews,     dependent: :destroy
-	belongs_to :label
+	# belongs_to :label
+	attachment :imgae
+	# validates :label,     presence: true
 
-	validates :label,     presence: true
-
-	  def self.search(search) 
-    if search 
+	  def self.search(search)
+    if search
       Item.where(['item_name LIKE ?', "%#{search}%"])
     else
-      Item.all 
+      Item.all
     end
   end
 end

@@ -5,3 +5,49 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Pathname.glob(Rails.root.join('db/seeds/*.rb')) do |path|
+# 	load(path)
+# end
+
+User.create!(name: "管理者",
+						 japanese_syllabaries: "かんりしゃ",
+						 gender: 1,
+						 post_code: 1234567,
+						 address: "日本",
+						 phone_number: "09012345678",
+						 email: "admin@admin.com",
+						 birthday: "20001010",
+						 password: "111111",
+						 admin: true,
+						 delete_flag: 2)
+Cart.create!(user_id: 1)
+Receiver.create!(user_id: 1,
+								 receiver_name: "管理者",
+								 receiver_post_code: 1234567,
+								 receiver_address: "日本")
+
+# 10.times do |n|
+# 	name =
+
+# 	gender = rand(3)
+# 	post_code = rand(1000000..9999999)
+# 	address: ""
+# end
+
+# 10.times do |n|
+# 	item_name = Faker::
+# end
+
+# 10.times do |n|
+# 	Receiver.create!(user_id: ,
+# 									 receiver_name, "",
+# 									 receiver_post_code, "",)
+# end
+
+# Item.create!(label_id: ,
+# 						 item_name: "",
+# 					   item_image_id: "",
+# 					   price: "",
+# 					   release_date: "",
+# 					   opinion: "",
+# 					   stock: "")
