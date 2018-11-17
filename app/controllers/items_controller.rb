@@ -31,8 +31,8 @@ class ItemsController < ApplicationController
 
 			render :index
 		else
-		@labels = Label.all
-			render :new
+			@labels = Label.all
+				render :new
 		end
 	end
 

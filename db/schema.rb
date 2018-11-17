@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.string "receiver_name"
     t.integer "receiver_post_code"
     t.text "receiver_address"
+    t.string "receiver_phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_receivers_on_user_id"
@@ -139,7 +140,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.string "address"
     t.string "post_code"
     t.date "birthday"
-    t.boolean "delete_flag"
     t.boolean "admin", default: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
