@@ -165,24 +165,9 @@ h1:after {right: 10px;}
   transform: scale(1, 1);
 }
 
-/* CONTACT */
-.tab li {
-  float: left;
-  list-style-type: none;
-}
-
 /* TOP */
 
-/* pick up contents */
-.sub-nav {
-  padding: .5em .75em;
-  background-color: #ffffff;
-  border-left: 6px solid #3a3a3a;
-}
-
-
-
-/*top auto slide show*/
+/* auto slide show*/
 .in {
   position: relative;
   width: 100%;
@@ -197,9 +182,13 @@ h1:after {right: 10px;}
   height: 500px;
 }
 
-
-
-
+/* pick up contents */
+.sub-nav {
+  padding: .5em .75em;
+  margin: 30px 0 0 20px;
+  background-color: #ffffff;
+  border-left: 6px solid #3a3a3a;
+}
 
 /* top sub-navbar */
 .local-nav ul{
@@ -243,39 +232,9 @@ h1:after {right: 10px;}
   transform: skew(20deg);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* CONTACT */
+.tab li {
+  float: left;
+  list-style-type: none;
+}
 

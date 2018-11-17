@@ -18,17 +18,11 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "buy_data", force: :cascade do |t|
-    t.integer "cart_item_id"
-    t.integer "buy_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "cart_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 0
+    t.integer "buy_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,13 +44,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.string "disc_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "discs_music_names", id: false, force: :cascade do |t|
-    t.integer "disc_id"
-    t.integer "music_name_id"
-    t.index ["disc_id"], name: "index_discs_music_names_on_disc_id"
-    t.index ["music_name_id"], name: "index_discs_music_names_on_music_name_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -99,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "cart_id"
     t.integer "grand_total"
     t.integer "payment_method"
@@ -106,13 +94,18 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "receivers", force: :cascade do |t|
+    t.integer "user_id"
     t.string "receiver_name"
+    t.integer "receiver_post_code"
     t.text "receiver_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_receivers_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -124,6 +117,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
