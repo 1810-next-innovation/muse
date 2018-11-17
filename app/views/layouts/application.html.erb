@@ -13,6 +13,7 @@
   </head>
 
   <body>
+
     <header>
       <div class="container">
           <nav class="globnav navbar-left">
@@ -54,7 +55,7 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
-                  <%= link_to " カート", root_path %>
+                  <%= link_to " カート", cart_path(current_cart) %>
                 </li>
 
                 <li class="header-nav-item">
@@ -92,9 +93,14 @@
     </header>
 
     <main>
-      <% flash.each do |key, value| %>
+    <% if flash[:sign_up_error] %>
+      <%= flash[:sign_up_error] %>
+      <p><%= flash[:sign_up_error].count %></p>
+    <% else %>
+      <% flash.each do |key, value| %>aa
       <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
+    <% end %>
 
         <%= yield %>
 
