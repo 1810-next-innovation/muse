@@ -1,0 +1,337 @@
+/*
+Theme Name: Voice Child
+Template: voice
+*/
+
+.man-to-man {
+  margin-top: 15px !important;
+}
+
+@media(max-width: 600px){
+  .man-to-man {
+    margin-top: 0 !important;
+  }
+}
+
+.main-header .container:after {
+  display: none !important;
+}
+
+.pc-only { display: block; }
+.mobile-only { display: none; }
+
+@media(max-width: 600px){
+  .pc-only { display: none; }
+  .mobile-only { display: block; }
+}
+
+.header-1-wrapper {
+  background: white !important;
+}
+
+.header-main-area {
+  display: none;
+}
+
+.header-bottom-wrapper {
+  display: none;
+}
+
+.main-header, .top-header {
+  background: #f0f0f0 !important;
+  box-shadow: none !important;
+}
+
+.top-banner {
+  font-family: 'Helvetica', sans-serif;
+  max-height: 340px;
+  max-width: 1140px;
+  margin: 50px auto 0;
+}
+
+
+.top-banner .wrapper {
+  position: relative;
+  display: flex;
+}
+
+.top-banner .wrapper > section {
+  position: relative;
+  display: flex;
+  width: 50%;
+}
+
+.top-banner .wrapper > section > section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+}
+
+.top-banner .wrapper > section > section > section {
+  position: relative;
+  width: 100%;
+  height: 50%;
+}
+
+.top-banner .wrapper img {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* iPhone5のズレ回避一次対応 */
+@media(min-width: 400px){
+  .top-banner .one img {
+    height: 340px !important;
+  }
+}
+/* 元の処理
+.top-banner .one img {
+  height: 340px !important;
+}
+*/
+
+.top-banner .card h2, .top-banner .card p {
+  color: white;
+}
+
+.top-banner .card h2 {
+  font-size: 1em;
+  line-height: 1.8;
+}
+
+.top-banner .card .category {
+  text-decoration: underline;
+}
+
+
+
+@media(max-width: 600px){
+  .top-banner {
+    max-height: 237px;
+  }
+
+  .top-banner .wrapper .one img {
+    max-height: 237px;
+  }
+
+  .top-banner .card {
+    display: none;
+  }
+
+  .top-banner .card-sp {
+    display: block;
+    width: 100vw;
+  }
+
+  .top-banner .wrapper > section {
+    display: block;
+  }
+}
+
+/* iPhone5のズレ回避一次対応 */
+@media(max-width: 360px){
+  .top-banner .wrapper {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 210px;
+  }
+}
+@media(max-width: 320px){
+  .top-banner .wrapper {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 185px;
+  }
+}
+
+
+/* top-banner が mobile で消えたバナーを別の場所に出現させる */
+
+/* TODO: 隙間を空けるかどうか確認
+.pickup div {
+  padding-bottom: 15px;
+}
+.pickup div:nth-last-child(1) {
+  padding-bottom: 0;
+}
+*/
+
+.pickup img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+}
+
+.pickup h2 {
+  font-size: 14px;
+  color: white;
+}
+
+/* sections/loops/layout-b.php に適用されている CSS を上書き修正  */
+.flex {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.vce-lay-b-child {
+  padding: 15px 0;
+  border-bottom: 1px dotted #ccc;
+}
+.vce-lay-b-child:first-child {
+  padding-top: 0;
+}
+
+.vce-lay-b-child h2, .vce-lay-b-child .meta-category {
+  padding-bottom: 15px;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+.vce-lay-b-child img {
+  max-width: 230px;
+  max-height: 135px;
+  object-fit: cover;
+}
+.vce-lay-b-child header {
+  padding-left: 30px;
+}
+
+@media(max-width: 1024px){
+  .vce-lay-b-child h2, .vce-lay-b-child .meta-category {
+    padding-bottom: 5px;
+    font-size: 12px !important;
+  }
+  .vce-lay-b-child img {
+    max-width: 110px;
+    max-height: 65px;
+    object-fit: cover;
+  }
+
+  .vce-lay-b-child header {
+    padding-left: 15px;
+  }
+}
+
+/* Listing に ranking のバッヂを表示する */
+.ranking-box {
+  counter-reset: wpp-ranking;
+}
+.ranking-box li {
+  list-style-type: none;
+  padding: 8px 10px !important;
+  position: relative;
+}
+.ranking-box li:nth-child(-n+5):before {
+  background: #999;
+  border-radius: 50%;
+  content: counter(wpp-ranking, decimal);
+  counter-increment: wpp-ranking;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 8px 10px;
+  position: absolute;
+  z-index: 90; /* footer-banner fade-in が 100 に設定されている */
+  top: 0;
+  left: 0;
+}
+
+.ranking-box li:nth-child(1):before,
+.ranking-box li:nth-child(2):before,
+.ranking-box li:nth-child(3):before {
+  background: #fce36b;
+}
+
+.ranking-box li:nth-child(4):before,
+.ranking-box li:nth-child(5):before {
+  color: #666;
+  background: #eee;
+}
+
+
+/* ReadMoreボタンの色を変える処理 */
+.tml input[type=submit] {
+  background-color: rgb(207, 77, 53) !important;
+}
+
+/* ブログのタイトルの文字サイズ調整 */
+
+
+
+
+
+
+/* tml関係の文字サイズ調整 */
+.tml-title-custom1{
+  font-size:22px;
+  line-height: 150%;
+  margin-bottom: 15px;
+}
+.tml-title-custom2{
+  font-size:28px;
+  line-height: 150%;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.tml-title-custom3{
+  font-size:24px;
+  line-height: 150%;
+  margin-bottom: 10px;
+}
+.tml-title-custom4{
+}
+.tml-title-custom4 h4{
+  font-size:20px !important;
+  line-height: 150% !important;
+  margin: 20px 0px 0px 0px !important;
+}
+
+/* 画面が小さい時の文字縮小 */
+@media(max-width: 620px){
+  .tml-title-custom1{
+    font-size:16px;
+  }
+  .tml-title-custom2{
+    font-size:18px;
+  }
+  .tml-title-custom3{
+    font-size:17px;
+  }
+  .tml-title-custom4{
+  }
+  .tml-title-custom4 h4{
+    font-size:15px !important;
+  }
+
+}
+
+/* 画面が小さい時の文字縮小 */
+@media(max-width: 410px){
+  .tml-title-custom1{
+    font-size:12px;
+  }
+  .tml-title-custom2{
+    font-size:13px;
+  }
+  .tml-title-custom3{
+    font-size:12px;
+  }
+  .tml-title-custom4{
+  }
+  .tml-title-custom4 h4{
+    font-size:12px !important;
+  }
+}
+
+
+/* Leadinの前後関係修正 */
+.leadinModal{
+  z-index: 110000 !important;
+}
