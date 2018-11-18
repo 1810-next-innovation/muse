@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 		@cart = current_user.carts.last
 	end
 
+	
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :japanese_syllabaries, :post_code, :address, :phone_number, :birthday, :gender])
