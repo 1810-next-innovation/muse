@@ -75,4 +75,8 @@ gem 'jquery-rails'
 
 gem 'paranoia'
 
-gem 'email_validator', '~> 1.6'
+gem 'faker' #サンプルのデータを作成する。通常では本番環境では使わない。
+gem 'gimei' #サンプルのデータを作成する(日本語)。通常では本番環境では使わない。
+# gem 'enumerize' #Enum 定義関連のためのgem
+gem 'activerecord-import' #バルクインサートを使うためのgem
+>>>>>>> 99d0a268b24140ab6f48e33bffcc3646534d9d43

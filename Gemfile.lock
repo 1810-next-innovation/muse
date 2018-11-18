@@ -42,6 +42,8 @@ GEM
       activemodel (= 5.2.1)
       activesupport (= 5.2.1)
       arel (>= 9.0)
+    activerecord-import (0.27.0)
+      activerecord (>= 3.2)
     activestorage (5.2.1)
       actionpack (= 5.2.1)
       activerecord (= 5.2.1)
@@ -102,7 +104,11 @@ GEM
       activemodel
     erubi (1.7.1)
     execjs (2.7.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     ffi (1.9.25)
+    gimei (0.3.0)
+      romaji
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -210,6 +216,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.7.2)
@@ -274,6 +282,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import
   bootsnap (>= 1.1.0)
   bootstrap-sass
   byebug
@@ -281,7 +290,8 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  email_validator (~> 1.6)
+  faker
+  gimei
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

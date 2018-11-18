@@ -13,6 +13,7 @@
   </head>
 
   <body>
+
     <header>
       <div class="container">
           <nav class="globnav navbar-left">
@@ -22,7 +23,27 @@
             <nav class="globnav navbar-right">
               <ul class="navbar-menu">
 
-                <% if user_signed_in? %>
+                <% if user_signed_in? && current_user.admin? %>
+
+                <li class="header-nav-item">
+                  <%= link_to " HOME", root_path %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " USERS", users_path %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " LIST", items_path %>
+                </li>
+                <li class="header-nav-item">
+                  <%= link_to " NEW", new_item_path %>
+                </li>
+                
+                <li class="header-nav-item">
+                   <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
+                </li>
+
+
+                <% elsif user_signed_in? %>
 
                 <li class="header-nav-item">
                   <%= link_to " HOME", root_path %>
@@ -34,7 +55,7 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
-                  <%= link_to " カート", root_path %>
+                  <%= link_to " カート", cart_path(current_cart) %>
                 </li>
 
                 <li class="header-nav-item">
@@ -43,6 +64,8 @@
                 <li class="header-nav-item">
                   <%= link_to " SEARCH", items_path %>
                 </li>
+
+
 
                 <% else %>
 
@@ -70,9 +93,14 @@
     </header>
 
     <main>
-      <% flash.each do |key, value| %>
+    <% if flash[:sign_up_error] %>
+      <%= flash[:sign_up_error] %>
+      <p><%= flash[:sign_up_error].count %></p>
+    <% else %>
+      <% flash.each do |key, value| %>aa
       <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
+    <% end %>
 
         <%= yield %>
 
@@ -81,6 +109,16 @@
     <footer>
       <div class="container">
         <nav class="globnav">
+            <% if user_signed_in? && current_user.admin? %>
+
+            <ul class="navbar-menu">
+              <li class="footer-nav-item">
+               <a href="/users"> &#169; 2018 MUSE. </a>
+              </li>
+            </ul>
+
+            <% else %>
+
             <ul class="navbar-menu">
               <li class="footer-nav-item">
                 <%= link_to " PRIVACY POLICY", contacts_path %>
@@ -95,9 +133,10 @@
                 <%= link_to " CONTACT", new_contact_path %>
               </li>
               <li class="footer-nav-item">
-               <a> &#169; 2018 MUSE. </a>
+               <a href="/users"> &#169; 2018 MUSE. </a>
               </li>
             </ul>
+            <% end %>
 
         </nav>
       </div>
@@ -105,3 +144,4 @@
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
+ 

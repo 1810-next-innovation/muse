@@ -23,14 +23,12 @@ class User < ApplicationRecord
   # validates :email, email: {allow_blank: true}
 
 
-
-  def self.search(search) 
-    if search 
+  def self.search(search)
+    if search
       User.where(['name LIKE ?', "%#{search}%"])
     else
-      User.all 
+      User.all
     end
   end
 
-   
 end
