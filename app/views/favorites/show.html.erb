@@ -1,0 +1,21 @@
+<h3>My favorite</h3>
+    <table class="table">
+      <thead>
+          <tr>
+            <th></th>
+            <th>Single/Album name</th>
+            <th>Opinion</th>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @user.items.each do |item| %>
+          <tr>
+            <td><%= attachment_image_tag item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %></td>
+            <td><%= item.item_name %></td>
+            <td><%= item.opinion %></td>
+            <td><%= link_to "Destroy", item_favorites_path(item), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

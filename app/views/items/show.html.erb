@@ -54,20 +54,6 @@
 
         <!-- comment -->
 
-    </div>
-
-    <div class="col-xs-4">
-	  <h2>カート</h2>
-      <div>
-          <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
-            <%= f.number_field :quantity, in: 1..10, step: 1, class: "col-xs-6" %>
-            <%= f.submit "Add to cart", class: "col-xs-6" %>
-          <% end %>
-      </div>
-    </div>
 
 
-  </div>
-  <%= link_to 'Back', items_path %>
-</div>
 
