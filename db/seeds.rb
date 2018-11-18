@@ -24,21 +24,14 @@ User.create!(name: "管理者",
 						 password: "111111",
 						 admin: true,
 						 deleted_at: nil)
+
 Cart.create!(user_id: 1)
+
 Receiver.create!(user_id: 1,
 								 receiver_name: "管理者",
 								 receiver_post_code: 1234567,
 								 receiver_address: "日本",
 								 receiver_phone_number: "09012345678")
-10.times do |n|
-	Item.create!(# label_id: rand(11),
-						 item_name: Faker::Music.album,
-						 # item_image_id: ,
-						 price: 1000,
-						 release_date: Faker::Date.between(20.days.ago, Date.today),
-						 opinion: Faker::Lorem.sentence,
-						 stock: 0)
-end
 
 # 10.times do |n|
 # 	name =

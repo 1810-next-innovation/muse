@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-8">
-	    <h1><%= @item.item_name %></h1>
-	    <% if @item.favorited_by?(current_user) %>
+        <h1><%= @item.item_name %></h1>
+        <%= attachment_image_tag @item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %>
+        <p>￥<%= @item.price %></p>
+        <p>stock:<%= @item.stock %></p>
+        <% if @item.favorited_by?(current_user) %>
         <li>
         <%= link_to item_favorites_path(@item), method: :delete do %>
         <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
@@ -17,11 +20,14 @@
         <% end %>
         </li>
         <% end %>
-	    </div>
+        <div>
+        <%= link_to "Edit", edit_item_path(@item), class: "btn-sm btn-success" %>
+        <%= link_to "Destroy", items_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+        </div>
 
-	    <!-- commennt -->
+        <!-- commennt -->
 
-	    <div>
+        <div>
         <h4>Rewiew</h4>
         <div id="reviews_area">
         <% @item.reviews.each do |review| %>
@@ -48,7 +54,6 @@
 
         <!-- comment -->
 
-
 	    <div class="col-xs-4">
 
 	    <%= attachment_image_tag @item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %>
@@ -61,11 +66,6 @@
 	    <%= link_to "Edit", edit_item_path(@item), class: "btn-sm btn-success" %>
 	    <%= link_to "Destroy", items_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
 	  </div>
-
-
-  </div>
-  <%= link_to 'Back', items_path %>
-</div>
 
 <% if @item.stock != 0 %>
   <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>

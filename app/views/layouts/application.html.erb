@@ -13,6 +13,7 @@
   </head>
 
   <body>
+
     <header>
       <div class="container">
           <nav class="globnav navbar-left">
@@ -36,12 +37,7 @@
                 <li class="header-nav-item">
                   <%= link_to " NEW", new_item_path %>
                 </li>
-
-                 <li class="header-nav-item">
-                  <%= link_to " SEARCH", items_path %>
-                </li>
-
-
+                
                 <li class="header-nav-item">
                    <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
                 </li>
@@ -59,7 +55,8 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
-                  <%= link_to " カート", cart_path(current_cart) %>
+
+                  <%= link_to " カート" %>
                 </li>
 
                 <li class="header-nav-item">
@@ -97,9 +94,14 @@
     </header>
 
     <main>
+    <% if flash[:sign_up_error] %>
+      <%= flash[:sign_up_error] %>
+      <p><%= flash[:sign_up_error].count %></p>
+    <% else %>
       <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
+    <% end %>
 
         <%= yield %>
 
