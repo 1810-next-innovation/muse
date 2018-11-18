@@ -6,61 +6,63 @@
 			<%= form_for(@item) do |f| %>
 			<h3>New item</h3>
 
-				<table>
-					<dt>
+				<ul>
+					<li>
 						<label>Single/Album name</label>
 						<%= f.text_field :item_name %>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Cover Image</label>
 						<%= f.attachment_field :item_image %>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Artist name</label>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Release date</label>
 						<%= f.date_select(
           	:release_date,
           	start_year: 1980,
           	end_year:   (Time.now.year),
           	default:    Date.new(Time.now.year, 1, 1)) %>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Price</label>
 						<%= f.text_field :price %>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Stock</label>
 						<%= f.text_field :stock %>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Item_name</label>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Genre</label>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Label_name</label>
-					</dt>
+						<%= f.select :label_id, @labels.map { |t| [t.label_name, t.id] } %>
+						<%= link_to 'New Label', new_label_path %>
+					</li>
 
-					<dt>
+					<li>
 						<label>Opinion</label>
 						<%= f.text_area :opinion %>
-					</dt>
+					</li>
 
-					<dt>
+					<li>
 						<label>Music name</label>
-					</dt>
-				</table>
+					</li>
+				</ul>
 				<%= f.submit 'Create Item', class: "item_create" %>
 
 			<% end %>

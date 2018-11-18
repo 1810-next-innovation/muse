@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   resources :carts, only: [:show]
 
   resources :orders, only: [:index, :show, :new, :create]
+
+  resources :labels, only: [:new, :create, :index]
 end
