@@ -16,7 +16,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
   validates :japanese_syllabaries, presence: true, length: { maximum: 30}
-  validates :gender, acceptance: true
   validates :post_code, presence: true, length: { maximum: 7}
   validates :address, presence: true
   validates :phone_number, presence: true, length: {maximum: 13}
