@@ -4,7 +4,10 @@ devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
+  resources :users do
+    resource :favorites, only: [:show]
+  end
+
 
   resources :receivers, only: [:index, :new, :create, :edit, :update, :destroy]
 
