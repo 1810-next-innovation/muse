@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 
 	def favorited_by?(user)
           favorites.where(user_id: user.id).exists?
-    end
+        end
 	has_many :favorites,   dependent: :destroy
 	has_many :cart_items,  dependent: :destroy
 	has_many :carts, through: :cart_items
