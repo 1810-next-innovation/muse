@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.string "item_name"
     t.text "item_image_id"
     t.integer "price"
-    t.datetime "release_date"
+    t.date "release_date"
     t.text "opinion"
     t.integer "stock"
     t.datetime "created_at", null: false
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.string "receiver_name"
     t.integer "receiver_post_code"
     t.text "receiver_address"
+    t.string "receiver_phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_receivers_on_user_id"
@@ -125,23 +126,20 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
-    t.string "first_name"
     t.string "japanese_syllabaries"
     t.integer "gender"
     t.string "phone_number"
     t.string "address"
     t.string "post_code"
     t.date "birthday"
-    t.boolean "delete_flag"
     t.boolean "admin", default: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
