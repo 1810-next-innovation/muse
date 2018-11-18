@@ -29,3 +29,4 @@ devise_for :users, controllers: {
   resources :orders, only: [:index, :show, :new, :create]
 
   resources :labels, only: [:new, :create, :index]
+end
