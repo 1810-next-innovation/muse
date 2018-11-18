@@ -4,16 +4,15 @@ class Item < ApplicationRecord
 
 	def favorited_by?(user)
           favorites.where(user_id: user.id).exists?
-    end
+        end
 	has_many :favorites,   dependent: :destroy
 	has_many :cart_items,  dependent: :destroy
 	has_many :carts, through: :cart_items
-	has_many :discs,       dependent: :destroy
+	# has_many :discs,       dependent: :destroy
 	# has_many :music_names, dependent: :destroy
 	has_many :reviews,     dependent: :destroy
-	# belongs_to :label
-	attachment :imgae
-	# validates :label,     presence: true
+	belongs_to :label
+	validates :label,     presence: true
 
 	  def self.search(search)
     if search

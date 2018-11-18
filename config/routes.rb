@@ -27,5 +27,6 @@ devise_for :users, controllers: {
   resources :carts, only: [:show]
 
   resources :orders, only: [:index, :show, :new, :create]
-  
+
+  resources :labels, only: [:new, :create, :index]
 end
