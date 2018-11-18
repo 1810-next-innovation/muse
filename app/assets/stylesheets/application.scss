@@ -239,19 +239,22 @@ h1:after {right: 10px;}
 }
 
 /* privacy policy */
+/* terms of use */
+/* hrは規約関連共通とする */
 hr {
     margin-top: 5px;
     margin-bottom: 5px;
     border: 0;
     border-top: 2px solid #eeeeee;
 }
-#pp {
+
+#pp,#tou {
   width: 84%;
   line-height: 1.5em;
   margin: 0 auto;
 }
 
-.pp-title {
+.pp-title,.tou-title {
   padding:15px;
 }
 
@@ -259,8 +262,54 @@ hr {
   color: #a94442b0;
 }
 
-.pp-text {
+.tou-title h4 {
+  color: #3378b7a3;
+}
+
+.pp-text,.tou-text {
   width: 90%;
   display: block;
   margin: 7px auto;
 }
+
+/* about us */
+dl,
+dt,
+dd {
+  box-sizing: border-box;
+}
+
+dl {
+  background: #eeeeee5c;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+dt,
+dd {
+  padding: 10px 10px 0 10px;
+  border-top: 1px solid #ccc;
+}
+
+dt {
+  width: 40%;
+  float: left;
+}
+
+dd {
+  background: #fff;
+  margin-left: 40%;
+  padding-bottom: 10px;
+  border-left: 1px solid #ccc;
+}
+
+dd:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
