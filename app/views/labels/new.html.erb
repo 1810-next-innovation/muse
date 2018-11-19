@@ -1,6 +1,9 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
+<!-- モーダルエリアここから -->
+<section id="open-label" class="modalarea">
+  <div id="modalbg" class="modalbg"></div>
+  <div class="modalwrapper">
+    <div class="modalcontents">
+<!--モーダルエリアここまで -->
 
 		<%= form_for(@label) do |l| %>
 			<ul>
@@ -13,6 +16,12 @@
 			<%= l.submit 'Create Label' %>
 		<% end %>
 
-    </div>  
+<!-- モーダルエリアここから -->
+    </div>
+
+    <div id="closemodal" class="closemodal">
+      ×
+    </div>
   </div>
-</div>
+</section>
+<!--モーダルエリアここまで -->

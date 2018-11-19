@@ -52,6 +52,10 @@
 						<label>Label_name</label>
 						<%= f.select :label_id, @labels.map { |t| [t.label_name, t.id] } %>
 						<%= link_to 'New Label', new_label_path %>
+
+						<a><div id="modal-label">New Label</div></a>
+            <%= render "labels/new_modal" %>
+
 					</li>
 
 					<li>
