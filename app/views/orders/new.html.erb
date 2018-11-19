@@ -9,8 +9,22 @@
 
 <%= form_for(@order) do |f| %>
 	<%= f.number_field :grand_total, value: @grand_total, type: "hidden" %>
-	<%= f.select :receiver_id, @receivers.map { |t| [t.receiver_address, t.id] } %>
-	<%= f.number_field :payment_method %>
+	<%= @receivers.each do |receiver| %>
+		<label for="<%= receiver.id %>">
+			<%= f.radio_button :receiver_id, receiver.id, id: receiver.id %>
+			<%= receiver.receiver_name %>
+			<%= receiver.receiver_post_code %>
+			<%= receiver.receiver_address %>
+			<%= receiver.receiver_phone_number %>
+		</label>
+	<% end %>
+	<%=  %>
+	<%= f.label :credit_card %>
+	<%= f.radio_button :payment_method, :credit_card %>
+	<%= f.label :cash_on_delivery %>
+	<%= f.radio_button :payment_method, :cash_on_delivery %>
+	<%= f.label :others %>
+	<%= f.radio_button :payment_method, :others %>
 	<%= f.submit "購入" %>
 <% end %>
 

@@ -9,16 +9,21 @@
 	    <h2>Buy these items?</h2>
 			<%= @cart_items.each do |cart_item| %>
 				<%= cart_item.item.release_date %>
+				<%= attachment_image_tag @item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %>
 				<%= cart_item.item.item_name %>
-				<%= cart_item.quantity %>
-				<%= form_for(cart_item, url: update_item_path(cart_item), method: :patch ) do |f| %>
-				  <%= f.number_field :quantity %>
-				  <%= f.submit "追加" %>
+				¥<%= cart_item.item.price %>
+				<% if cart_item.item.stock != 0 %>
+					<%= form_for(cart_item, url: update_item_path(cart_item), method: :patch ) do |f| %>
+					  <%= f.number_field :quantity, min: 1, max: cart_item.item.stock %>
+					  <%= f.submit "Update", class: "btn btn-warning" %>
+					<% end %>
+				<% else %>
+					It's out of stock
 				<% end %>
-				<%= link_to "削除", delete_item_path(cart_item), method: :delete %><br/><br />
+				<p><%= link_to "Delete", delete_item_path(cart_item), method: :delete, class: "btn btn-danger" %></p>
 			<% end %>
-
-			<%= link_to "購入画面へ", new_order_path %>
+			<p>合計<%= @grand_total %>円</p>
+			<%= link_to "Proceed to checkout", new_order_path, class: "btn btn-info" %>
 	  </div>
   </div>
 </div>
