@@ -272,10 +272,38 @@ h1:after {right: 10px;}
 }
 
 /* CONTACT */
+
+.tab { 
+  overflow: hidden;
+ }
+
 .tab li {
-  float: left;
+  background: #ccc;
+  padding: 5px 25px;
+  float:left; 
+  margin-right:1px;
   list-style-type: none;
-}
+  background: #000;
+  border: 1px solid #000;
+  color: white;
+ }
+
+
+.tab li.select {
+  background: #fff;
+  color: #000;
+ }
+
+.content li {
+  background: #eee; 
+  list-style-type: none;
+  padding: 20px;
+ }
+
+.hide { 
+ display:none;
+ }
+
 
 /* privacy policy */
 /* terms of use */
@@ -310,6 +338,14 @@ hr {
   display: block;
   margin: 7px auto;
 }
+/* Users */
+
+.admin {
+  margin: 40px 20px;
+}
+
+.admin > h2 {
+  padding-bottom: 20px
 
 /* about us */
 dl,dt,dd {
@@ -348,13 +384,3 @@ dd:after {
   display: block;
   clear: both;
 }
-
-
-
-
-
-
-
-
-
-

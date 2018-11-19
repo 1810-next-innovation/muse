@@ -9,6 +9,10 @@
 # 	load(path)
 # end
 
+# rails db:migrate:reset
+# rails db:seed
+# rails db:seed:item
+
 User.create!(name: "管理者",
 						 japanese_syllabaries: "かんりしゃ",
 						 gender: 1,
@@ -20,12 +24,14 @@ User.create!(name: "管理者",
 						 password: "111111",
 						 admin: true,
 						 deleted_at: nil)
+
 Cart.create!(user_id: 1)
-# Receiver.create!(user_id: 1,
-# 								 receiver_name: "管理者",
-# 								 receiver_post_code: 1234567,
-# 								 receiver_address: "日本",
-# 								 receiver_address: "09012345678")
+
+Receiver.create!(user_id: 1,
+								 receiver_name: "管理者",
+								 receiver_post_code: 1234567,
+								 receiver_address: "日本",
+								 receiver_phone_number: "09012345678")
 
 # 10.times do |n|
 # 	name =

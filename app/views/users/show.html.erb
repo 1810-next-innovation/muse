@@ -43,6 +43,10 @@
 			<div>
 				<%= link_to "favorite", user_favorites_path(@user), class:"btn btn-default btn-lg" %>
 			</div>
+
+			<div>
+				<%= link_to "Unsubscribe", user_path(@user), method: :delete,  "data-confirm" => "本当に退会しますか?", class:"btn btn-default btn-lg"  %>
+			</div>
 		</div>
 	</div>
 </div>
