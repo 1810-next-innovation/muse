@@ -10,10 +10,9 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-    end
-  		@review = Review.new 
-      @reviews = @item.reviews
   	end
+  	@review = Review.new 
+    @reviews = @item.reviews
 	end
 
 	def new
