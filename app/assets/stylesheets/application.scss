@@ -186,10 +186,44 @@ h1:after {right: 10px;}
   height: 500px;
 }
 
+/* slick slide show */
+.slider-container {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #ccc; /*左右の矢印の色を変える*/
+}
+
+.slick-next {
+  right: 20px; /*左右の矢印の位置を変える*/
+  z-index: 99;
+}
+.slick-prev {
+  left: 15px;
+  z-index: 100;
+}
+
+.slick-dots li.slick-active button:before,
+.slick-dots li button:before {
+  color: #fff; /*スライド数のドットの色を変える*/
+}
+
+.slider img {
+  float: left;
+  height: auto;
+  width: 100%; /*スライド画像の横幅可変*/
+  padding: 10px;
+  /*max-width: 100%;*/
+}
+
 /* pick up contents */
 .sub-nav {
+  font-size: 17px;
   padding: .5em .75em;
-  margin: 30px 0 0 20px;
+  margin: 30px 0 10px 20px;
   background-color: #ffffff;
   border-left: 6px solid #3a3a3a;
 }
@@ -349,32 +383,4 @@ dd:after {
   content: '';
   display: block;
   clear: both;
-}
-
-
-
-
-/*左右の矢印の色を変える*/
-.slick-prev:before,
-.slick-next:before {
-    color: #ccc;
-}
-/*左右の矢印の位置を変える*/
-.slick-next {
-    right: 20px;
-    z-index: 99;
-}
-.slick-prev {
-     left: 15px;
-    z-index: 100;
-}
-/*スライド数のドットの色を変える*/
-.slick-dots li.slick-active button:before,
-.slick-dots li button:before {
-    color: #fff;
-}
-/*スライド画像の横幅可変*/
-img {
-    max-width: 100%;
-     height: auto;
 }
