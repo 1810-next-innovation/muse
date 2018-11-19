@@ -276,6 +276,14 @@ hr {
   display: block;
   margin: 7px auto;
 }
+/* Users */
+
+.admin {
+  margin: 40px 20px;
+}
+
+.admin > h2 {
+  padding-bottom: 20px
 
 /* about us */
 dl,dt,dd {
@@ -314,8 +322,6 @@ dd:after {
   display: block;
   clear: both;
 }
-
-
 
 
 
