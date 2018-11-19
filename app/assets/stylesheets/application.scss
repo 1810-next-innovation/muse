@@ -36,6 +36,10 @@ header, footer {
   background-color: #3a3a3a;
 }
 
+footer {
+  margin-top: 15px;
+}
+
 .logo {
   font-family: 'Lobster', cursive;
   color: #ffffff;
@@ -196,6 +200,7 @@ h1:after {right: 10px;}
   width: 414px;
   height: 35px;
   margin: auto;
+  padding: 10px;
   transform: skew(-20deg);
 }
 
@@ -273,9 +278,7 @@ hr {
 }
 
 /* about us */
-dl,
-dt,
-dd {
+dl,dt,dd {
   box-sizing: border-box;
 }
 
@@ -289,8 +292,7 @@ dl {
   margin-bottom: 20px;
 }
 
-dt,
-dd {
+dt,dd {
   padding: 10px 10px 0 10px;
   border-top: 1px solid #ccc;
 }
@@ -313,3 +315,32 @@ dd:after {
   clear: both;
 }
 
+
+
+
+
+
+/*左右の矢印の色を変える*/
+.slick-prev:before,
+.slick-next:before {
+    color: #ccc;
+}
+/*左右の矢印の位置を変える*/
+.slick-next {
+    right: 20px;
+    z-index: 99;
+}
+.slick-prev {
+     left: 15px;
+    z-index: 100;
+}
+/*スライド数のドットの色を変える*/
+.slick-dots li.slick-active button:before,
+.slick-dots li button:before {
+    color: #fff;
+}
+/*スライド画像の横幅可変*/
+img {
+    max-width: 100%;
+     height: auto;
+}
