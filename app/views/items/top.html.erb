@@ -1,27 +1,42 @@
 <!-- 自動スライドショー -->
 <div class="in">
-  <img src="assets/img/images1.jpeg">
-  <img src="assets/img/images2.jpeg">
-  <img src="assets/img/images3.jpeg">
-  <img src="assets/img/images4.jpeg">
+  <img src="assets/img/images1.jpg">
+  <img src="assets/img/images2.jpg">
+  <img src="assets/img/images3.jpg">
+  <img src="assets/img/images4.jpg">
 </div>
 
 <p class="sub-nav"> PICK UP CONTENTS</p>
 
 <!-- 手動スライドショー -->
+<div class="slider-container">
+  <div class="slider">
+    <div><img src="assets/img/slider1.jpg"></div>
+    <div><img src="assets/img/slider2.jpg"></div>
+    <div><img src="assets/img/slider3.jpg"></div>
+    <div><img src="assets/img/slider1.jpg"></div>
+    <div><img src="assets/img/slider2.jpg"></div>
+  </div>
+</div>
+
+
+
+<div class="local-navbox">
+  <nav class="local-nav navbar-left clearfix">
+    <ul class="local-navbar">
+      <li class="local-nav-item">
+        <%= link_to " Monthy", root_path %>
+      </li>
+      <li class="local-nav-item">
+        <%= link_to " Weekly", root_path %>
+      </li>
+    </ul>
+  </nav>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 clearfix">
-    	<nav class="local-nav navbar-left clearfix">
-    		<ul class="local-navbar">
-    			<li class="local-nav-item">
-    				<%= link_to " Monthy", root_path %>
-    			</li>
-    			<li class="local-nav-item">
-    				<%= link_to " Weekly", root_path %>
-    			</li>
-    		</ul>
-    	</nav>
     </div>
   </div>
 </div>
