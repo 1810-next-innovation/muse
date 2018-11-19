@@ -8,9 +8,7 @@ class Item < ApplicationRecord
 	has_many :favorites
 	has_many :users, through: :favorites
 	has_many :cart_items,  dependent: :destroy
-	has_many :carts, through: :cart_items
-	# has_many :discs,       dependent: :destroy
-	# has_many :music_names, dependent: :destroy
+	has_many :discs,       dependent: :destroy
 	has_many :reviews,     dependent: :destroy
 	belongs_to :label
 	validates :label,     presence: true

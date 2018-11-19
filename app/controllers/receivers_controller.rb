@@ -1,6 +1,6 @@
 class ReceiversController < ApplicationController
   def index
-  	@receivers = current_user.receivers.all
+  	@receivers = current_user.receivers.page(params[:page])
   end
 
   def new
@@ -32,7 +32,7 @@ class ReceiversController < ApplicationController
   private
   def receiver_params
   	params.require(:receiver).permit(:receiver_name,
-  																	:receiver_post_code,
-  																	:receiver_address)
+  																	 :receiver_post_code,
+  																	 :receiver_address)
   end
 end
