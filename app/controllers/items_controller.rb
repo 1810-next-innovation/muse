@@ -9,11 +9,11 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		if @cart_item.blank?
-      @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-    end
+        @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+        end
   		@review = Review.new 
-      @reviews = @item.reviews
-  	end
+        @reviews = @item.reviews
+  	
 	end
 
 	def new
