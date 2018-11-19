@@ -12,6 +12,13 @@
     <%= csp_meta_tag %>
   </head>
 
+  <!-- slick -->
+<link rel="stylesheet" type="text/css" href="assets/slick.css"/>
+<link rel="stylesheet" type="text/css" href="assets/slick-theme.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="assets/slick.min.js"></script>
+
+
   <body>
 
     <header>
@@ -37,7 +44,6 @@
                 <li class="header-nav-item">
                   <%= link_to " NEW", new_item_path %>
                 </li>
-                
                 <li class="header-nav-item">
                    <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
                 </li>
@@ -55,6 +61,7 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
+
                   <%= link_to " カート" %>
                 </li>
 
@@ -144,4 +151,3 @@
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
- 

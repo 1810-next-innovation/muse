@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
 
 	def create
-		@item = Item.find(params[:item_id]) 
-        @review = @item.reviews.build(review_params) 
+		@item = Item.find(params[:item_id])
+        @review = @item.reviews.build(review_params)
         @review.save
         redirect_to item_path(@item.id)
 

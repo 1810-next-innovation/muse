@@ -4,6 +4,8 @@ class CartsController < ApplicationController
   def show
   	@cart_items = current_cart.cart_items
     @user = User.find(current_user.id)
+    sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity }
+    @grand_total = sub_total_arry.inject(:+)
   end
 
   def add_item

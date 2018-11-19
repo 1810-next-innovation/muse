@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.integer "item_id"
     t.integer "cart_id"
     t.integer "quantity", default: 0
-    t.integer "buy_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -99,7 +98,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.integer "grand_total"
     t.integer "payment_method"
     t.integer "receiver_id"
-    t.string "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
