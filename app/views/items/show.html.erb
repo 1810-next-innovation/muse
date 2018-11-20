@@ -62,16 +62,17 @@
 	    <%= link_to "Destroy", items_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
 	  </div>
 
-
   </div>
   <%= link_to 'Back', items_path %>
 </div>
 
-<% if @item.stock != 0 %>
-  <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
-    <%= f.select :quantity, [*1..@item.stock] %>
-    <%= f.submit "Add to cart" %>
-  <% end %>
+<% if @item.stock == 0 %>
+	<p>It's out of stock</p>
+<% elsif @item.stock == @cart_item_quantity %>
+	<p>Can not add any more</p>
 <% else %>
-  It's out of stock
+  <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
+    <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
+    <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
+  <% end %>  
 <% end %>

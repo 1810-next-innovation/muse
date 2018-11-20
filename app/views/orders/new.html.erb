@@ -1,31 +1,69 @@
-<h1>購入画面</h1>
-
-<%= @cart_items.each do |cart_item| %>
-	<%= cart_item.item.item_name %>
-	<%= cart_item.quantity %>個
-	<%= cart_item.item.price * cart_item.quantity %>円<br>
-<% end %><br>
-合計<%= @grand_total %>円
-
-<%= form_for(@order) do |f| %>
-	<%= f.number_field :grand_total, value: @grand_total, type: "hidden" %>
-	<%= @receivers.each do |receiver| %>
-		<label for="<%= receiver.id %>">
-			<%= f.radio_button :receiver_id, receiver.id, id: receiver.id %>
-			<%= receiver.receiver_name %>
-			<%= receiver.receiver_post_code %>
-			<%= receiver.receiver_address %>
-			<%= receiver.receiver_phone_number %>
-		</label>
-	<% end %>
-	<%=  %>
-	<%= f.label :credit_card %>
-	<%= f.radio_button :payment_method, :credit_card %>
-	<%= f.label :cash_on_delivery %>
-	<%= f.radio_button :payment_method, :cash_on_delivery %>
-	<%= f.label :others %>
-	<%= f.radio_button :payment_method, :others %>
-	<%= f.submit "購入" %>
-<% end %>
-
-
+<div class="container">
+	<div class="row">
+		<%= form_for(@order) do |f| %>
+			<div class="col-xs-8">
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">1.Destination</div>
+							<div class="panel-body">
+								<% @receivers.each do |receiver| %>
+									<label for="<%= receiver.id %>">
+										<%= f.radio_button :receiver_id, receiver.id, id: receiver.id %>
+										<address>
+											<%= receiver.receiver_name %><br />
+											<%= receiver.receiver_post_code %><br />
+											<%= receiver.receiver_address %><br />
+											<%= receiver.receiver_phone_number %>
+										</address>
+									</label>
+								<% end %>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">2.Payment Method</div>
+							<div class="panel-body">
+								<p><%= f.radio_button :payment_method, :credit_card %>
+								<%= f.label :credit_card %></p>
+								<p><%= f.radio_button :payment_method, :cash_on_delivery %>
+								<%= f.label :cash_on_delivery %></p>
+								<p><%= f.radio_button :payment_method, :others %>
+								<%= f.label :others %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Inside the Cart</div>
+					<div class="panel-body">
+						<% @cart_items.each do |cart_item| %>
+							<div class="row">
+								<div class="col-xs-2">
+									<%= attachment_image_tag cart_item.item, :item_image, :fill, 40, 40,
+									fallback: "no_image_small.jpg", alt:"Cover image"%>
+								</div>
+								<div class="col-xs-10">
+									<p><%= cart_item.item.item_name %></p>
+									<p><%= cart_item.quantity %>item</p>
+									<p>¥<%= cart_item.item.price * cart_item.quantity %></p>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">3.Grand Total</div>
+					<div class="panel-body">
+						<%= f.number_field :grand_total, value: @grand_total, type: "hidden" %>
+						<p><strong>¥<%= @grand_total %></strong></p>
+						<%= f.submit "Place Order", class: "btn btn-primary btn-lg btn-block" %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

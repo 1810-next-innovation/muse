@@ -59,7 +59,7 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
-                  <%= link_to " カート", cart_path(current_cart) %>
+                  <%= link_to "CART", cart_path(current_cart) %>
                 </li>
 
                 <li class="header-nav-item">
@@ -140,7 +140,5 @@
         </nav>
       </div>
     </footer>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
- 
