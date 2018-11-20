@@ -10,14 +10,13 @@
     <title>Muse</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- slick -->
+    <link rel="stylesheet" type="text/css" href="assets/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/slick-theme.css"/>
+   
+    <script src="assets/slick.min.js"></script>
   </head>
-
-  <!-- slick -->
-<link rel="stylesheet" type="text/css" href="assets/slick.css"/>
-<link rel="stylesheet" type="text/css" href="assets/slick-theme.css"/>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="assets/slick.min.js"></script>
-
 
   <body>
 
@@ -61,8 +60,12 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
+<<<<<<< HEAD
+                  <%= link_to "CART", cart_path(current_cart) %>
+=======
 
                   <%= link_to " カート" %>
+>>>>>>> 81e58ee444df7fd324d59bf7406827991b8c928d
                 </li>
 
                 <li class="header-nav-item">
@@ -148,6 +151,5 @@
         </nav>
       </div>
     </footer>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

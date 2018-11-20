@@ -13,6 +13,38 @@
 # rails db:seed
 # rails db:seed:item
 
+<<<<<<< HEAD
+User.create!(
+	name: "管理者",
+	japanese_syllabaries: "かんりしゃ",
+	gender: 1,
+	post_code: 1234567,
+	address: "日本",
+	phone_number: "09012345678",
+	email: "admin@admin.com",
+	birthday: "20001010",
+	password: "111111",
+	admin: true,
+	deleted_at: nil
+)
+
+User.create!(
+	name: "ユーザー",
+	japanese_syllabaries: "ゆーざー",
+	gender: 2,
+	post_code: 1234567,
+	address: "日本",
+	phone_number: "09012345678",
+	email: "user@user.com",
+	birthday: "20001010",
+	password: "111111",
+	admin: false,
+	deleted_at: nil
+)
+
+Cart.create!(user_id: 2)
+Receiver.create!(user_id: 2,
+=======
 User.create!(name: "管理者",
 						 japanese_syllabaries: "かんりしゃ",
 						 gender: 1,
@@ -28,10 +60,26 @@ User.create!(name: "管理者",
 Cart.create!(user_id: 1)
 
 Receiver.create!(user_id: 1,
+>>>>>>> 81e58ee444df7fd324d59bf7406827991b8c928d
 								 receiver_name: "管理者",
 								 receiver_post_code: 1234567,
 								 receiver_address: "日本",
 								 receiver_phone_number: "09012345678")
+<<<<<<< HEAD
+50.times do |n|
+	Item.create!(# label_id: rand(11),
+						 item_name: Faker::Music.album,
+						 # item_image_id: ,
+						 price: 1000,
+						 release_date: Faker::Date.between(20.days.ago, Date.today),
+						 opinion: Faker::Lorem.sentence,
+						 stock: 2)
+	# CartItem.create!(cart_id: 1,
+	# 								 item_id: n + 1,
+	# 							 	 quantity: 4)
+end
+=======
+>>>>>>> 81e58ee444df7fd324d59bf7406827991b8c928d
 
 # 10.times do |n|
 # 	name =
