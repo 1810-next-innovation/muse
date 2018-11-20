@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 
-	before_action :correct_user, only: [:edit, :update, :show]
+	before_action :admin_user,     only: [:index]
+	before_action :correct_user,     only: [:show, :edit, :update]
+	
 
-	before_action :admin_user,only: [:index]
 
 	def index
 		@users = User.search(params[:search])
 	end
 
+	
+
 	def show
 		@user = User.find(params[:id])
-
 	end
 
 	def edit
@@ -33,15 +35,17 @@ class UsersController < ApplicationController
 
 	private
 
-	def correct_user
+	
+
+     def correct_user
         @user = User.find(params[:id])
-        if current_user != @user
+        unless current_user.admin? || current_user == @user
         redirect_to root_path
         end
      end
 
 	def admin_user
-      redirect_to(root_url) unless current_user.admin?
+        redirect_to(root_url) unless current_user.admin?
     end
 
 	def user_params

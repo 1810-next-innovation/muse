@@ -9,10 +9,10 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		if @cart_item.blank?
-			puts current_cart.nil?
-  		@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-  		@review = Review.new
-        @reviews = @item.reviews
+      @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+    end
+  		@review = Review.new 
+      @reviews = @item.reviews
   	end
 		if current_cart.cart_items.find_by(item_id: @item.id)
 			@cart_item_quantity = current_cart.cart_items.find_by(item_id: @item.id).quantity
@@ -23,14 +23,21 @@ class ItemsController < ApplicationController
 
 	def new
 		@item = Item.new
+
+		@labels = Label.all
 	end
 
 	def create
-		item = Item.new(item_params)
-		if item.save
-			redirect_to items_path
+		@item = Item.new(item_params)
+		if @item.save
+			@items = Item.search(params[:search])
+
+			@items = @items.page(params[:page])
+
+			render :index
 		else
-			render "/items/new"
+			@labels = Label.all
+				render :new
 		end
 	end
 
@@ -58,6 +65,6 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion )
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, )
   end
 end

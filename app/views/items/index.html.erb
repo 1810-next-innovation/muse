@@ -9,6 +9,7 @@
         <%= submit_tag "Search", :item_name => nil %>
       </p>
       <% end %>
+      <% if user_signed_in? && current_user.admin? %>
 
       <table class="table table-hover">
         <thead>
@@ -52,9 +53,48 @@
           <% end %>
         <tbody>
       </table>
+      <% else %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Single/Album name</th>
+            <th>Opinion</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |items| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag items, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
+              </td>
+              <td>
+                <%= link_to items.item_name, item_path(items.id) %>
+              </td>
+              <td>
+                <%= items.opinion %>
+              </td>
+              <td>
+                <p>￥<%= items.price %></p>
+              </td>
+              <td>
+                <% if items.stock == 0 %>
+                  <p style="color: red;">Sold Out!!</p>
+                <% else %>
+                  <p>Stock: <%= items.stock %></p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <tbody>
+      </table>
+      <% end %>
+
+
 
     <%= paginate @items, class: "pagenate" %>
-  	<%= link_to 'Newページ', new_item_path %>
     </div>
   </div>
 </div>
