@@ -15,3 +15,8 @@
   //= require jquery
   //= require bootstrap-sprockets
   //= require_tree .
+  $(function(){
+    $(".submit_select").change(function(){
+      $(".submit_form").submit();
+    });
+  });

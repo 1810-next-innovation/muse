@@ -1,4 +1,5 @@
 items = []
+
 10.times do |n|
 	items << Item.new(
 		label_id: rand(11),

@@ -12,8 +12,16 @@ class ItemsController < ApplicationController
         @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
         end
   		@review = Review.new 
-        @reviews = @item.reviews
-  	
+
+      @reviews = @item.reviews
+  	end
+  
+		if current_cart.cart_items.find_by(item_id: @item.id)
+			@cart_item_quantity = current_cart.cart_items.find_by(item_id: @item.id).quantity
+		else
+			@cart_item_quantity = 0
+		end
+
 	end
 
 	def new

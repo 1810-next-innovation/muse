@@ -16,10 +16,6 @@ class OrdersController < ApplicationController
     redirect_to orders_all_path
   end
 
-  def show
-  	@order = current_user.orders.find(params[:id])
-  end
-
   def new
   	@order = current_cart.build_order
 
@@ -35,23 +31,25 @@ class OrdersController < ApplicationController
     order.user_id = current_user.id
   	order.save
 
-    current_cart.cart_items.each do |cart_item| #buy_datumのレコードを追加
-      buy_datum = cart_item.build_buy_datum
+    current_cart.cart_items.each do |cart_item|
+      buy_datum = cart_item.build_buy_datum #buy_datumのレコードを追加
       buy_datum.buy_name = cart_item.item.item_name
       buy_datum.buy_price = cart_item.item.price
       buy_datum.save
+
+			cart_item.item.stock -= cart_item.quantity #購入された商品の在庫を減らす
+			cart_item.item.save
     end
 
-    Cart.create(user_id: current_user.id)
+    Cart.create(user_id: current_user.id) #新しくカートを作成
   	redirect_to orders_path
   end
 
   def stock_or_empty_check #在庫がない商品がある場合、カートに何も入っていない場合は購入できないようにする
-    stock_0_cart_items = current_cart.cart_items.select { |n| n.item.stock == 0 }
-    if !stock_0_cart_items.empty?
+    if current_cart.cart_items.any? { |n| n.item.stock == 0 } #在庫がない商品がある場合
       flash[:danger] = "There was a item out of stock"
       redirect_back(fallback_location: cart_path(current_cart))
-    elsif current_cart.cart_items.empty?
+    elsif current_cart.cart_items.empty? #カートに何も入っていない場合
       flash[:danger] = "There is nothing in the cart"
       redirect_back(fallback_location: cart_path(current_cart))
     end
