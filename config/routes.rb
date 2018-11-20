@@ -33,5 +33,5 @@ devise_for :users, controllers: {
   patch '/update_status/:id', to: "orders#update_status", as: "update_status"
   resources :orders, only: [:index, :show, :new, :create]
 
-  resources :labels, only: [:new, :create, :index]
+  resources :labels, only: [:new, :create, :index, :destroy]
 end

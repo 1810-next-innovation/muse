@@ -69,10 +69,10 @@
           <% @items.each do |item| %>
             <tr>
               <td>
-                <%= attachment_image_tag items, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
+                <%= attachment_image_tag item, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
               </td>
               <td>
-                <%= link_to item.item_name, item_path(items) %>
+                <%= link_to item.item_name, item_path(item) %>
               </td>
               <td>
                 <%= item.opinion %>

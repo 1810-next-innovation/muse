@@ -11,12 +11,14 @@ class ItemsController < ApplicationController
 		if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
   	end
-  	@review = Review.new 
+  	@review = Review.new
     @reviews = @item.reviews
 	end
 
 	def new
 		@item = Item.new
+
+		@label = Label.new
 
 		@labels = Label.all
 	end
