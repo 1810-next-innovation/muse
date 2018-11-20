@@ -36,6 +36,10 @@ header, footer {
   background-color: #3a3a3a;
 }
 
+footer {
+  margin-top: 15px;
+}
+
 .logo {
   font-family: 'Lobster', cursive;
   color: #ffffff;
@@ -182,10 +186,44 @@ h1:after {right: 10px;}
   height: 500px;
 }
 
+/* slick slide show */
+.slider-container {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #ccc; /*左右の矢印の色を変える*/
+}
+
+.slick-next {
+  right: 20px; /*左右の矢印の位置を変える*/
+  z-index: 99;
+}
+.slick-prev {
+  left: 15px;
+  z-index: 100;
+}
+
+.slick-dots li.slick-active button:before,
+.slick-dots li button:before {
+  color: #fff; /*スライド数のドットの色を変える*/
+}
+
+.slider img {
+  float: left;
+  height: auto;
+  width: 100%; /*スライド画像の横幅可変*/
+  padding: 10px;
+  /*max-width: 100%;*/
+}
+
 /* pick up contents */
 .sub-nav {
+  font-size: 17px;
   padding: .5em .75em;
-  margin: 30px 0 0 20px;
+  margin: 30px 0 10px 20px;
   background-color: #ffffff;
   border-left: 6px solid #3a3a3a;
 }
@@ -196,6 +234,7 @@ h1:after {right: 10px;}
   width: 414px;
   height: 35px;
   margin: auto;
+  padding: 10px;
   transform: skew(-20deg);
 }
 
@@ -233,10 +272,38 @@ h1:after {right: 10px;}
 }
 
 /* CONTACT */
+
+.tab { 
+  overflow: hidden;
+ }
+
 .tab li {
-  float: left;
+  background: #ccc;
+  padding: 5px 25px;
+  float:left; 
+  margin-right:1px;
   list-style-type: none;
-}
+  background: #000;
+  border: 1px solid #000;
+  color: white;
+ }
+
+
+.tab li.select {
+  background: #fff;
+  color: #000;
+ }
+
+.content li {
+  background: #eee; 
+  list-style-type: none;
+  padding: 20px;
+ }
+
+.hide { 
+ display:none;
+ }
+
 
 /* privacy policy */
 /* terms of use */
@@ -271,11 +338,18 @@ hr {
   display: block;
   margin: 7px auto;
 }
+/* Users */
+
+.admin {
+  margin: 40px 20px;
+}
+
+.admin > h2 {
+  padding-bottom: 20px
+}
 
 /* about us */
-dl,
-dt,
-dd {
+dl,dt,dd {
   box-sizing: border-box;
 }
 
@@ -289,8 +363,7 @@ dl {
   margin-bottom: 20px;
 }
 
-dt,
-dd {
+dt,dd {
   padding: 10px 10px 0 10px;
   border-top: 1px solid #ccc;
 }
@@ -312,4 +385,3 @@ dd:after {
   display: block;
   clear: both;
 }
-
