@@ -18,10 +18,6 @@
 					</li>
 
 					<li>
-						<label>Artist name</label>
-					</li>
-
-					<li>
 						<label>Release date</label>
 						<%= f.date_select(
           	:release_date,
@@ -41,17 +37,8 @@
 					</li>
 
 					<li>
-						<label>Item_name</label>
-					</li>
-
-					<li>
-						<label>Genre</label>
-					</li>
-
-					<li>
 						<label>Label_name</label>
 						<%= f.select :label_id, @labels.map { |t| [t.label_name, t.id] } %>
-						<%= link_to 'New Label', new_label_path %>
 					</li>
 
 					<li>
@@ -59,13 +46,16 @@
 						<%= f.text_area :opinion %>
 					</li>
 
-					<li>
-						<label>Music name</label>
-					</li>
 				</ul>
 				<%= f.submit 'Create Item', class: "item_create" %>
 
 			<% end %>
+
+<!-- モーダル実験 -->
+			<div id="modal-sign-in" class="btn btn-xs btn-default" >New Label</div>
+      <%= render "labels/new_modal" %>
+<!-- モーダル実験 -->
+
 			<%= link_to '商品一覧', items_path %>
     </div>  
   </div>

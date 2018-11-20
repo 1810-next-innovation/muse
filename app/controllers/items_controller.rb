@@ -27,6 +27,8 @@ class ItemsController < ApplicationController
 	def new
 		@item = Item.new
 
+		@label = Label.new
+
 		@labels = Label.all
 	end
 
@@ -39,8 +41,8 @@ class ItemsController < ApplicationController
 
 			render :index
 		else
-			@labels = Label.all
-				render :new
+		@labels = Label.all
+			render :new
 		end
 	end
 

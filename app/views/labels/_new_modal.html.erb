@@ -1,0 +1,34 @@
+<section id="open-sign-in" class="modalarea">
+  <div id="modalbg" class="modalbg"></div>
+  <div class="modalwrapper">
+    <div class="modalcontents">
+<!--モーダルエリアここまで -->
+
+		<div class="container">
+	  	<h2>New Label</h2>
+	  	<div>
+				<%= form_for(@label, remote: true) do |f| %>
+					<%= f.text_field :label_name %>
+					<%= f.submit 'Create Label' %>
+				<% end %>
+	  	</div>
+	  </div>
+
+   	<div>
+  		<ul>
+  		<% @labels.each do |label| %>
+  			<li>
+  				<%= label.label_name %>
+
+          <%= link_to "Destroy", label_path(label), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+  			</li>
+  		<% end %>
+  		</ul>
+  	</div>
+<!-- モーダルエリアここから -->
+    </div>
+    <div id="closemodal" class="closemodal">
+      ×
+    </div>
+  </div>
+</section>
