@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 
 		if @cart_item.blank?
 			@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-    end
+		end
 		
 		@review = Review.new
 		@reviews = @item.reviews
@@ -72,6 +72,6 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, )
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, discs_attributes: [:id, :disc_name, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
   end
 end
