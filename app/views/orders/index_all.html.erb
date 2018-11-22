@@ -1,0 +1,24 @@
+<h1>購入履歴</h1>
+
+<%= @orders.each do |order| %>
+	<%= order.created_at %>
+	<%= order.grand_total %>
+	<%= order.receiver.receiver_name %>
+	<%= order.receiver.receiver_post_code %>
+	<%= order.receiver.receiver_address %>
+	<%= order.receiver.receiver_phone_number %>
+	<%= order.id %>
+	<%= order.payment_method %>
+	<%= form_for(order, url: update_status_path(order), method: :patch ) do |f| %>
+		<%= f.label :status%>
+	  <%= f.select :status, Order.statuses.keys.to_a %>
+	  <%= f.submit "Update", class: "btn btn-warning" %>
+	<% end %>
+	<%= order.status %>
+	<%= order.cart.cart_items.each do |cart_item| %>
+		<%= attachment_image_tag cart_item.item, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
+		<%= cart_item.buy_datum.buy_name %>
+		<%= cart_item.buy_datum.buy_price %>
+	<% end %>
+<% end %>
+<%= paginate @orders, class: "pagenate" %>

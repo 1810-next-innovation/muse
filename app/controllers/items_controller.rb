@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	
+
 	def top
 	end
 
@@ -9,11 +9,11 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		if @cart_item.blank?
-			puts current_cart.nil?
-  		# @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+        @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+        end
   		@review = Review.new 
         @reviews = @item.reviews
-  	end
+  	
 	end
 
 	def new

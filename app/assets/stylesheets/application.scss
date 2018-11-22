@@ -49,13 +49,14 @@ footer {
 /* 見出し */
 
 h1{
-    margin: 20px;
+    margin: 25px;
     position: relative;
     padding: 10px;
     text-align: center;
     border-top: solid 2px #3a3a3a;
     border-bottom: solid 2px #3a3a3a;
 }
+
 h1:before, h1:after{
     content: '';
     position: absolute;
@@ -65,8 +66,13 @@ h1:before, h1:after{
     background-color: #3a3a3a;
 }
 
-h1:before {left: 10px;}
-h1:after {right: 10px;}
+h1:before {
+  left: 10px;
+}
+
+h1:after {
+  right: 10px;
+}
 
 /* モーダル */
 
@@ -272,10 +278,50 @@ h1:after {right: 10px;}
 }
 
 /* CONTACT */
-.tab li {
-  float: left;
-  list-style-type: none;
+
+.contact-tab {
+  width: 70%;
+  margin: 0 auto;
 }
+
+.tab {
+  overflow: hidden;
+ }
+
+.tab li {
+  /*background: #ccc;*/
+  padding: 9px 51px;
+  float:left;
+  margin-right:1px;
+  list-style-type: none;
+  background: #3a3a3a;
+  border: 1px solid #3a3a3a;
+  color: white;
+ }
+
+
+.tab li.select {
+  background: #fff;
+  color: #3a3a3a;
+ }
+
+.content li {
+  background: rgba(226,226,226,0.28);
+  list-style-type: none;
+  border: 1px solid #3a3a3a;
+  padding: 20px;
+  text-align: center;
+ }
+
+.hide {
+ display:none;
+ }
+
+.content input, button, textarea {
+  border: 1px solid #3a3a3a;
+  width: 80%;
+}
+
 
 /* privacy policy */
 /* terms of use */
@@ -287,7 +333,7 @@ hr {
     border-top: 2px solid #eeeeee;
 }
 
-#pp,#tou {
+#pp,#tou,#contact,#about {
   width: 84%;
   line-height: 1.5em;
   margin: 0 auto;
@@ -310,8 +356,18 @@ hr {
   display: block;
   margin: 7px auto;
 }
+/* Users */
+
+.admin {
+  margin: 40px 20px;
+}
+
+.admin > h2 {
+  padding-bottom: 20px
+}
 
 /* about us */
+
 dl,dt,dd {
   box-sizing: border-box;
 }
@@ -347,5 +403,134 @@ dd:after {
   content: '';
   display: block;
   clear: both;
+}
+
+
+.rnk-item-container {
+  width: 90%;
+  margin: 0 auto;
+  transition: all  0.3s ease;
+}
+
+.rnk-item-container:hover {
+  background-color: #efefef;
+}
+
+.rnk-main {
+  margin: 10px;
+}
+
+.lank {
+  float:left;
+  width: 7%;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 75px;
+}
+
+.rnk-title,.rnk-artist {
+  float: right;
+  width: 80%;
+}
+.rnk-item-details img {
+  float: left;
+  width: 10%;
+}
+
+.rnk-title p {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.local-navbar {
+  overflow: hidden;
+ }
+
+.local-navbar li {
+  padding: 9px 51px;
+  float:left;
+  margin-right:1px;
+  border: 1px solid #3a3a3a;
+  color: white;
+ }
+
+
+.local-navbar li.active {
+  background: #fff;
+  color: #3a3a3a;
+ }
+
+.rnk-content li {
+  list-style-type: none;
+  border: 1px solid #3a3a3a;
+  padding: 20px;
+ }
+
+.hide {
+ display:none;
+ }
+
+
+
+
+
+
+
+ .local-nav ul{
+  list-style-type: none;
+  width: 92%;
+  height: 51px;
+  margin: auto;
+  padding: 10px;
+  transform: skew(-20deg);
+}
+
+.local-nav li{
+  float: left;
+  margin: 0 1px;
+  background: #3397de;
+}
+
+.local-nav li:hover{
+  background: #2d85ba;
+}
+
+.local-nav li:active{
+  background: #297aa3;
+  position: relative;
+  top: 1px;
+}
+
+.local-nav li:first-child{
+  border-radius: 3px 0 0 3px;
+}
+
+.local-nav li:last-child{
+  border-radius: 0 3px 3px 0;
+}
+
+.local-nav li a{
+  display: block;
+  padding: 0.5em 4em;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  transform: skew(20deg);
 }
 

@@ -1,25 +1,55 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
+      <div id="contact">
       <h1>What do you want to contact us ?</h1>
 
-      <div class="col-md-6 col-md-offset-3">
-        <div class="container">
+        <div class="contact-tab">
           <ul class="tab">
-            <li class="active">Contact</li>
+            <li class="select">Contact</li>
             <li>Request</li>
-            <li>Quit</li>
+            <li>Members return</li>
           </ul>
 
-          <div class="tabcontent">
-            <div class="change_panel active">
-              <%= render 'contacts/contact' %>
-            </div>
-          </div>
+          <ul class="content">
+            <li>
+              <form>
+              <p>Your Name<br>
+              <input type="text" name="name" ></p>
+              <p> Your E-mail<br>
+              <input type="text" name="mail"></p>
+              <p>Your Message<br>
+              <textarea name="comment" cols="30" rows="5"></textarea></p>
+              <p><input type="submit" value="Send"></p>
+              </form>
+            </li>
+
+            <li class="hide">
+              <form>
+              <p> Your Name<br>
+              <input type="text" name="name"></p>
+              <p> Your E-mail<br>
+              <input type="text" name="mail"></p>
+              <p> Your Request<br>
+              <textarea name="comment" cols="30" rows="5"></textarea></p>
+              <p><input type="submit" value="Send"></p>
+              </form>
+            </li>
+
+            <li class="hide">
+              <form>
+              <p> Your Name<br>
+              <input type="text" name="name"></p>
+              <p> Your E-mail<br>
+              <input type="text" name="mail"></p>
+              <p> Your Message<br>
+              <textarea name="comment" cols="30" rows="5"></textarea></p>
+              <p><input type="submit" value="Send"></p>
+              </form>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-
