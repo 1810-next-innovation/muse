@@ -3,6 +3,8 @@
 	<div class="field">
     <%= f.label 'Disc name' %><br>
     <%= f.text_field :disc_name %>
+    	<label>music_name</label>
+    	<%= f.disc.text_field :music_name %>
     <%= f.label '削除' %>
     <%= f.check_box :_destroy %>
     <br>
