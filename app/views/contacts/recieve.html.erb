@@ -1,0 +1,22 @@
+
+<h2>Contact Index</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Message</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @contacts.each do |contact| %>
+		<tr>
+			<td><%= contact.name %></td>
+			<td><%= contact.email %></td>
+			<td><%= contact.body%></td>
+			<td><%= link_to 'destroy' , contact_path(contact), method: :delete %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

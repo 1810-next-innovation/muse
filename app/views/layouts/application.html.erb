@@ -50,6 +50,7 @@
 
                 <% elsif user_signed_in? %>
 
+
                 <li class="header-nav-item">
                   <%= link_to " HOME", root_path %>
                 </li>
@@ -70,7 +71,7 @@
                 <li class="header-nav-item">
                   <%= link_to " SEARCH", items_path %>
                 </li>
-
+                
 
 
                 <% else %>
@@ -119,8 +120,12 @@
 
             <ul class="navbar-menu">
               <li class="footer-nav-item">
+               <%= link_to "Contact", contacts_recieve_path%>
+              </li>
+              <li class="footer-nav-item">
                <a href="/users"> &#169; 2018 MUSE. </a>
               </li>
+
             </ul>
 
             <% else %>
