@@ -61,6 +61,9 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
+                  <%= link_to "CART", cart_path(current_cart) %>
+                </li>
+                <li class="header-nav-item">
                    <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
                 </li>
                 <li class="header-nav-item">
