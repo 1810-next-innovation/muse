@@ -5,7 +5,12 @@
         <%= attachment_image_tag @item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %>
         <p>￥<%= @item.price %></p>
         <p>stock:<%= @item.stock %></p>
-      
+        <% @item.discs.each do |disc| %>
+          <p style="font-size: 30px; color: blue;">Disc_name：<%= disc.disc_name %></p>
+          <% disc.music_names.each do |music| %>
+            <p style="font-size: 20px; color: green;">music_name：<%= music.music_name %></p>
+          <% end %>
+        <% end %>
         <!-- favorite -->
       
         <% if @item.favorited_by?(current_user) %>
