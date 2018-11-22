@@ -22,6 +22,9 @@ class ItemsController < ApplicationController
 			@cart_item_quantity = 0
 		end
 
+
+
+
 	end
 
 	def new
@@ -72,6 +75,6 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, )
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, discs_attributes: [:id, :disc_name, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
   end
 end
