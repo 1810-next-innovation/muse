@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 
 		if @cart_item.blank?
 			@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-    end
+		end
 		
 		@review = Review.new
 		@reviews = @item.reviews
@@ -21,9 +21,6 @@ class ItemsController < ApplicationController
 		else
 			@cart_item_quantity = 0
 		end
-
-
-
 
 	end
 
