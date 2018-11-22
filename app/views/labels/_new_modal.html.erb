@@ -7,7 +7,7 @@
 		<div class="container">
 	  	<h2>New Label</h2>
 	  	<div>
-				<%= form_for(@label, remote: true) do |f| %>
+				<%= form_for(@label) do |f| %>
 					<%= f.text_field :label_name %>
 					<%= f.submit 'Create Label' %>
 				<% end %>
