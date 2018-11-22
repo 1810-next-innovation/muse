@@ -30,6 +30,8 @@ class ItemsController < ApplicationController
 		@label = Label.new
 
 		@labels = Label.all
+
+		@item.discs.build
 	end
 
 	def create

@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 			flash[:success] = "Thank you for your purchase!"
 			redirect_to root_path
 		else
-			render "/order/new"
+			render "/orders/new"
 		end
 
     current_cart.cart_items.each do |cart_item|
