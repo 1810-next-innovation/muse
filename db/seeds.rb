@@ -9,92 +9,63 @@
 # 	load(path)
 # end
 
+# コマンド
 # rails db:migrate:reset
 # rails db:seed
 # rails db:seed:item
 
-<<<<<<< HEAD
+gimei = Gimei.name
+address = Gimei.address
+
 User.create!(
 	name: "管理者",
 	japanese_syllabaries: "かんりしゃ",
-	gender: 1,
-	post_code: 1234567,
-	address: "日本",
-	phone_number: "09012345678",
+	gender: rand(1..2),
+	post_code: "#{rand(1000000..9999999)}",
+	address: "#{address.kanji}"+"#{rand(100)}-#{rand(10)}",
+	phone_number: "090"+"#{rand(10000000..99999999)}",
 	email: "admin@admin.com",
-	birthday: "20001010",
+	birthday: Faker::Date.between(80.days.ago, Date.today),
 	password: "111111",
 	admin: true,
-	deleted_at: nil
+	deleted_at: nil,
 )
 
 User.create!(
-	name: "ユーザー",
-	japanese_syllabaries: "ゆーざー",
-	gender: 2,
-	post_code: 1234567,
-	address: "日本",
-	phone_number: "09012345678",
+	name: "#{gimei.last.kanji}"+"#{gimei.first.kanji}",
+	japanese_syllabaries: "#{gimei.last.hiragana}"+"#{gimei.first.hiragana}",
+	gender: rand(1..2),
+	post_code: "#{rand(1000000..9999999)}",
+	address: "#{address.kanji}"+"#{rand(100)}-#{rand(10)}",
+	phone_number: "090"+"#{rand(10000000..99999999)}",
 	email: "user@user.com",
-	birthday: "20001010",
+	birthday: Faker::Date.between(80.days.ago, Date.today),
 	password: "111111",
 	admin: false,
-	deleted_at: nil
+	deleted_at: nil,
 )
 
 Cart.create!(user_id: 2)
-Receiver.create!(user_id: 2,
-=======
-User.create!(name: "管理者",
-						 japanese_syllabaries: "かんりしゃ",
-						 gender: 1,
-						 post_code: 1234567,
-						 address: "日本",
-						 phone_number: "09012345678",
-						 email: "admin@admin.com",
-						 birthday: "20001010",
-						 password: "111111",
-						 admin: true,
-						 deleted_at: nil)
 
-Cart.create!(user_id: 1)
-
-Receiver.create!(user_id: 1,
->>>>>>> 81e58ee444df7fd324d59bf7406827991b8c928d
-								 receiver_name: "管理者",
-								 receiver_post_code: 1234567,
-								 receiver_address: "日本",
-								 receiver_phone_number: "09012345678")
-<<<<<<< HEAD
-50.times do |n|
-	Item.create!(# label_id: rand(11),
-						 item_name: Faker::Music.album,
-						 # item_image_id: ,
-						 price: 1000,
-						 release_date: Faker::Date.between(20.days.ago, Date.today),
-						 opinion: Faker::Lorem.sentence,
-						 stock: 2)
-	# CartItem.create!(cart_id: 1,
-	# 								 item_id: n + 1,
-	# 							 	 quantity: 4)
+2.times do |n|
+	Receiver.create!(
+		user_id: 2,
+		receiver_name: "#{gimei.last.kanji}"+"#{gimei.first.kanji}",
+		receiver_post_code: "#{rand(1000000..9999999)}",
+		receiver_address: "#{address.kanji}"+"#{rand(100)}-#{rand(10)}",
+		receiver_phone_number: "090"+"#{rand(10000000..99999999)}",
+	)
 end
-=======
->>>>>>> 81e58ee444df7fd324d59bf7406827991b8c928d
 
-# 10.times do |n|
-# 	name =
-
-# 	gender = rand(3)
-# 	post_code = rand(1000000..9999999)
-# 	address: ""
-# end
-
-# 10.times do |n|
-# 	item_name = Faker::
-# end
-
-# 10.times do |n|
-# 	Receiver.create!(user_id: ,
-# 									 receiver_name, "",
-# 									 receiver_post_code, "",)
-# end
+Label.create!(label_name: "avax")
+50.times do |n|
+	Item.create!(
+		label_id: 1,
+		item_name: Faker::Music.album,
+		# item_image_id: ,
+		price: rand(1000..3000),
+		release_date: Faker::Date.between(20.days.ago, Date.today),
+		opinion: Faker::Lorem.sentence,
+		stock: rand(100),
+	)
+end
