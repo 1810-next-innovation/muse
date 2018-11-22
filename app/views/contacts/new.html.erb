@@ -9,39 +9,64 @@
  
       <ul class="content">
         <li>
-          <form>
-          <p>Your Name<br>
-          <input type="text" name="name" ></p>
-          <p>Your E-mail<br>
-          <input type="text" name="mail"></p>
-          <p>Your Message<br>
-          <textarea name="comment" cols="30" rows="5"></textarea></p>
-          <p><input type="submit" value="Send"></p>
-          </form>
+
+          <%= form_for(@contact) do |f| %>
+          <div class="field row">
+          <label>Your Name</label>
+          <%= f.text_field :name %>
+          </div>
+          <div class="field row">
+          <label>Your E-mail</label>
+          <%= f.email_field :email %>
+          </div>
+          <div class="field row">
+          <label>Your Message</label>
+          <%= f.text_area :body %>
+          </div>
+          <div class="action row">
+          <%= f.submit 'Send' %>
+          </div>
+          <% end %>
         </li>
  
         <li class="hide">
-          <form>
-          <p>Your Name<br>
-          <input type="text" name="name"></p>
-          <p>Your E-mail<br>
-          <input type="text" name="mail"></p>
-          <p>Your Request<br>
-          <textarea name="comment" cols="30" rows="5"></textarea></p>
-          <p><input type="submit" value="Send"></p>
-          </form>
+           <%= form_for(@contact) do |f| %>
+          <div class="field row">
+          <label>Your Name</label>
+          <%= f.text_field :name %>
+          </div>
+          <div class="field row">
+          <label>Your E-mail</label>
+          <%= f.email_field :email %>
+          </div>
+          <div class="field row">
+          <label>Your Rquest</label>
+          <%= f.text_area :body %>
+          </div>
+          <div class="action row">
+          <%= f.submit 'Send' %>
+          </div>
+          <% end %>
         </li>
  
         <li class="hide">
-          <form>
-          <p>Your Name<br>
-          <input type="text" name="name"></p>
-          <p>Your E-mail<br>
-          <input type="text" name="mail"></p>
-          <p>Your Message<br>
-          <textarea name="comment" cols="30" rows="5"></textarea></p>
-          <p><input type="submit" value="Send"></p>
-          </form>
+           <%= form_for(@contact) do |f| %>
+          <div class="field row">
+          <label>Your Name</label>
+          <%= f.text_field :name %>
+          </div>
+          <div class="field row">
+          <label>Your E-mail</label>
+          <%= f.email_field :email %>
+          </div>
+          <div class="field row">
+          <label>Your Message</label>
+          <%= f.text_area :body %>
+          </div>
+          <div class="action row">
+          <%= f.submit 'Send' %>
+          </div>
+          <% end %>
         </li>
         
       </ul>

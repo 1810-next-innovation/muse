@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_024953) do
+ActiveRecord::Schema.define(version: 2018_11_22_042210) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist_name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.integer "item_id"
     t.integer "cart_id"
     t.integer "quantity", default: 0
+    t.integer "buy_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +49,8 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.text "body"
+    t.string "email"
+    t.string "name"
   end
 
   create_table "discs", force: :cascade do |t|
@@ -102,7 +105,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
     t.integer "grand_total"
     t.integer "payment_method"
     t.integer "receiver_id"
-    t.integer "status", default: 0
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"

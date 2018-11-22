@@ -13,6 +13,7 @@ devise_for :users, controllers: {
 
   get 'contacts/about', to: 'contacts#about'
   get 'contacts/term', to: 'contacts#term'
+  get 'contacts/recieve', to: 'contacts#recieve'
   resources :contacts
 
   root 'items#top'
