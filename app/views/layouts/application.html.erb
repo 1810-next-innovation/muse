@@ -14,7 +14,7 @@
     <!-- slick -->
     <link rel="stylesheet" type="text/css" href="assets/slick.css"/>
     <link rel="stylesheet" type="text/css" href="assets/slick-theme.css"/>
-   
+
     <script src="assets/slick.min.js"></script>
   </head>
 
@@ -60,14 +60,8 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
-<<<<<<< HEAD
                   <%= link_to "CART", cart_path(current_cart) %>
-=======
-
-                  <%= link_to " カート" %>
->>>>>>> 81e58ee444df7fd324d59bf7406827991b8c928d
                 </li>
-
                 <li class="header-nav-item">
                    <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
                 </li>

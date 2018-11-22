@@ -5,6 +5,7 @@ class CartItem < ApplicationRecord
 
 	validates :item, presence: true
 	validates :cart, presence: true
+	validates :quantity, presence: true
 
 	paginates_per 10
 end

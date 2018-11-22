@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 2018_11_17_024953) do
   create_table "buy_data", force: :cascade do |t|
     t.integer "cart_item_id"
     t.string "buy_name"
+    t.text "buy_item_image_id"
     t.integer "buy_price"
+    t.date "buy_release_date"
+    t.text "buy_opinion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

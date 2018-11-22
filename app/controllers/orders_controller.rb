@@ -29,12 +29,20 @@ class OrdersController < ApplicationController
   def create
   	order = current_cart.build_order(order_params)
     order.user_id = current_user.id
-  	order.save
+  	if order.save
+			flash[:success] = "Thank you for your purchase!"
+			redirect_to root_path
+		else
+			render "/order/new"
+		end
 
     current_cart.cart_items.each do |cart_item|
       buy_datum = cart_item.build_buy_datum #buy_datumのレコードを追加
       buy_datum.buy_name = cart_item.item.item_name
-      buy_datum.buy_price = cart_item.item.price
+      buy_datum.buy_item_image_id = cart_item.item.item_image_id
+			buy_datum.buy_price = cart_item.item.price
+			buy_datum.buy_release_date = cart_item.item.release_date
+			buy_datum.buy_opinion = cart_item.item.opinion
       buy_datum.save
 
 			cart_item.item.stock -= cart_item.quantity #購入された商品の在庫を減らす
