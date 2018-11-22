@@ -1,16 +1,23 @@
 class LabelsController < ApplicationController
   def new
   	@label = Label.new
+    @labels = Label.all
   end
 
   def create
   	label = Label.new(label_params)
   	label.save
-  	redirect_to labels_path
+  	redirect_to new_item_path
   end
 
   def index
   	@labels = Label.all
+  end
+
+  def destroy
+    @label = Label.find(params[:id])
+    @label.destroy
+    redirect_to new_item_path
   end
 
 private

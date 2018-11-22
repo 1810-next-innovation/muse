@@ -50,6 +50,7 @@
 
                 <% elsif user_signed_in? %>
 
+
                 <li class="header-nav-item">
                   <%= link_to " HOME", root_path %>
                 </li>
@@ -60,17 +61,15 @@
                   <%= link_to " MY PAGE", user_path(current_user.id) %>
                 </li>
                 <li class="header-nav-item">
-
-                  <%= link_to " カート" %>
+                  <%= link_to "CART", cart_path(current_cart) %>
                 </li>
-
                 <li class="header-nav-item">
                    <%= link_to 'LOG OUT' , destroy_user_session_path, method: :delete %>
                 </li>
                 <li class="header-nav-item">
                   <%= link_to " SEARCH", items_path %>
                 </li>
-
+                
 
 
                 <% else %>
@@ -119,8 +118,12 @@
 
             <ul class="navbar-menu">
               <li class="footer-nav-item">
+               <%= link_to "Contact", contacts_recieve_path%>
+              </li>
+              <li class="footer-nav-item">
                <a href="/users"> &#169; 2018 MUSE. </a>
               </li>
+
             </ul>
 
             <% else %>
@@ -147,6 +150,5 @@
         </nav>
       </div>
     </footer>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

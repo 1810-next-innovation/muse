@@ -1,24 +1,61 @@
-<h1>購入履歴</h1>
-
-<%= @orders.each do |order| %>
-	<%= order.created_at %>
-	<%= order.grand_total %>
-	<%= order.receiver.receiver_name %>
-	<%= order.receiver.receiver_post_code %>
-	<%= order.receiver.receiver_address %>
-	<%= order.receiver.receiver_phone_number %>
-	<%= order.id %>
-	<%= order.payment_method %>
-	<%= form_for(order, url: update_status_path(order), method: :patch ) do |f| %>
-		<%= f.label :status%>
-	  <%= f.select :status, Order.statuses.keys.to_a %>
-	  <%= f.submit "Update", class: "btn btn-warning" %>
-	<% end %>
-	<%= order.status %>
-	<%= order.cart.cart_items.each do |cart_item| %>
-		<%= attachment_image_tag cart_item.item, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
-		<%= cart_item.buy_datum.buy_name %>
-		<%= cart_item.buy_datum.buy_price %>
-	<% end %>
-<% end %>
-<%= paginate @orders, class: "pagenate" %>
+<div class="container">
+	<div class="row">
+		<h1>Order history</h1>
+		<% @orders.each do |order| %>
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-3">
+								<p>Order Date</p>
+								<p><strong><%= order.created_at.strftime("%Y-%m-%d") %></strong></p>
+							</div>
+							<div class="col-xs-3">
+								<p>Grand Total</p>
+								<p><strong>¥<%= order.grand_total %></strong></p>
+							</div>
+							<div class="col-xs-3">
+								<p>Destination</p>
+								<div class="small"><strong><%= order.receiver.receiver_name %></strong></div>
+								<div class="small"><strong><%= order.receiver.receiver_post_code %></strong></div>
+								<div class="small"><strong><%= order.receiver.receiver_address %></strong></div>
+								<div class="small"><strong><%= order.receiver.receiver_phone_number %></strong></div>
+							</div>
+							<div class="col-xs-3">
+								<p>Order ID</p>
+								<p><strong><%= order.id %></strong></p>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<p class="text-left">Status : <strong><%= order.status %></strong></p>
+						<%= form_for(order, url: update_status_path(order), method: :patch ) do |f| %>
+							<%= f.select :status, Order.statuses.keys.to_a %>
+							<%= f.submit "Update", class: "btn btn-warning btn-sm" %>
+						<% end %>
+						<% order.cart.cart_items.each do |cart_item| %>
+							<div class="row">
+								<div class="col-xs-2">
+									<%= attachment_image_tag cart_item.buy_datum, :buy_item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
+								</div>
+								<div class="col-xs-10">
+									<div class="small"><%= cart_item.buy_datum.buy_name %></div>
+									<div class="small">¥<%= cart_item.buy_datum.buy_price %></div>
+									<div class="small">
+										<%= cart_item.quantity %>
+										<% if cart_item == 1 %>
+											item
+										<% else %>
+											items
+										<% end %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+		<%= paginate @orders, class: "pagenate" %>
+	</div>
+</div>

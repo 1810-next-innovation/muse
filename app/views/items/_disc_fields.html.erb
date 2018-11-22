@@ -1,0 +1,9 @@
+	<div class="field">
+    <%= f.label 'Disc name' %><br>
+    <%= f.text_field :disc_name %>
+    <% if @item.persisted? %>
+      <%= f.label '削除' %>
+      <%= f.check_box :_destroy %>
+    <% end %>
+    <br>
+  </div>

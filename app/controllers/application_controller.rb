@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
 		@cart = current_user.carts.last
 	end
 
-	
+	# def current_cart_items_quantity
+	# 	@cart_items_quantity_total = current_cart.cart_items.map { |n| n.quantity }.inject(:+)
+	# end
 
   protected
   def configure_permitted_parameters

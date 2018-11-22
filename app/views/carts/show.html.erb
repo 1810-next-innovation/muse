@@ -1,29 +1,56 @@
 <div class="container">
   <div class="row">
-
-    <div class="col-xs-8">
-			<h3><%= @user.name %>'s Cart</h3>
-	  </div>
-
-	  <div class="col-xs-4">
-	    <h2>Buy these items?</h2>
-			<%= @cart_items.each do |cart_item| %>
-				<%= cart_item.item.release_date %>
-				<%= attachment_image_tag @item, :item_image, :fill, 100, 100, class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image" %>
-				<%= cart_item.item.item_name %>
-				¥<%= cart_item.item.price %>
-				<% if cart_item.item.stock != 0 %>
-					<%= form_for(cart_item, url: update_item_path(cart_item), method: :patch ) do |f| %>
-					  <%= f.number_field :quantity, min: 1, max: cart_item.item.stock %>
-					  <%= f.submit "Update", class: "btn btn-warning" %>
-					<% end %>
-				<% else %>
-					It's out of stock
-				<% end %>
-				<p><%= link_to "Delete", delete_item_path(cart_item), method: :delete, class: "btn btn-danger" %></p>
-			<% end %>
-			<p>合計<%= @grand_total %>円</p>
-			<%= link_to "Proceed to checkout", new_order_path, class: "btn btn-info" %>
-	  </div>
+		<h1>Cart</h1>
+		<% if @cart_items.blank? %>
+			<div class="col-xs-12">
+				<strong>Your cart is empty</strong>
+			</div>
+		<% else %>
+			<div class="col-xs-8">
+				<table class="table table-hover table-condensed">
+	        <thead>
+	          <tr>
+	            <th>Release date</th>
+	            <th>Details</th>
+	            <th>Quantity</th>
+	            <th></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	          <% @cart_items.each do |cart_item| %>
+	            <tr>
+	              <td><%= cart_item.item.release_date %></td>
+	              <td><%= link_to (attachment_image_tag cart_item.item, :item_image, :fill, 100, 100,
+	              class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image"), item_path(cart_item.item) %>
+	              <%= link_to cart_item.item.item_name, item_path(cart_item.item) %>
+	              ¥<%= cart_item.item.price %></td>
+	              <td>
+	                <% if cart_item.item.stock != 0 %>
+	                  <%= form_for(cart_item, url: update_item_path(cart_item), method: :patch ) do |f| %>
+	                    <%= f.number_field :quantity, min: 1, max: cart_item.item.stock, onchange: "submit(this.form)", class: "form-control" %>
+	                  <% end %>
+	                <% else %>
+	                  <p>It's out of stock</p>
+	                <% end %>
+	              </td>
+	              <td>
+	                <%= link_to "", delete_item_path(cart_item), method: :delete,
+	                class: "glyphicon glyphicon-trash", style: "font-size: 20px" %>
+	              </td>
+	            </tr>
+	          <% end %>
+	        </tbody>
+	      </table>
+			</div>
+			<div class="col-xs-4">
+				<div class="panel panel-dafault">
+					<p class="text-center"><strong>Grand Total</strong> : ¥<%= @grand_total %></p>
+					<p class="text-center"><%= link_to "Checkout", new_order_path, class: "btn btn-info btn-block" %></p>
+	      </div>
+				<div class="">
+	        <%= paginate @cart_items, class: "pagenate" %>
+	      </div>
+			</div>
+		<% end %>
   </div>
 </div>

@@ -8,18 +8,30 @@ class ItemsController < ApplicationController
 
 	def show
 		@item = Item.find(params[:id])
+
 		if @cart_item.blank?
-        @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-        end
-  		@review = Review.new 
-        @reviews = @item.reviews
-  	
+			@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+    end
+		
+		@review = Review.new
+		@reviews = @item.reviews
+
+		if current_cart.cart_items.find_by(item_id: @item.id)
+			@cart_item_quantity = current_cart.cart_items.find_by(item_id: @item.id).quantity
+		else
+			@cart_item_quantity = 0
+		end
+
 	end
 
 	def new
 		@item = Item.new
 
+		@label = Label.new
+
 		@labels = Label.all
+
+		@item.discs.build
 	end
 
 	def create
@@ -31,8 +43,8 @@ class ItemsController < ApplicationController
 
 			render :index
 		else
-			@labels = Label.all
-				render :new
+		@labels = Label.all
+			render :new
 		end
 	end
 

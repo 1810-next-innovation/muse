@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+# ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
@@ -77,5 +77,6 @@ gem 'paranoia'
 
 gem 'faker' #サンプルのデータを作成する。通常では本番環境では使わない。
 gem 'gimei' #サンプルのデータを作成する(日本語)。通常では本番環境では使わない。
-# gem 'enumerize' #Enum 定義関連のためのgem
 gem 'activerecord-import' #バルクインサートを使うためのgem
+
+gem 'cocoon'

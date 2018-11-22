@@ -8,7 +8,10 @@ class Item < ApplicationRecord
 	has_many :favorites
 	has_many :users, through: :favorites
 	has_many :cart_items,  dependent: :destroy
+
 	has_many :discs,       dependent: :destroy
+	accepts_nested_attributes_for :discs, allow_destroy: true
+
 	has_many :reviews,     dependent: :destroy
 	belongs_to :label
 	validates :label,     presence: true

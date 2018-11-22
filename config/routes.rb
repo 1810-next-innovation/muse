@@ -13,6 +13,7 @@ devise_for :users, controllers: {
 
   get 'contacts/about', to: 'contacts#about'
   get 'contacts/term', to: 'contacts#term'
+  get 'contacts/recieve', to: 'contacts#recieve'
   resources :contacts
 
   root 'items#top'
@@ -33,5 +34,5 @@ devise_for :users, controllers: {
   patch '/update_status/:id', to: "orders#update_status", as: "update_status"
   resources :orders, only: [:index, :show, :new, :create]
 
-  resources :labels, only: [:new, :create, :index]
+  resources :labels, only: [:new, :create, :index, :destroy]
 end
