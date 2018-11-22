@@ -46,15 +46,9 @@
 						<%= f.text_area :opinion %>
 					</li>
 
-				</ul>
-				<%= f.submit 'Create Item', class: "item_create" %>
-
-			<% end %>
-
 <!-- cocoon実験 -->
 
 					<li>
-						<%= form_for(@item) do |f| %>
 						<!-- 中略 -->
 						  <div class="field">
 						    <%= f.fields_for :discs do |d| %>
@@ -66,10 +60,14 @@
 						    data: { association_insertion_method: 'before' }, class: "btn btn-md btn-primary"%>
 						  </div>
 						<!-- 中略-->
-						<% end %>
 					</li>
 
 <!-- cocoon実験 -->
+				</ul>
+				<%= f.submit 'Create Item', class: "item_create" %>
+
+			<% end %>
+
 
 
 
