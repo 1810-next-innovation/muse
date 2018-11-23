@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
 		@review = Review.new
 		@reviews = @item.reviews
 
+
 		if current_cart.cart_items.find_by(item_id: @item.id)
 			@cart_item_quantity = current_cart.cart_items.find_by(item_id: @item.id).quantity
 		else
@@ -31,7 +32,8 @@ class ItemsController < ApplicationController
 
 		@labels = Label.all
 
-		@item.discs.build
+		@disc = @item.discs.build
+		@music_name = @disc.music_names.build
 	end
 
 	def create
@@ -44,6 +46,7 @@ class ItemsController < ApplicationController
 			render :index
 		else
 		@labels = Label.all
+		@label = Label.new
 			render :new
 		end
 	end
@@ -72,6 +75,7 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, discs_attributes: [:id, :disc_name, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :release_date, :opinion, :label_id,	discs_attributes: [:id, :disc_name, :_destroy,
+  																																																						music_names_attributes: [:id, :music_name, :_destroy]])
   end
 end

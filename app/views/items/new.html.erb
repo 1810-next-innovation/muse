@@ -49,11 +49,13 @@
 <!-- cocoon -->
 
 					<li>
+						<label>Discs</label>
 						<div class="field">
 					    <%= f.fields_for :discs do |d| %>
 					      <%= render 'disc_fields', f: d %>
 					    <% end %>
 					  </div>
+
 					  <div class="field">
 					  <%= link_to_add_association 'Disc +', f, :discs,
 					    data: { association_insertion_method: 'before' }, class: "btn btn-md btn-primary"%>

@@ -1,9 +1,19 @@
 <!-- items/newのcocoonによるrender先 -->
 
-	<div class="field">
-    <%= f.label 'Disc name' %><br>
-    <%= f.text_field :disc_name %>
-    <%= f.label '削除' %>
-    <%= f.check_box :_destroy %>
-    <br>
+	<div class="nested-fields form-inline">
+		<div class=form-group>
+    	<%= f.text_field :disc_name %>
+		</div>
+    	<%= link_to_remove_association "remove disc", f %>
+
+		<div class="music_names">
+    	<%= f.fields_for :music_names do |m| %>
+      	<%= render 'music_name_fields', f: m %>
+    	<%end%>
+
+			<div class="links">
+	      <%= link_to_add_association "add music_name", f, :music_names %>
+	    </div>
+
+		</div>
   </div>
