@@ -39,6 +39,9 @@
     </ul>
   </nav>
 </div>
+<%= @items.each do |item| %>
+	<p><%= item.item_name %></p>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -61,8 +64,8 @@
   </div>
 </div>
 <div id="play">
-  
+
 <audio preload="auto" id="sound" src="/assets/chainsmokers.mp3" autoplay>
 </audio>
-  
+
 </div>

@@ -18,7 +18,6 @@ devise_for :users, controllers: {
   root 'items#top'
   get 'items/about', to: 'items#about'
 
-  get 'carts/show'
   resources :items do
     resource :favorites, only: [:create, :destroy]
     resource :reviews, only: [:create, :destroy]
