@@ -45,6 +45,7 @@ User.create!(
 	deleted_at: nil,
 )
 
+Cart.create!(user_id: 1)
 Cart.create!(user_id: 2)
 
 2.times do |n|

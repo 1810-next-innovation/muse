@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
 		if @cart_item.blank?
 			@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-    end
+		end
 
 		@review = Review.new
 		@reviews = @item.reviews
@@ -32,6 +32,9 @@ class ItemsController < ApplicationController
 		@label = Label.new
 
 		@labels = Label.all
+
+		@disc = @item.discs.build
+		@music_name = @disc.music_names.build
 	end
 
 	def create
@@ -44,6 +47,7 @@ class ItemsController < ApplicationController
 			render :index
 		else
 		@labels = Label.all
+		@label = Label.new
 			render :new
 		end
 	end
@@ -72,6 +76,7 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :opinion, :label_id, )
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :release_date, :opinion, :label_id,	discs_attributes: [:id, :disc_name, :_destroy,
+  																																																						music_names_attributes: [:id, :music_name, :_destroy]])
   end
 end

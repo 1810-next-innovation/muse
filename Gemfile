@@ -78,3 +78,5 @@ gem 'paranoia'
 gem 'faker' #サンプルのデータを作成する。通常では本番環境では使わない。
 gem 'gimei' #サンプルのデータを作成する(日本語)。通常では本番環境では使わない。
 gem 'activerecord-import' #バルクインサートを使うためのgem
+
+gem 'cocoon'

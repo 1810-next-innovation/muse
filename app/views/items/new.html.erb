@@ -46,15 +46,33 @@
 						<%= f.text_area :opinion %>
 					</li>
 
+<!-- cocoon -->
+
+					<li>
+						<label>Discs</label>
+						<div class="field">
+					    <%= f.fields_for :discs do |d| %>
+					      <%= render 'disc_fields', f: d %>
+					    <% end %>
+					  </div>
+
+					  <div class="field">
+					  <%= link_to_add_association 'Disc +', f, :discs,
+					    data: { association_insertion_method: 'before' }, class: "btn btn-md btn-primary"%>
+					  </div>
+					</li>
+
+<!-- cocoon -->
+
 				</ul>
 				<%= f.submit 'Create Item', class: "item_create" %>
 
 			<% end %>
 
-<!-- モーダル実験 -->
+<!-- モーダル -->
 			<div id="modal-sign-in" class="btn btn-xs btn-default" >New Label</div>
       <%= render "labels/new_modal" %>
-<!-- モーダル実験 -->
+<!-- モーダル -->
 
 			<%= link_to '商品一覧', items_path %>
     </div>  
