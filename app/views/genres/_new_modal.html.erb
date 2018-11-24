@@ -1,0 +1,36 @@
+<!-- items/newのNew Genreによるrender先 -->
+
+<section id="open-genre" class="modalarea">
+  <div id="modalbg" class="modalbg"></div>
+  <div class="modalwrapper">
+    <div class="modalcontents">
+<!--モーダルエリアここまで -->
+
+		<div class="container">
+	  	<h2>New Genre</h2>
+      <div>
+        <%= form_for(@genre) do |f| %>
+          <%= f.text_field :genre_name %>
+          <%= f.submit 'Create Genre' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <ul>
+      <% @genres.each do |genre| %>
+        <li>
+          <%= genre.genre_name %>
+
+          <%= link_to "Destroy", genre_path(genre), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+        </li>
+      <% end %>
+      </ul>
+  	</div>
+<!-- モーダルエリアここから -->
+    </div>
+    <div id="closemodal" class="closemodal">
+      ×
+    </div>
+  </div>
+</section>

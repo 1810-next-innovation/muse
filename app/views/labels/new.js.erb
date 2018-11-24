@@ -5,3 +5,14 @@
 $("#label-modal").html("<%= escape_javascript(render 'new') %>");　//labels内の_newを表示する
 $("#label-modal").modal("show");
 // $("#label-modal").show();
+
+
+// 一時避難
+	<div class="form-group">
+		<label>Artist</label>
+		<%= f.select :artist_id, @artists.map { |t| [t.artist_name, t.id] } %>
+	</div>
+	<div class="form-group">
+		<label>Genre</label>
+		<%= f.select :genre_id, @genres.map { |t| [t.genre_name, t.id] } %>
+	</div>

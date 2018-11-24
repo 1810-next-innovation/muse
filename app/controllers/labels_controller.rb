@@ -10,10 +10,6 @@ class LabelsController < ApplicationController
   	redirect_to new_item_path
   end
 
-  def index
-  	@labels = Label.all
-  end
-
   def destroy
     @label = Label.find(params[:id])
     @label.destroy

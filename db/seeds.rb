@@ -57,7 +57,11 @@ Cart.create!(user_id: 2)
 		receiver_phone_number: "090"+"#{rand(10000000..99999999)}",
 	)
 end
-Label.create!(label_name: "avax")
+
+Label.create!(label_name: "avex")
+Artist.create!(artist_name: "宇多田ヒカル")
+Genre.create!(genre_name: "Jpop")
+
 # 20.times do |n|
 # 	Label.create!(
 # 		label_name: "",
