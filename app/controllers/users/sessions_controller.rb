@@ -2,7 +2,6 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-	helper_method :current_cart
 
 	def current_cart
 		@cart = current_user.carts.last
