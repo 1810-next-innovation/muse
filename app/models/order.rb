@@ -3,7 +3,7 @@ class Order < ApplicationRecord
 	belongs_to :cart
 
 	validates :cart, presence: true
-	validates :receiver, presence: true
+	# validates :receiver, presence: true
 	validates :grand_total, presence: true
 	validates :payment_method, presence: true
 

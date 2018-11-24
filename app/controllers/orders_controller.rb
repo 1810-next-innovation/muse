@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
 
   def create
   	@order = current_cart.build_order(order_params)
+    @receivers = current_user.receivers.all
 		@cart_items = current_cart.cart_items.all
     sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity } #小計の配列
     @grand_total = sub_total_arry.inject(:+) #総計は、小計の配列の要素の和

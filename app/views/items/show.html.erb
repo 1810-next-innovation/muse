@@ -69,19 +69,21 @@
 
         <!-- comment -->
 
-				<% if user_signed_in? %>
-			    <div class="col-xs-4">
-			        <h2>カート</h2>
-			         <% if @item.stock == 0 %>
-			          <p>It's out of stock</p>
-			        <% elsif @item.stock == @cart_item_quantity %>
-			          <p>Can not add any more</p>
-			        <% else %>
-			          <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
-			            <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
-			            <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
-			          <% end %>
-			        <% end %>
-			    </div>
-				<% end %>
+  	<% if user_signed_in? && !current_user.admin? %>
+      <div class="col-xs-4">
+        <h2>カート</h2>
+        <% if @item.stock == 0 %>
+          <p>It's out of stock</p>
+        <% elsif @item.stock == @cart_item_quantity %>
+          <p>Can not add any more</p>
+        <% else %>
+          <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
+            <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
+            <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
+          <% end %>
+        <% end %>
+      </div>
+  	<% end %>
+
+  </div>
 </div>

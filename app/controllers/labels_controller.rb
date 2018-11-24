@@ -5,9 +5,25 @@ class LabelsController < ApplicationController
   end
 
   def create
-  	label = Label.new(label_params)
-  	label.save
-  	redirect_to new_item_path
+  	@label = Label.new(label_params)
+  	@label.save
+
+
+    @item = Item.new
+
+    @labels = Label.all
+
+    @artist = Artist.new
+    @artists = Artist.all
+
+    @genre = Genre.new
+    @genres = Genre.all
+
+    @disc = @item.discs.build
+    @music_name = @disc.music_names.build
+
+
+  	render "items/new"
   end
 
   def destroy

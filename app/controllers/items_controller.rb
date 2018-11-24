@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
 		@review = Review.new
 		@reviews = @item.reviews
 
-		if user_signed_in?
+		if user_signed_in? && !current_user.admin?
 			if @cart_item.blank?
 				@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
 			end
