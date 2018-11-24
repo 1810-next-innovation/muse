@@ -28,16 +28,11 @@ class OrdersController < ApplicationController
 
   def create
   	@order = current_cart.build_order(order_params)
-		@receivers = Receiver.where(user_id: current_cart.user.id)
 		@cart_items = current_cart.cart_items.all
     sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity } #小計の配列
     @grand_total = sub_total_arry.inject(:+) #総計は、小計の配列の要素の和
-    @order.user_id = current_user.id
   	if @order.save
-			flash[:success] = "Thank you for your purchase!"			redirect_to root_path
-		else
-			render "/orders/new"
-		end
+			flash[:success] = "Thank you for your purchase!"
 
 			#buy_datumのレコードを追加
 			current_cart.cart_items.each do |cart_item|
