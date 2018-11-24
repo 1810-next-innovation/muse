@@ -16,26 +16,27 @@
           <% end %>
         <% end %>
         <!-- favorite -->
-
-        <% if @item.favorited_by?(current_user) %>
-        <li>
-        <%= link_to item_favorites_path(@item), method: :delete do %>
-        <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
-        <%= @item.favorites.count %> favorit
-        <% end %>
-        </li>
-        <% else %>
-        <li>
-        <%= link_to item_favorites_path(@item), method: :post do %>
-        <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
-        <%= @item.favorites.count %> favorit
-        <% end %>
-        </li>
-        <% end %>
-        <div>
-        <%= link_to "Edit", edit_item_path(@item), class: "btn-sm btn-success" %>
-        <%= link_to "Destroy", item_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
-        </div>
+				<% if user_signed_in? %>
+	        <% if @item.favorited_by?(current_user) %>
+	        <li>
+	        <%= link_to item_favorites_path(@item), method: :delete do %>
+	        <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
+	        <%= @item.favorites.count %> favorit
+	        <% end %>
+	        </li>
+	        <% else %>
+	        <li>
+	        <%= link_to item_favorites_path(@item), method: :post do %>
+	        <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+	        <%= @item.favorites.count %> favorit
+	        <% end %>
+	        </li>
+	        <% end %>
+	        <div>
+	        <%= link_to "Edit", edit_item_path(@item), class: "btn-sm btn-success" %>
+	        <%= link_to "Destroy", item_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+	        </div>
+				<% end %>
 
         <!-- commennt -->
 
@@ -66,19 +67,19 @@
     </div>
 
         <!-- comment -->
-
-    <div class="col-xs-4">
-        <h2>カート</h2>
-         <% if @item.stock == 0 %>
-          <p>It's out of stock</p>
-        <% elsif @item.stock == @cart_item_quantity %>
-          <p>Can not add any more</p>
-        <% else %>
-          <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
-            <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
-            <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
-          <% end %>  
-        <% end %>
-    </div>
-
+				<% if user_signed_in? %>
+			    <div class="col-xs-4">
+			        <h2>カート</h2>
+			         <% if @item.stock == 0 %>
+			          <p>It's out of stock</p>
+			        <% elsif @item.stock == @cart_item_quantity %>
+			          <p>Can not add any more</p>
+			        <% else %>
+			          <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
+			            <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
+			            <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
+			          <% end %>
+			        <% end %>
+			    </div>
+				<% end %>
 </div>
