@@ -1,7 +1,7 @@
 <div class="admin">
 <h2>User Index</h2>
 <div class="search">
-<%= form_tag users_path, :method => 'get' do %> 
+<%= form_tag users_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
@@ -18,7 +18,6 @@
 			<th>Email</th>
 			<th>Phone_number</th>
 			<th></th>
-			
 
 		</tr>
 	</thead>
