@@ -58,7 +58,7 @@
                   <%= link_to " SERVICE", items_about_path %>
                 </li>
                 <li class="header-nav-item">
-                  <%= link_to " MY PAGE", user_path(current_user.id) %>
+                  <%= link_to " MY PAGE", user_path(current_user) %>
                 </li>
                 <li class="header-nav-item">
                   <%= link_to "CART", cart_path(current_cart) %>
@@ -69,8 +69,6 @@
                 <li class="header-nav-item">
                   <%= link_to " SEARCH", items_path %>
                 </li>
-                
-
 
                 <% else %>
 

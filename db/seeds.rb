@@ -58,7 +58,16 @@ Cart.create!(user_id: 2)
 	)
 end
 
-Label.create!(label_name: "avax")
+Label.create!(label_name: "avex")
+Artist.create!(artist_name: "宇多田ヒカル")
+Genre.create!(genre_name: "Jpop")
+
+# 20.times do |n|
+# 	Label.create!(
+# 		label_name: "",
+# 	)
+# end
+
 50.times do |n|
 	Item.create!(
 		label_id: 1,

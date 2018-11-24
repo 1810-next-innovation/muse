@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
 
 	def top
+		item_in_order_of_sales = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse
+		@items = item_in_order_of_sales.take(5)
 	end
 
 	def about
@@ -12,10 +14,9 @@ class ItemsController < ApplicationController
 		if @cart_item.blank?
 			@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
 		end
-		
+
 		@review = Review.new
 		@reviews = @item.reviews
-
 
 		if current_cart.cart_items.find_by(item_id: @item.id)
 			@cart_item_quantity = current_cart.cart_items.find_by(item_id: @item.id).quantity
@@ -29,8 +30,13 @@ class ItemsController < ApplicationController
 		@item = Item.new
 
 		@label = Label.new
-
 		@labels = Label.all
+
+		@artist = Artist.new
+		@artists = Artist.all
+
+		@genre = Genre.new
+		@genres = Genre.all
 
 		@disc = @item.discs.build
 		@music_name = @disc.music_names.build
@@ -39,14 +45,16 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 		if @item.save
-			@items = Item.search(params[:search])
-
-			@items = @items.page(params[:page])
-
-			render :index
+			redirect_to items_path
 		else
-		@labels = Label.all
 		@label = Label.new
+		@labels = Label.all
+
+		@artist = Artist.new
+		@artists = Artist.all
+
+		@genre = Genre.new
+		@genres = Genre.all
 			render :new
 		end
 	end
@@ -59,12 +67,15 @@ class ItemsController < ApplicationController
 
 	def edit
 		@item = Item.find(params[:id])
+		@labels = Label.all
+		@artists = Artist.all
+		@genres = Genre.all
 	end
 
 	def update
-		item = Item.find(params[:id])
-		item.update(item_params)
-		redirect_to item_path(item.id)
+		@item = Item.find(params[:id])
+		@item.update(item_params)
+		redirect_to item_path(@item.id)
 	end
 
 	def destroy
@@ -75,7 +86,8 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :release_date, :opinion, :label_id,	discs_attributes: [:id, :disc_name, :_destroy,
-  																																																						music_names_attributes: [:id, :music_name, :_destroy]])
+  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :release_date, :opinion, :label_id,
+  															 discs_attributes: [:id, :disc_name, :_destroy,
+  															 music_names_attributes: [:id, :music_name, :artist_id, :genre_id, :_destroy]])
   end
 end

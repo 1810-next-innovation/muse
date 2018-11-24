@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    
+
       redirect_to root_path
   end
 
@@ -20,6 +20,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
+
+				Cart.create!(user_id: current_user.id)
+		    Receiver.create!(user_id: current_user.id,
+		    					receiver_name: current_user.name,
+		    		 receiver_post_code: current_user.post_code,
+		    			 receiver_address: current_user.address,
+		    	receiver_phone_number: current_user.phone_number)
+					
         respond_with resource, location: after_sign_up_path_for(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
