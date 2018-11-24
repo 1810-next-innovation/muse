@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
 	protect_from_forgery with: :exception
 
-	helper_method :current_cart
-
-	def current_cart
-		@cart = current_user.carts.last
-	end
+	# helper_method :current_cart
+	#
+	# def current_cart
+	# 	@cart = current_user.carts.last
+	# end
 
 	# def current_cart_items_quantity
 	# 	@cart_items_quantity_total = current_cart.cart_items.map { |n| n.quantity }.inject(:+)
