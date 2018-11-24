@@ -57,8 +57,13 @@ Cart.create!(user_id: 2)
 		receiver_phone_number: "090"+"#{rand(10000000..99999999)}",
 	)
 end
-
 Label.create!(label_name: "avax")
+# 20.times do |n|
+# 	Label.create!(
+# 		label_name: "",
+# 	)
+# end
+
 50.times do |n|
 	Item.create!(
 		label_id: 1,
