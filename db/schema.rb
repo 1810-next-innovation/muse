@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_042210) do
     t.integer "buy_price"
     t.date "buy_release_date"
     t.text "buy_opinion"
+    t.integer "buy_quantity"
+    t.datetime "buy_ordered_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_042210) do
     t.date "release_date"
     t.text "opinion"
     t.integer "stock"
+    t.integer "monthly_sales", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

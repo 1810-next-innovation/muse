@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
 
 	def top
+		item_in_order_of_sales = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse
+		@items = item_in_order_of_sales.take(5)
 	end
 
 	def about
@@ -12,10 +14,9 @@ class ItemsController < ApplicationController
 		if @cart_item.blank?
 			@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
 		end
-		
+
 		@review = Review.new
 		@reviews = @item.reviews
-
 
 		if current_cart.cart_items.find_by(item_id: @item.id)
 			@cart_item_quantity = current_cart.cart_items.find_by(item_id: @item.id).quantity
