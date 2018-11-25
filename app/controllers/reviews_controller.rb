@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
         @review = Review.find(params[:review_id])
         # @item = Item.find(params[:item_id])
         if @review.destroy
-        redirect_to item_path(params[:item_id])
+            redirect_to item_path(params[:item_id])
         end
     end
 

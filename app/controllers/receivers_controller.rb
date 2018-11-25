@@ -1,6 +1,7 @@
 class ReceiversController < ApplicationController
-  def index
+  def show
   	@receivers = current_user.receivers.page(params[:page])
+    @user = User.find(params[:user_id])
   end
 
   def new
@@ -10,7 +11,7 @@ class ReceiversController < ApplicationController
   def create
   	@receiver = current_user.receivers.build(receiver_params)
   	@receiver.save
-  	redirect_to receivers_path
+  	redirect_to user_receivers(user.id)
   end
 
   def edit
@@ -34,6 +35,6 @@ class ReceiversController < ApplicationController
   	params.require(:receiver).permit(:receiver_name,
   																	 :receiver_post_code,
   																	 :receiver_address,
-																	 	 :receiver_phone_number,)
+																	 	 :receiver_phone_number, )
   end
 end

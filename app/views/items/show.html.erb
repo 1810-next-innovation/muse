@@ -53,16 +53,16 @@
         <% end %>
         <% end %>
         </div>
-        <%= form_with(model: [@item, @review] ) do |form| %>
-        <div>
-        <%= form.text_field :reviewer_name %>
-        </div>
-        <div>
-        <%= form.text_area :review_text %>
-        </div>
-        <div class="actions">
-        <%= form.submit "コメントをする" %>
-        </div>
+        <%= form_with(model: [@item, @review], local: true ) do |form| %>
+            <div>
+            <%= form.text_field :reviewer_name %>
+            </div>
+            <div>
+            <%= form.text_area :review_text %>
+            </div>
+            <div class="actions">
+            <%= form.submit "コメントをする" %>
+            </div>
         <% end %>
         </div>
     </div>
