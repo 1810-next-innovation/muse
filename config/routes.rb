@@ -6,9 +6,8 @@ devise_for :users, controllers: {
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
     resource :favorites, only: [:show]
-    resource :receivers, only: [:show, :new, :create, :update, :edit, :destroy]
+    resources :receivers, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-
 
   get 'contacts/about', to: 'contacts#about'
   get 'contacts/term', to: 'contacts#term'
