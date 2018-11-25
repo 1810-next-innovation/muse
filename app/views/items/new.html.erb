@@ -1,6 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
+
+		<% if @item.errors.any? %>
+      <div class="error-explanation">
+        <h2><%= @item.errors.count %>件のエラーが発生しました。</h2>
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+
 			<h1>newページ</h1>
 			<h2>商品投稿</h2>
 			<%= form_for(@item) do |f| %>

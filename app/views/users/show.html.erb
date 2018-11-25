@@ -1,55 +1,57 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 clearfix">
-    	<h2><%= @user.name %>'s page</h2>
-    	 <table class="table">
-    	 	<tr>
-    	 		<th>Japanese_syllabaries</th>
-    	 		<td><%= @user.japanese_syllabaries %></td>
-    	 	</tr>
-				<tr>
-					<th>Gender</th>
-					<td><%= @user.gender %></td>
-				</tr>
-				<tr>
-					<th>Post_code</th>
-					<td><%= @user.post_code %></td>
-				</tr>
-				<tr>
-					<th>Address</th>
-					<td><%= @user.address %></td>
-				</tr>
-				<tr>
-					<th>Email</th>
-					<td><%= @user.email %></td>
-				</tr>
-				<tr>
-					<th>Phone_number</th>
-					<td><%= @user.phone_number %></td>
-				</tr>
-				<tr>
-					<th>Birthday</th>
-					<td><%= @user.birthday %></td>
-				</tr>
-			</table>
-			<div class="mins clearfix">
 
-			<div>
-				<%= link_to "purchase_history", root_path, class:"btn btn-default btn-lg min" %>
-			</div>
+	
+	    	<h2><%= @user.name %>'s page</h2>
+	    	 <table class="table">
+	    	 	<tr>
+	    	 		<th>Japanese_syllabaries</th>
+	    	 		<td><%= @user.japanese_syllabaries %></td>
+	    	 	</tr>
+					<tr>
+						<th>Gender</th>
+						<td><%= @user.gender %></td>
+					</tr>
+					<tr>
+						<th>Post_code</th>
+						<td><%= @user.post_code %></td>
+					</tr>
+					<tr>
+						<th>Address</th>
+						<td><%= @user.address %></td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td><%= @user.email %></td>
+					</tr>
+					<tr>
+						<th>Phone_number</th>
+						<td><%= @user.phone_number %></td>
+					</tr>
+					<tr>
+						<th>Birthday</th>
+						<td><%= @user.birthday %></td>
+					</tr>
+				</table>
 
-			<div>
-				<%= link_to "user edit", edit_user_path(@user), class:"btn btn-default btn-lg min" %>
-			</div>
-			<div>
-				<%= link_to "favorite", user_favorites_path(@user), class:"btn btn-default btn-lg min" %>
-			</div>
-			<div>
-				<%= link_to "receiver", user_receivers_path(@user), class:"btn btn-default btn-lg min" %>
-			</div>
-
-			<div>
-				<%= link_to "Unsubscribe", user_path(@user), method: :delete,  "data-confirm" => "本当に退会しますか?", class:"btn btn-default btn-lg min"  %>
+				<div class="btn-content clearfix">
+					<div class="mypage-btn">
+						<%= link_to "Purchase History", root_path, class: "btn" %>
+					</div>
+					<div class="mypage-btn">
+						<%= link_to "User Edit", edit_user_path(@user), class: "btn" %>
+					</div>
+					<div class="mypage-btn">
+						<%= link_to "Favorite", user_favorites_path(@user), class: "btn" %>
+					</div>
+					<div class="mypage-btn">
+						<%= link_to "Unsubscribe", user_path(@user), method: :delete,  "data-confirm" => " Are you sure?", class: "btn"  %>
+					</div>
+					<div class="mypage-btn">
+						<%= link_to "Add Receivers", root_path, class: "btn" %>
+					</div>
+				</div>
 			</div>
 
 		    </div>
