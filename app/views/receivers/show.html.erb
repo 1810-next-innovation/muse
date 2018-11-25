@@ -1,0 +1,8 @@
+<h1>宛先一覧</h1>
+<% @receivers.each do |receiver| %>
+	<%= receiver.receiver_name %>
+	<%= receiver.receiver_post_code %>
+	<%= receiver.receiver_address %>
+	<%= link_to "編集", edit_user_receivers_path(@user) %>
+	<%= link_to "削除" %>
+<% end %>
