@@ -11,7 +11,7 @@ class ReceiversController < ApplicationController
   def create
   	@receiver = current_user.receivers.build(receiver_params)
   	@receiver.save
-  	redirect_to user_receivers(user.id)
+  	redirect_to root_path
   end
 
   def edit
