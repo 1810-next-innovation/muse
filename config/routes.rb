@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  get 'users/:id/receiver', to: 'users#receiver', as: "user_receiver"
+  get 'users/:id/editr', to: 'users#editr', as: "edit_user_receivers"
 devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
       }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   resources :users do
     resource :favorites, only: [:show]
-    resources :receivers, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   get 'contacts/about', to: 'contacts#about'

@@ -1,0 +1,26 @@
+<!-- Receiver内容の編集画面 -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+    	<h1>Edit Receivers</h1>
+    	<%= form_for(@user) do |f| %>
+
+				<label>Receiver</label>
+				<div class="field">
+				  <%= f.fields_for :receivers do |r| %>
+				    <%= render 'receiver_fields', f: r %>
+				  <% end %>
+				</div>
+
+				<div class="field">
+				  <%= link_to_add_association 'Receiver +', f, :receivers,
+				  	data: { association_insertion_method: 'before' },
+				  	class: "btn btn-md btn-primary" %>
+				</div>
+				<%= f.submit 'Update Receiver', class: "col-xs-12 btn btn-primary" %>
+
+			<% end %>
+			<%= link_to 'Back', :back %>
+		</div>
+	</div>
+</div>

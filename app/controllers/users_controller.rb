@@ -10,8 +10,6 @@ class UsersController < ApplicationController
 		@users = User.search(params[:search])
 	end
 
-	
-
 	def show
 		@user = User.find(params[:id])
 	end
@@ -27,11 +25,18 @@ class UsersController < ApplicationController
 	end
 
 	def update
-        @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to user_path(@user.id)
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user.id)
 	end
 
+	def receiver
+		@user = User.find(params[:id])
+	end
+
+	def editr
+		@user = User.find(params[:id])
+	end
 
 	private
 
@@ -49,6 +54,7 @@ class UsersController < ApplicationController
     end
 
 	def user_params
-		params.require(:user).permit(:name, :japanese_syllabaries, :gender, :post_code, :address, :phone_number, :email, :birthday, :reviewer_name)
+		params.require(:user).permit(:name, :japanese_syllabaries, :gender, :post_code, :address, :phone_number, :email, :birthday, :reviewer_name,
+																	receivers_attributes: [:id, :receiver_name, :receiver_post_code, :receiver_address, :receiver_phone_number, :_destroy])
 	end
 end

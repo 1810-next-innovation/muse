@@ -1,0 +1,11 @@
+<!-- receivers/editのcocoonによるrender先 -->
+
+	<div class="nested-fields form-inline">
+		<div class=form-group>
+    	<%= f.text_field :receiver_name %>
+    	<%= f.text_field :receiver_post_code %>
+    	<%= f.text_field :receiver_address %>
+    	<%= f.text_field :receiver_phone_number %>
+		</div>
+    <%= link_to_remove_association "remove receiver", f %>
+  </div>
