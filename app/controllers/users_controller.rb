@@ -30,11 +30,11 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
 	end
 
-	def receiver
+	def receivers
 		@user = User.find(params[:id])
 	end
 
-	def editr
+	def edit_receivers
 		@user = User.find(params[:id])
 	end
 

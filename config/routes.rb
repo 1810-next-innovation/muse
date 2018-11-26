@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/:id/receiver', to: 'users#receiver', as: "user_receiver"
-  get 'users/:id/editr', to: 'users#editr', as: "edit_user_receivers"
+  get 'users/:id/receivers', to: 'users#receivers', as: "user_receivers"
+  get 'users/:id/edit_receivers', to: 'users#edit_receivers', as: "edit_user_receivers"
 devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
