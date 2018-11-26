@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row">
+		<h1>Details of Order</h1>
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-offset-1 col-xs-2">
+							<p>Order Date</p>
+							<p><strong><%= @order.created_at.strftime("%Y-%m-%d") %></strong></p>
+						</div>
+						<div class="col-xs-2">
+							<p>Grand Total</p>
+							<p><strong>¥<%= @order.grand_total %></strong></p>
+						</div>
+						<div class="col-xs-2">
+							<p>items</p>
+							<p><strong><%= @order.cart.cart_items.count %></strong></p>
+						</div>
+						<div class="col-xs-2">
+							<p>Destination</p>
+							<div class="small"><strong><%= @order.receiver.receiver_name %></strong></div>
+							<div class="small"><strong><%= @order.receiver.receiver_post_code %></strong></div>
+							<div class="small"><strong><%= @order.receiver.receiver_address %></strong></div>
+							<div class="small"><strong><%= @order.receiver.receiver_phone_number %></strong></div>
+						</div>
+						<div class="col-xs-2">
+							<p>Order ID</p>
+							<p><strong><%= @order.id %></strong></p>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+							<p class="text-left">Status : <strong><%= @order.status %></strong></p>
+							<% @cart_items.each do |cart_item| %>
+								<div class="row">
+									<div class="col-xs-2">
+										<%= link_to (attachment_image_tag cart_item.buy_datum, :buy_item_image, :fill, 40, 40,
+										fallback: "no_image_small.jpg", alt:"Cover image"), item_path(cart_item.item) %>
+									</div>
+									<div class="col-xs-10">
+										<div class="small">
+											<%= link_to cart_item.buy_datum.buy_name, item_path(cart_item.item) %>
+										</div>
+										<div class="small">¥<%= cart_item.buy_datum.buy_price %></div>
+										<div class="small">quantity : <%= cart_item.quantity %></div>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%= paginate @cart_items, class: "pagenate" %>
+	</div>
+</div>
