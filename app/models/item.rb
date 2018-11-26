@@ -8,15 +8,22 @@ class Item < ApplicationRecord
 	has_many :favorites
 	has_many :users, through: :favorites
 	has_many :cart_items,  dependent: :destroy
+	has_many :reviews,     dependent: :destroy
+	belongs_to :label
 
 	has_many :discs,       dependent: :destroy, inverse_of: :item
 	accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
 
-	has_many :reviews,     dependent: :destroy
-	belongs_to :label
-	validates :label,     presence: true
+	validates :label_name, presence: true
+	validates :item_name, presence: true
+	validates :price, presence: true
+	validates :release_date, presence: true
+	validates :stock, presence: true
+	validates :disc_name, presence: true
+	validates :music_name, presence: true
+	validates :artist_name, presence: true
 
-	  def self.search(search)
+	def self.search(search)
     if search
       Item.where(['item_name LIKE ?', "%#{search}%"])
     else

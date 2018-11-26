@@ -4,6 +4,6 @@ class MusicName < ApplicationRecord
 	belongs_to :genre
 	belongs_to :artist
 
-	validates :genre_id,  presence: true
-	validates :artist_id, presence: true
+	validates :genre,  presence: true
+	validates :artist, presence: true
 end
