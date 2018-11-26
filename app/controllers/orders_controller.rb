@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def index_all
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page])
   end
 
   def update_status
@@ -16,11 +16,14 @@ class OrdersController < ApplicationController
     redirect_to orders_all_path
   end
 
+	def show
+		@order = Order.find(params[:id])
+		@cart_items = @order.cart.cart_items.page(params[:page])
+	end
+
   def new
   	@order = current_cart.build_order
-
     @receivers = current_user.receivers.all
-
     @cart_items = current_cart.cart_items.all
     sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity }
     @grand_total = sub_total_arry.inject(:+)
@@ -68,7 +71,7 @@ class OrdersController < ApplicationController
 
 			#新しくカートを作成
 	    Cart.create(user_id: current_user.id)
-	  	redirect_to orders_path
+	  	redirect_to user_orders_path(current_user)
 
 		else
 			render "/orders/new"
