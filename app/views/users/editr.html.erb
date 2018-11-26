@@ -1,11 +1,14 @@
 <!-- Receiver内容の編集画面 -->
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-10 col-md-offset-1 clearfix">
     	<h1>Edit Receivers</h1>
+<!-- cocoon -->
+				<label>Receiver Name</label>
+				<label style="padding-left: 80px;" >Post Code</label>
+				<label style="padding-left: 110px;">Address</label>
+				<label style="padding-left: 120px;">Phone Number</label>
     	<%= form_for(@user) do |f| %>
-
-				<label>Receiver</label>
 				<div class="field">
 				  <%= f.fields_for :receivers do |r| %>
 				    <%= render 'receiver_fields', f: r %>
@@ -18,7 +21,7 @@
 				  	class: "btn btn-md btn-primary" %>
 				</div>
 				<%= f.submit 'Update Receiver', class: "col-xs-12 btn btn-primary" %>
-
+<!-- cocoon -->
 			<% end %>
 			<%= link_to 'Back', :back %>
 		</div>

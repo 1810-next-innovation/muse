@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-10 col-md-offset-1 clearfix">
+
 			<h1>Receivers</h1>
 			<%= link_to "Edit", edit_user_receivers_path(@user), class: "btn-sm btn-success" %>
 			<table class="table table-hover">
@@ -11,6 +12,7 @@
 			      <th>Address</th>
 			      <th>Phone Number</th>
 			    </tr>
+			  </thead>
 			  <tbody>
 					<% @user.receivers.each do |receiver| %>
 			  		<tr>
@@ -20,8 +22,9 @@
 							<td><%= receiver.receiver_phone_number %></td>
 						</tr>
 					<% end %>
-			  <tbody>
+			  </tbody>
 			</table>
+
 		</div>
 	</div>
 </div>
