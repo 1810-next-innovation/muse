@@ -58,9 +58,11 @@ Cart.create!(user_id: 2)
 	)
 end
 
-Label.create!(label_name: "avex")
-Artist.create!(artist_name: "宇多田ヒカル")
-Genre.create!(genre_name: "Jpop")
+5.times do |n|
+	Label.create!(label_name: Faker::Company.name)
+	Artist.create!(artist_name: Faker::Music.band)
+	Genre.create!(genre_name: Faker::Music.genre)
+end
 
 # 20.times do |n|
 # 	Label.create!(
