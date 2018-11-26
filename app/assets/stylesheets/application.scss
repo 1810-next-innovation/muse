@@ -275,7 +275,7 @@ h1:after {
  }
 
 .hide {
- display:none;
+  display:none;
  }
 
  .local-nav ul{
@@ -405,6 +405,7 @@ h1:after {
 
 /* privacy policy */
 /* terms of use */
+/* service */
 /* hrは規約関連共通とする */
 hr {
     margin-top: 5px;
@@ -419,7 +420,7 @@ hr {
   margin: 0 auto;
 }
 
-.pp-title,.tou-title {
+.pp-title,.tou-title,.about-title {
   padding:15px;
 }
 
@@ -431,11 +432,24 @@ hr {
   color: #3378b7a3;
 }
 
-.pp-text,.tou-text {
+.about-title h4 {
+  color: #ffc107d9;
+}
+
+.pp-text,.tou-text,.about-text {
   width: 90%;
   display: block;
   margin: 7px auto;
 }
+
+ .video {
+  text-align: center;
+ }
+
+video {
+  width: 75%;
+}
+
 /* Users */
 
 .admin {
