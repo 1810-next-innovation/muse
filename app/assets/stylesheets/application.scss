@@ -358,7 +358,6 @@ h1:after {
 
 /* CONTACT */
 
-
 .contact-tab {
   width: 70%;
   margin: 0 auto;
@@ -448,6 +447,7 @@ hr {
 
 video {
   width: 75%;
+  margin:10px;
 }
 
 /* Users */
@@ -542,6 +542,45 @@ a.btn:active:after {
   opacity: 1;
 }
 
+/*edit*/
+.edit-container {
+  margin-top: 10px;
+}
+
+#edit-detail {
+  margin:0 auto;
+}
+
+.edit-info {
+  border:1px solid #3a3a3a;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.info {
+  text-align: center;
+  font-size: 20px;
+  margin: 10px;
+}
+
+#edit-detail label {
+  margin-right: 10px;
+}
+
+#edit-detail input {
+  width: 25%;
+  margin: 5px;
+}
+
+.userbox,.user-update {
+  text-align: center;
+}
+
+.gender {
+  width: 50px !important;
+}
+
+
 /*gridのgutter調整*/
 .row-0{
     margin-left:0px;
@@ -589,5 +628,4 @@ a.btn:active:after {
     }
 }
 
-/*  */
 
