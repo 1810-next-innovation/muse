@@ -10,6 +10,8 @@ class Item < ApplicationRecord
 	has_many :cart_items,  dependent: :destroy
 	has_many :reviews,     dependent: :destroy
 	belongs_to :label
+	belongs_to :artist
+	belongs_to :genre
 
 	has_many :discs, dependent: :destroy, inverse_of: :item
 	accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
