@@ -16,7 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-/* 共通 */
+/*---------------------  共通   ---------------------------*/
 
 * {
   box-sizing: border-box;
@@ -37,7 +37,7 @@ header, footer {
 }
 
 footer {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .header-nav-item {
@@ -50,7 +50,24 @@ footer {
   font-size: 32px;
 }
 
-/* 見出し */
+.btn-default {
+    display: inline-block;
+    padding: 0.3em 1em;
+    letter-spacing: 0.1em; /*文字間隔*/
+    text-decoration: none;
+    text-align: center;
+    color: #afafb0;
+    border: solid 2px #afafb0;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.btn-default:hover {
+    background: #afafb0;
+    color: #fff;
+}
+
+/*---------------------  見出し   ---------------------------*/
 
 h1 {
     margin: 25px;
@@ -78,7 +95,7 @@ h1:after {
   right: 10px;
 }
 
-/* モーダル */
+/*---------------------  modal   ---------------------------*/
 
 .modalh2 {
   padding: .5em .75em;
@@ -130,7 +147,7 @@ h1:after {
   display: block;
 }
 
-/* グローバルナビ */
+/*---------------------  global nav   ---------------------------*/
 .globnav {
   margin: 0;
   padding: 0;
@@ -191,7 +208,7 @@ h1:after {
 
 /* TOP */
 
-/* auto slide show*/
+/*---------------------   auto slide show   ---------------------------*/
 .in {
   position: relative;
   width: 100%;
@@ -206,7 +223,7 @@ h1:after {
   height: 500px;
 }
 
-/* slick slide show */
+/*---------------------   slick slide show   ---------------------------*/
 .slider-container {
   width: 1300px;
   margin: 0 auto;
@@ -239,7 +256,7 @@ h1:after {
   /*max-width: 100%;*/
 }
 
-/* pick up contents */
+/*---------------------   pick up contents  ---------------------------*/
 .sub-nav {
   font-size: 17px;
   padding: .5em .75em;
@@ -248,9 +265,8 @@ h1:after {
   border-left: 6px solid #3a3a3a;
 }
 
-/* top sub-navbar */
-/* rnk */
-
+/*---------------------  top sub-navbar  -----------------------------*/
+/*---------------------      rnk          ---------------------------*/
 .local-navbar {
   overflow: hidden;
  }
@@ -356,8 +372,7 @@ h1:after {
   font-size: 18px;
 }
 
-/* CONTACT */
-
+/*---------------------    contact   -----------------------------*/
 .contact-tab {
   width: 70%;
   margin: 0 auto;
@@ -368,7 +383,6 @@ h1:after {
  }
 
 .tab li {
-  /*background: #ccc;*/
   padding: 9px 51px;
   float:left;
   margin-right:1px;
@@ -401,10 +415,9 @@ h1:after {
   width: 80%;
 }
 
-
-/* privacy policy */
-/* terms of use */
-/* service */
+/*--------------------- privacy policy  --------------------------*/
+/*--------------------- terms of use  ---------------------------*/
+/*---------------------    service   -----------------------------*/
 /* hrは規約関連共通とする */
 hr {
     margin-top: 5px;
@@ -450,8 +463,7 @@ video {
   margin:10px;
 }
 
-/* Users */
-
+/*--------------------- users --------------------------*/
 .admin {
   margin: 40px 20px;
 }
@@ -460,8 +472,7 @@ video {
   padding-bottom: 20px
 }
 
-/* about us */
-
+/*--------------------- about us ----------------------*/
 dl,dt,dd {
   box-sizing: border-box;
 }
@@ -499,7 +510,7 @@ dd:after {
   clear: both;
 }
 
-/*My page*/
+/*--------------------- Mypage btn ----------------------*/
 .mypage-btn {
   float: left;
   padding:10px;
@@ -542,7 +553,7 @@ a.btn:active:after {
   opacity: 1;
 }
 
-/*edit*/
+/*----------------------- user edit ------------------------*/
 .edit-container {
   margin-top: 10px;
 }
@@ -554,7 +565,7 @@ a.btn:active:after {
 .edit-info {
   border:1px solid #3a3a3a;
   width: 70%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .info {
