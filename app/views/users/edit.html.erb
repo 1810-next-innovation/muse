@@ -1,73 +1,79 @@
-<h2>edit</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 clearfix">
+      <div class="edit-info">
+        <h2 class="info">User information editing</h2>
+      </div>
 
-<%= form_for(@user) do |f| %>
+      <div class="edit-container">
+        <div id="edit-detail">
+          <%= form_for(@user) do |f| %>
+            <div class="userbox">
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+            </div>
 
+            <div class="userbox">
+              <%= f.label :japanese_syllabaries %>
+              <%= f.text_field :japanese_syllabaries %>
+            </div>
 
-<div class="field">
-    <label> Name </label><br>
-    <%= f.text_field :name %>
+            <div class="userbox">
+              <%= f.label :gender %>
+              <%= f.label :man %>
+              <%= f.radio_button :gender, :man, class:"gender" %>
+              <%= f.label :woman %>
+              <%= f.radio_button :gender, :woman, class:"gender" %>
+            </div>
 
+            <div class="userbox">
+              <%= f.label :post_code %>
+              <%= f.text_field :post_code %>
+            </div>
+
+            <div class="userbox">
+              <%= f.label :address %>
+              <%= f.text_field :address %>
+            </div>
+
+            <div class="userbox">
+              <%= f.label :phone_number %>
+              <%= f.telephone_field :phone_number %>
+            </div>
+
+            <div class="userbox">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"email" %>
+            </div>
+
+            <div class="userbox">
+              <%= f.label :birthday %>
+              <%= f.date_select(
+                    :birthday,
+                    start_year: 1930,
+                    end_year:   (Time.now.year - 18),
+                    default:    Date.new(1989, 1, 1)) %>
+            </div>
+
+            <div class="userbox">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", class:"password" %>
+            </div>
+
+            <div class="userbox">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"password_confirm" %>
+            </div>
+
+            <div class="user-update">
+              <%= f.submit "Update Account", class: "btn-default" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <label>Japanese Svllabaries </label><br>
-    <%= f.text_field :japanese_syllabaries %>
-
-  </div>
-
-   <div class="field">
-    <label>Gender </label><br>
-   <%= f.label :man %>
-    <%= f.radio_button :gender, :man %>
-    <%= f.label :woman %>
-    <%= f.radio_button :gender, :woman %>
-  </div>
-
-  <div class="field">
-    <label>Post Cord </label><br>
-    <%= f.text_field :post_code %>
-  </div>
-
-  <div class="field">
-    <label>Address </label><br>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <label>Phone_Number </label><br>
-    <%= f.telephone_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"email" %>
-  </div>
-  <div class="field">
-    <label>Birthday </label><br>
-    <%= f.date_select(
-          :birthday,
-          start_year: 1930,
-          end_year:   (Time.now.year - 18),
-          default:    Date.new(1989, 1, 1)) %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"password_confirm" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update Account", class:"btn btn-success" %>
-  </div>
-
-
-
-<% end %>
+</div>

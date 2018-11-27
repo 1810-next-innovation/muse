@@ -16,17 +16,22 @@
 	  	</div>
 	  </div>
 
-   	<div>
-  		<ul>
-  		<% @labels.each do |label| %>
-  			<li>
-  				<%= label.label_name %>
-
-          <%= link_to "Destroy", label_path(label), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
-  			</li>
-  		<% end %>
-  		</ul>
-  	</div>
+   	<table class="table">
+      <thead>
+        <tr>
+          <th>Label Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @labels.each do |label| %>
+        <tr>
+          <td><%= label.label_name %></td>
+          <td><%= link_to "Destroy", label_path(label), method: :delete, class: "btn-xs btn-danger", "data-confirm" => "本当に消しますか?" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 <!-- モーダルエリアここから -->
     </div>
     <div id="closemodal" class="closemodal">

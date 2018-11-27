@@ -16,7 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-/* 共通 */
+/*---------------------  共通   ---------------------------*/
 
 * {
   box-sizing: border-box;
@@ -37,7 +37,7 @@ header, footer {
 }
 
 footer {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .header-nav-item {
@@ -50,7 +50,24 @@ footer {
   font-size: 32px;
 }
 
-/* 見出し */
+.btn-default {
+    display: inline-block;
+    padding: 0.3em 1em;
+    letter-spacing: 0.1em; /*文字間隔*/
+    text-decoration: none;
+    text-align: center;
+    color: #afafb0;
+    border: solid 2px #afafb0;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.btn-default:hover {
+    background: #afafb0;
+    color: #fff;
+}
+
+/*---------------------  見出し   ---------------------------*/
 
 h1 {
     margin: 25px;
@@ -78,7 +95,7 @@ h1:after {
   right: 10px;
 }
 
-/* モーダル */
+/*---------------------  modal   ---------------------------*/
 
 .modalh2 {
   padding: .5em .75em;
@@ -130,7 +147,7 @@ h1:after {
   display: block;
 }
 
-/* グローバルナビ */
+/*---------------------  global nav   ---------------------------*/
 .globnav {
   margin: 0;
   padding: 0;
@@ -191,7 +208,7 @@ h1:after {
 
 /* TOP */
 
-/* auto slide show*/
+/*---------------------   auto slide show   ---------------------------*/
 .in {
   position: relative;
   width: 100%;
@@ -206,7 +223,7 @@ h1:after {
   height: 500px;
 }
 
-/* slick slide show */
+/*---------------------   slick slide show   ---------------------------*/
 .slider-container {
   width: 1300px;
   margin: 0 auto;
@@ -239,7 +256,7 @@ h1:after {
   /*max-width: 100%;*/
 }
 
-/* pick up contents */
+/*---------------------   pick up contents  ---------------------------*/
 .sub-nav {
   font-size: 17px;
   padding: .5em .75em;
@@ -248,8 +265,12 @@ h1:after {
   border-left: 6px solid #3a3a3a;
 }
 
-/* top sub-navbar */
-/* rnk */
+/*---------------------  top sub-navbar  -----------------------------*/
+/*---------------------      rnk          ---------------------------*/
+.local-navbox {
+  width: 75%;
+  margin: 0 auto;
+}
 
 .local-navbar {
   overflow: hidden;
@@ -263,11 +284,6 @@ h1:after {
   color: white;
  }
 
-.local-navbar li.active {
-  background: #fff;
-  color: #3a3a3a;
- }
-
 .rnk-content li {
   list-style-type: none;
   border: 1px solid #3a3a3a;
@@ -275,7 +291,7 @@ h1:after {
  }
 
 .hide {
- display:none;
+  display:none;
  }
 
  .local-nav ul{
@@ -290,17 +306,18 @@ h1:after {
 .local-nav li{
   float: left;
   margin: 0 1px;
-  background: #3397de;
+  background: #fff;
+  color: #3a3a3a;
 }
 
 .local-nav li:hover{
-  background: #2d85ba;
+  background: #f6ae54;
+  color: #fff;
 }
 
 .local-nav li:active{
-  background: #297aa3;
+  background: #f3981d;
   position: relative;
-  top: 1px;
 }
 
 .local-nav li:first-child{
@@ -356,9 +373,7 @@ h1:after {
   font-size: 18px;
 }
 
-/* CONTACT */
-
-
+/*---------------------    contact   -----------------------------*/
 .contact-tab {
   width: 70%;
   margin: 0 auto;
@@ -369,7 +384,6 @@ h1:after {
  }
 
 .tab li {
-  /*background: #ccc;*/
   padding: 9px 51px;
   float:left;
   margin-right:1px;
@@ -402,9 +416,9 @@ h1:after {
   width: 80%;
 }
 
-
-/* privacy policy */
-/* terms of use */
+/*--------------------- privacy policy  --------------------------*/
+/*--------------------- terms of use  ---------------------------*/
+/*---------------------    service   -----------------------------*/
 /* hrは規約関連共通とする */
 hr {
     margin-top: 5px;
@@ -419,7 +433,7 @@ hr {
   margin: 0 auto;
 }
 
-.pp-title,.tou-title {
+.pp-title,.tou-title,.about-title {
   padding:15px;
 }
 
@@ -431,13 +445,26 @@ hr {
   color: #3378b7a3;
 }
 
-.pp-text,.tou-text {
+.about-title h4 {
+  color: #ffc107d9;
+}
+
+.pp-text,.tou-text,.about-text {
   width: 90%;
   display: block;
   margin: 7px auto;
 }
-/* Users */
 
+ .video {
+  text-align: center;
+ }
+
+video {
+  width: 75%;
+  margin:10px;
+}
+
+/*--------------------- users --------------------------*/
 .admin {
   margin: 40px 20px;
 }
@@ -446,8 +473,7 @@ hr {
   padding-bottom: 20px
 }
 
-/* about us */
-
+/*--------------------- about us ----------------------*/
 dl,dt,dd {
   box-sizing: border-box;
 }
@@ -485,7 +511,7 @@ dd:after {
   clear: both;
 }
 
-/*My page*/
+/*--------------------- Mypage btn ----------------------*/
 .mypage-btn {
   float: left;
   padding:10px;
@@ -527,6 +553,45 @@ a.btn:active:after {
   height: 350%;
   opacity: 1;
 }
+
+/*----------------------- user edit ------------------------*/
+.edit-container {
+  margin-top: 10px;
+}
+
+#edit-detail {
+  margin:0 auto;
+}
+
+.edit-info {
+  border:1px solid #3a3a3a;
+  width: 70%;
+  margin: 20px auto;
+}
+
+.info {
+  text-align: center;
+  font-size: 20px;
+  margin: 10px;
+}
+
+#edit-detail label {
+  margin-right: 10px;
+}
+
+#edit-detail input {
+  width: 25%;
+  margin: 5px;
+}
+
+.userbox,.user-update {
+  text-align: center;
+}
+
+.gender {
+  width: 50px !important;
+}
+
 
 /*gridのgutter調整*/
 .row-0{
@@ -575,5 +640,4 @@ a.btn:active:after {
     }
 }
 
-/*  */
 

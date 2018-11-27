@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def index_all
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page])
   end
 
   def update_status
@@ -16,11 +16,14 @@ class OrdersController < ApplicationController
     redirect_to orders_all_path
   end
 
+	def show
+		@order = Order.find(params[:id])
+		@cart_items = @order.cart.cart_items.page(params[:page])
+	end
+
   def new
   	@order = current_cart.build_order
-
     @receivers = current_user.receivers.all
-
     @cart_items = current_cart.cart_items.all
     sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity }
     @grand_total = sub_total_arry.inject(:+)
@@ -66,9 +69,24 @@ class OrdersController < ApplicationController
 				item.save
 			end
 
+      #weekly_salesを更新
+      buy_data = BuyDatum.where(buy_ordered_at: 1.week.ago..Time.now)
+      item_id_uniq = buy_data.map{|a| a.cart_item.item_id}.uniq
+      weekly_sales_data = item_id_uniq.map do |c|
+        {item_id: c,
+         buy_quantity_total: buy_data.select{|a| a.cart_item.item_id == c}
+                               .map{|a| a.buy_quantity}.inject(:+)
+        }
+      end
+      weekly_sales_data.each do |m|
+        item = Item.find(m[:item_id])
+        item.weekly_sales = m[:buy_quantity_total]
+        item.save
+      end
+
 			#新しくカートを作成
 	    Cart.create(user_id: current_user.id)
-	  	redirect_to orders_path
+	  	redirect_to user_orders_path(current_user)
 
 		else
 			render "/orders/new"

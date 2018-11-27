@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
 
 	def top
-		item_in_order_of_sales = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse
-		@items = item_in_order_of_sales.take(5)
+		@items_monthly = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse.take(5)
+
+		@items_weekly = Item.all.sort_by{ |k, v| k.weekly_sales }.reverse.take(5)
 	end
 
 	def about
@@ -48,14 +49,14 @@ class ItemsController < ApplicationController
 		if @item.save
 			redirect_to items_path
 		else
-		@label = Label.new
-		@labels = Label.all
+			@label = Label.new
+			@labels = Label.all
 
-		@artist = Artist.new
-		@artists = Artist.all
+			@artist = Artist.new
+			@artists = Artist.all
 
-		@genre = Genre.new
-		@genres = Genre.all
+			@genre = Genre.new
+			@genres = Genre.all
 			render :new
 		end
 	end
@@ -75,8 +76,15 @@ class ItemsController < ApplicationController
 
 	def update
 		@item = Item.find(params[:id])
-		@item.update(item_params)
-		redirect_to item_path(@item.id)
+		if @item.update(item_params)
+			redirect_to item_path(@item.id)
+		else
+			@item = Item.find(params[:id])
+			@labels = Label.all
+			@artists = Artist.all
+			@genres = Genre.all
+			render :edit
+		end
 	end
 
 	def destroy
@@ -87,7 +95,7 @@ class ItemsController < ApplicationController
 
 private
 	def item_params
-  	params.require(:item).permit(:item_name, :item_image, :price, :stock, :release_date, :opinion, :label_id,
+  	params.require(:item).permit(:label_id, :artist_id, :genre_id, :item_name, :item_image, :price, :stock, :release_date, :opinion,
   															 discs_attributes: [:id, :disc_name, :_destroy,
   															 music_names_attributes: [:id, :music_name, :artist_id, :genre_id, :_destroy]])
   end

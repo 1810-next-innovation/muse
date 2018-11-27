@@ -3,10 +3,7 @@ class CartsController < ApplicationController
 
   def show
   	@cart_items = current_cart.cart_items.page(params[:page])
-    @user = User.find(current_user.id)
-    sub_total_arry = @cart_items.map { |a| a.item.price * a.quantity }
-    @grand_total = sub_total_arry.inject(:+)
-    @cart = current_cart
+    @grand_total = @cart_items.map { |a| a.item.price * a.quantity }.inject(:+)
   end
 
   def add_item
@@ -15,20 +12,20 @@ class CartsController < ApplicationController
   	end
   	@cart_item.quantity += params[:cart_item][:quantity].to_i
   	@cart_item.save
-  	redirect_to current_cart
+  	redirect_to user_cart_path(current_user, current_cart)
   end
 
   def update_item
     cart_item = CartItem.find(params[:id])
     cart_item.quantity = params[:cart_item][:quantity].to_i
   	cart_item.save
-  	redirect_to current_cart
+  	redirect_to user_cart_path(current_user, current_cart)
   end
 
   def delete_item
     cart_item = CartItem.find(params[:id])
   	cart_item.destroy
-  	redirect_to current_cart
+  	redirect_to user_cart_path(current_user, current_cart)
   end
 
   private
