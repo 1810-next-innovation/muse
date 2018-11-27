@@ -49,14 +49,14 @@ class ItemsController < ApplicationController
 		if @item.save
 			redirect_to items_path
 		else
-		@label = Label.new
-		@labels = Label.all
+			@label = Label.new
+			@labels = Label.all
 
-		@artist = Artist.new
-		@artists = Artist.all
+			@artist = Artist.new
+			@artists = Artist.all
 
-		@genre = Genre.new
-		@genres = Genre.all
+			@genre = Genre.new
+			@genres = Genre.all
 			render :new
 		end
 	end
@@ -76,8 +76,15 @@ class ItemsController < ApplicationController
 
 	def update
 		@item = Item.find(params[:id])
-		@item.update(item_params)
-		redirect_to item_path(@item.id)
+		if @item.update(item_params)
+			redirect_to item_path(@item.id)
+		else
+			@item = Item.find(params[:id])
+			@labels = Label.all
+			@artists = Artist.all
+			@genres = Genre.all
+			render :edit
+		end
 	end
 
 	def destroy
