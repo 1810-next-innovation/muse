@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
 
 	def top
-		item_in_order_of_sales = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse
-		@items = item_in_order_of_sales.take(5)
+		@items_monthly = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse.take(5)
+
+		@items_weekly = Item.all.sort_by{ |k, v| k.weekly_sales }.reverse.take(5)
 	end
 
 	def about

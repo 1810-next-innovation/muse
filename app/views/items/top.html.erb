@@ -21,103 +21,68 @@
   </div>
 </div>
 
-<%= @items.each do |item| %>
-	<p><%= item.item_name %></p>
-<% end %>
 
 <p class="sub-nav"> MUSE TOP10</p>
-<div class="container">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="local-navbox">
-          <nav class="local-nav clearfix">
-            <ul class="local-navbar">
-              <li class="local-nav-item active"> Monthy</li>
-              <li class="local-nav-item"> Weekly</li>
-            </ul>
-          </nav>
+  <div class="local-navbox">
+    <nav class="local-nav clearfix">
+      <ul class="local-navbar">
+        <li class="local-nav-item active"> Monthy</li>
+        <li class="local-nav-item"> Weekly</li>
+      </ul>
+    </nav>
 
-        <ul class="rnk-content">
-          <li>
-            <div class="rnk-item-container clearfix">
-              <hr>
-              <div class="rnk-main">
-                <div class="item-rnk">
-                  <div class="lank"> 1 </div>
-                </div>
-                <div class="rnk-item-details">
-                  <img src="assets/img/rnk1.jpg">
-                </div>
-                <div class="rnk-title">
-                  <p> Like I'm Gonna Lose You</p>
-                </div>
-                <div class="rnk-artist">
-                  <p> Meghan Trainor</p>
-                </div>
+    <ul class="rnk-content">
+      <li>
+        <% n = 1 %>
+        <% @items_monthly.each do |item| %>
+          <div class="rnk-item-container clearfix">
+            <hr>
+            <div class="rnk-main">
+              <div class="item-rnk">
+                <div class="lank"><%= n %></div>
+              </div>
+              <div class="rnk-item-details">
+                <img src="assets/img/rnk1.jpg">
+              </div>
+              <div class="rnk-title">
+                <p> main_artist_name</p>
+              </div>
+              <div class="rnk-artist">
+                <p><%= item.item_name %></p>
               </div>
             </div>
+          </div>
+        <% n += 1 %>
+        <% end %>
+      </li>
+    </ul>
 
-            <div class="rnk-item-container clearfix">
-              <hr>
-              <div class="rnk-main">
-                <div class="item-rnk">
-                  <div class="lank"> 2</div>
-                </div>
-                <div class="rnk-item-details">
-                  <img src="assets/img/rnk2.jpg">
-                </div>
-                <div class="rnk-title">
-                  <p> Queen</p>
-                </div>
-                <div class="rnk-artist">
-                  <p> Nicki Minaj</p>
-                </div>
+    <ul class="rnk-content">
+      <li class="hide">
+        <% n = 1 %>
+        <% @items_weekly.each do |item| %>
+          <div class="rnk-item-container clearfix">
+            <hr>
+            <div class="rnk-main">
+              <div class="item-rnk">
+                <div class="lank"><%= n %></div>
+              </div>
+              <div class="rnk-item-details">
+                <img src="assets/img/rnk1.jpg">
+              </div>
+              <div class="rnk-title">
+                <p> main_artist_name2</p>
+              </div>
+              <div class="rnk-artist">
+                <p><%= item.item_name %></p>
               </div>
             </div>
-          </li>
-
-          <li class="hide">
-            <div class="rnk-item-container clearfix">
-              <hr>
-              <div class="rnk-main">
-                <div class="item-rnk">
-                  <div class="lank"> 3 </div>
-                </div>
-                <div class="rnk-item-details">
-                  <img src="assets/img/rnk3.jpg">
-                </div>
-                <div class="rnk-title">
-                  <p> I Did It Mama (Remixes)</p>
-                </div>
-                <div class="rnk-artist">
-                  <p> Alexandra Stan</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="rnk-item-container clearfix">
-              <hr>
-              <div class="rnk-main">
-                <div class="item-rnk">
-                  <div class="lank"> 4 </div>
-                </div>
-                <div class="rnk-item-details">
-                  <img src="assets/img/rnk4.jpg">
-                </div>
-                <div class="rnk-title">
-                  <p> Badlands</p>
-                </div>
-                <div class="rnk-artist">
-                  <p> Halsey</p>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+          </div>
+        <% n += 1 %>
+        <% end %>
+      </li>
+    </ul>
   </div>
-</div>
 
 <div id="play">
   <audio preload="auto" id="sound" src="/assets/chainsmokers.mp3" autoplay>

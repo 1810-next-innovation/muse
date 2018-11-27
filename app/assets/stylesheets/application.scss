@@ -267,6 +267,11 @@ h1:after {
 
 /*---------------------  top sub-navbar  -----------------------------*/
 /*---------------------      rnk          ---------------------------*/
+.local-navbox {
+  width: 75%;
+  margin: 0 auto;
+}
+
 .local-navbar {
   overflow: hidden;
  }
@@ -277,11 +282,6 @@ h1:after {
   margin-right:1px;
   border: 1px solid #3a3a3a;
   color: white;
- }
-
-.local-navbar li.active {
-  background: #fff;
-  color: #3a3a3a;
  }
 
 .rnk-content li {
@@ -306,17 +306,18 @@ h1:after {
 .local-nav li{
   float: left;
   margin: 0 1px;
-  background: #3397de;
+  background: #fff;
+  color: #3a3a3a;
 }
 
 .local-nav li:hover{
-  background: #2d85ba;
+  background: #f6ae54;
+  color: #fff;
 }
 
 .local-nav li:active{
-  background: #297aa3;
+  background: #f3981d;
   position: relative;
-  top: 1px;
 }
 
 .local-nav li:first-child{

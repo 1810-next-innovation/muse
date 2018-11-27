@@ -69,6 +69,21 @@ class OrdersController < ApplicationController
 				item.save
 			end
 
+      #weekly_salesを更新
+      buy_data = BuyDatum.where(buy_ordered_at: 1.week.ago..Time.now)
+      item_id_uniq = buy_data.map{|a| a.cart_item.item_id}.uniq
+      weekly_sales_data = item_id_uniq.map do |c|
+        {item_id: c,
+         buy_quantity_total: buy_data.select{|a| a.cart_item.item_id == c}
+                               .map{|a| a.buy_quantity}.inject(:+)
+        }
+      end
+      weekly_sales_data.each do |m|
+        item = Item.find(m[:item_id])
+        item.weekly_sales = m[:buy_quantity_total]
+        item.save
+      end
+
 			#新しくカートを作成
 	    Cart.create(user_id: current_user.id)
 	  	redirect_to user_orders_path(current_user)

@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_042210) do
     t.text "opinion"
     t.integer "stock"
     t.integer "monthly_sales", default: 0
+    t.integer "weekly_sales", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
