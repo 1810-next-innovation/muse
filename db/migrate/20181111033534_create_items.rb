@@ -9,6 +9,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :opinion
       t.integer :stock
 			t.integer :monthly_sales, default: 0
+      t.integer :weekly_sales, default: 0
 
       t.timestamps
     end
