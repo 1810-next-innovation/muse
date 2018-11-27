@@ -1,8 +1,21 @@
-<h1>宛先一覧</h1>
-<% @receivers.each do |receiver| %>
-	<%= receiver.receiver_name %>
-	<%= receiver.receiver_post_code %>
-	<%= receiver.receiver_address %>
-	<%= link_to "編集", edit_user_receiver_path(receiver.user, receiver) %>
-	<%= link_to "削除", user_receiver_path(receiver.user, receiver), method: :delete%>
-<% end %>
+<h1>Receivers</h1>
+<%= link_to "Edit", edit_user_receiver_path(current_user, @receivers), class: "btn-sm btn-success" %>
+<table class="table table-hover">
+  <thead>
+  	<tr>
+      <th>Receiver Name</th>
+      <th>Post Code</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+    </tr>
+  <tbody>
+		<% @receivers.each do |receiver| %>
+  		<tr>
+				<td><%= receiver.receiver_name %></td>
+				<td><%= receiver.receiver_post_code %></td>
+				<td><%= receiver.receiver_address %></td>
+				<td><%= receiver.receiver_phone_number %></td>
+			</tr>
+		<% end %>
+  <tbody>
+</table>

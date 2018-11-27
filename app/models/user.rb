@@ -6,8 +6,6 @@ class User < ApplicationRecord
          
   acts_as_paranoid
 
-
-  has_many :receivers, 							 dependent: :destroy
   has_many :carts,     							 dependent: :destroy
   has_many :orders, through: :carts, dependent: :destroy
   has_many :favorites
@@ -20,6 +18,9 @@ class User < ApplicationRecord
   validates :post_code, presence: true, length: { maximum: 7}
   validates :address, presence: true
   validates :phone_number, presence: true, length: {maximum: 13}
+
+  has_many :receivers, dependent: :destroy, inverse_of: :user
+  accepts_nested_attributes_for :receivers, reject_if: :all_blank, allow_destroy: true
 
 
   def self.search(search)
