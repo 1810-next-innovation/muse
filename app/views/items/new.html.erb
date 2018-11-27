@@ -29,7 +29,7 @@
 
 			<%= form_for(@item) do |f| %>
 
-				<ul style="margin-top: 10px;">
+				<ul style="margin-top: 10px; list-style: none;">
 					<li>
 						<label>Single/Album name</label>
 						<%= f.text_field :item_name %>
@@ -50,12 +50,12 @@
 					</li>
 
 					<li>
-						<label>Price</label>
+						<%= f.label :price %>
 						<%= f.number_field :price %>
 					</li>
 
 					<li>
-						<label>Stock</label>
+						<%= f.label :stock %>
 						<%= f.number_field :stock %>
 					</li>
 
@@ -65,14 +65,23 @@
 					</li>
 
 					<li>
-						<label>Opinion</label>
+						<label>Artist_name</label>
+						<%= f.select :artist_id, @artists.map { |t| [t.artist_name, t.id] } %>
+					</li>
+
+					<li>
+						<label>Genre_name</label>
+						<%= f.select :genre_id, @genres.map { |t| [t.genre_name, t.id] } %>
+					</li>
+
+					<li>
+						<%= f.label :opinion %>
 						<%= f.text_area :opinion %>
 					</li>
 
 <!-- cocoon -->
 
 					<li>
-						<label>Discs</label>
 						<div class="field">
 					    <%= f.fields_for :discs do |d| %>
 					      <%= render 'disc_fields', f: d %>

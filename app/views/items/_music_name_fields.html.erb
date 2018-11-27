@@ -1,20 +1,18 @@
 <!-- items/_disc_fields.html.erbのcocoonによるrender先 -->
 
-<div class="nested-fields form-inline">
+<div class="nested-fields form-inline" style="margin-top: 15px;">
   <div class="form-group">
 
-    <%= f.label :music_name %>
-    <%= f.text_field :music_name %>
-  <%= link_to_remove_association "remove music_name", f %>
-
-	  <div>
 			<label>Artist</label>
 			<%= f.select :artist_id, @artists.map { |t| [t.artist_name, t.id] } %>
-		</div>
-		<div>
+
 			<label>Genre</label>
 			<%= f.select :genre_id, @genres.map { |t| [t.genre_name, t.id] } %>
-		</div>
+
+    	<%= f.label :music_name %>
+    	<%= f.text_field :music_name %>
+  		
+  		<%= link_to_remove_association "remove music_name", f %>
 
   </div>
 </div>

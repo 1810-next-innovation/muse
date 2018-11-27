@@ -10,90 +10,67 @@
       </p>
       <% end %>
       
-      <% if user_signed_in? && current_user.admin? %>
 
       <table class="table table-hover">
         <thead>
           <tr>
+            <th>Release Date</th>
             <th></th>
             <th>Single/Album name</th>
-            <th>Opinion</th>
+            <th>Label</th>
+            <th>Artist</th>
+            <th>Genre</th>
             <th>Price</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <% @items.each do |item| %>
-            <tr>
-              <td>
-                <%= attachment_image_tag item, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
-              </td>
-              <td>
-                <%= link_to item.item_name, item_path(item) %>
-              </td>
-              <td>
-                <%= item.opinion %>
-              </td>
-              <td>
-                <p>￥<%= item.price %></p>
-              </td>
-              <td>
-                <% if item.stock == 0 %>
-                  <p style="color: red;">Sold Out!!</p>
-                <% else %>
-                  <p>Stock: <%= item.stock %></p>
+              <tr>
+                <td>
+                  <%= item.release_date %>
+                </td>
+                <td>
+                  <%= link_to item_path(item) do %>
+                    <%= attachment_image_tag item, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to item.item_name, item_path(item) %>
+                </td>
+                <td>
+                  <%= item.label.label_name %>
+                </td>
+                <td>
+                  <%= item.artist.artist_name %>
+                </td>
+                <td>
+                  <%= item.genre.genre_name %>
+                </td>
+                <td>
+                  <p>￥<%= item.price %></p>
+                </td>
+                <td>
+                  <% if item.stock == 0 %>
+                    <p style="color: red;">Sold Out!!</p>
+                  <% else %>
+                    <p>Stock: <%= item.stock %></p>
+                  <% end %>
+                </td>
+                
+                <% if user_signed_in? && current_user.admin? %>
+                  <td>
+                    <%= link_to "Edit", edit_item_path(item), class: "btn-sm btn-success" %>
+                  </td>
+                  
+                  <td>
+                    <%= link_to "Destroy", item_path(item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+                  </td>
                 <% end %>
-              </td>
-              <td>
-                <%= link_to "Edit", edit_item_path(item), class: "btn-sm btn-success" %>
-              </td>
-              <td>
-                <%= link_to "Destroy", item_path(item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
-              </td>
-            </tr>
+              </tr>
           <% end %>
         <tbody>
       </table>
-      <% else %>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Single/Album name</th>
-            <th>Opinion</th>
-            <th>Price</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @items.each do |item| %>
-            <tr>
-              <td>
-                <%= attachment_image_tag item, :item_image, :fill, 40, 40, fallback: "no_image_small.jpg", alt:"Cover image"%>
-              </td>
-              <td>
-                <%= link_to item.item_name, item_path(item) %>
-              </td>
-              <td>
-                <%= item.opinion %>
-              </td>
-              <td>
-                <p>￥<%= item.price %></p>
-              </td>
-              <td>
-                <% if item.stock == 0 %>
-                  <p style="color: red;">Sold Out!!</p>
-                <% else %>
-                  <p>Stock: <%= item.stock %></p>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        <tbody>
-      </table>
-      <% end %>
-
-
 
     <%= paginate @items, class: "pagenate" %>
     </div>

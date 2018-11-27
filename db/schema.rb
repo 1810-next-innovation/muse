@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_042210) do
 
   create_table "items", force: :cascade do |t|
     t.integer "label_id"
+    t.integer "artist_id"
+    t.integer "genre_id"
     t.string "item_name"
     t.text "item_image_id"
     t.integer "price"

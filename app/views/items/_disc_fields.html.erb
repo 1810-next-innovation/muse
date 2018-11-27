@@ -1,7 +1,8 @@
 <!-- items/newのcocoonによるrender先 -->
 
-	<div class="nested-fields form-inline">
+	<div class="nested-fields form-inline" style="margin-top:20px;">
 		<div class=form-group>
+			<%= f.label :disc_name %>
     	<%= f.text_field :disc_name %>
 		</div>
     	<%= link_to_remove_association "remove disc", f %>
