@@ -30,7 +30,7 @@ devise_for :users, controllers: {
   patch '/update_item/:id', to: "carts#update_item", as: "update_item"
   delete '/delete_item/:id', to: "carts#delete_item", as: "delete_item"
 
-  get 'orders_all', to: "orders#index_all"
+  get 'orders_all', to: "orders#orders_all"
   patch '/update_status/:id', to: "orders#update_status", as: "update_status"
 
   resources :labels, only: [:new, :create, :destroy]
