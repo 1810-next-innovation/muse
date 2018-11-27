@@ -72,7 +72,9 @@ end
 
 50.times do |n|
 	Item.create!(
-		label_id: 1,
+		label_id: rand(1..5),
+		artist_id: rand(1..5),
+		genre_id: rand(1..5),
 		item_name: Faker::Music.album,
 		# item_image_id: ,
 		price: rand(1000..3000),

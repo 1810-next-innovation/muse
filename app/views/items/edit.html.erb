@@ -3,6 +3,19 @@
     <div class="col-xs-12">
 			<h1><%= @item.item_name %></h1>
 
+<!-- エラー文 -->
+			<% if @item.errors.any? %>
+	      <div class="error-explanation">
+	        <h2><%= @item.errors.count %>件のエラーが発生しました。</h2>
+	        <ul>
+	          <% @item.errors.full_messages.each do |message| %>
+	            <li><%= message %></li>
+	          <% end %>
+	        </ul>
+	      </div>
+	    <% end %>
+<!-- エラー文 -->
+
 			<%= form_for(@item) do |f| %>
 			<ul style=" list-style: none;">
 				<li>
