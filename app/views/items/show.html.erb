@@ -1,74 +1,99 @@
 <div class="container">
   <div class="row">
-    <h1 class="col-xs-12"><%= @item.item_name %></h1>
-    <div style="padding-left: 30px;"><%= link_to 'Back', :back %></div>
 
-    <div class="col-xs-8">
-      <%= attachment_image_tag @item,
-        :item_image, :fill, 100, 100,
-        class: "pull-left profile-thumb",
-        fallback: "no_image_big.jpg",
-        alt: "Item Image" %>
-      <p>
-        ￥ <%= @item.price %>
-      </p>
-      <p>
-        stock: <%= @item.stock %>
-      </p>
-      <p>
-        release: <%= @item.release_date %>
-      </p>
+    <div class="col-md-3">
+      <div>
+        <%= attachment_image_tag @item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
+      </div>
+      <div>
+        <p>￥ <%= @item.price %></p>
+      </div>
+      <div>
+        <div>Opnion</div>
+        <p><%= @item.opinion %></p>
+      </div>
+    </div>
 
-
-      <% @item.discs.each do |disc| %>
-        <p style="font-size: 30px; color: blue;">
-          Disc_name：<%= disc.disc_name %>
-        </p>
-        <% disc.music_names.each do |music| %>
-          <p style="font-size: 20px; color: green;">
-            Music_name：<%= music.music_name %>
-          </p>
-          <p>
-            Artist: <%= music.artist.artist_name %>
-          </p>
-          <p>
-            Genre: <%= music.genre.genre_name %>
-          </p>
-        <% end %>
-      <% end %>
-        <!-- favorite -->
-
-				<% if user_signed_in? %>
-          <% if @item.favorited_by?(current_user) %>
-            <li>
-              <%= link_to item_favorites_path(@item), method: :delete do %>
-              <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
-              <%= @item.favorites.count %> favorit
-            </li>
-          <% end %>
-          <% else %>
-            <li>
-              <%= link_to item_favorites_path(@item), method: :post do %>
-              <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
-              <%= @item.favorites.count %> favorit
-          <% end %>
-            </li>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= @item.item_name %>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li>Artist:<%= @item.artist.artist_name %></li>
+            <li>Genre:<%= @item.genre.genre_name %></li>
+            <li>Label:<%= @item.label.label_name %></li>
+            <li>Release_date:<%= @item.release_date %></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <% @item.discs.each do |disc| %>
+          <%= disc.disc_name %>
+          <% disc.music_names.each do |music| %>
+            <%= music.music_name %>
+            <p>Artist: <%= music.artist.artist_name %></p>
+            <p>Genre: <%= music.genre.genre_name %></p>
           <% end %>
         <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Cart</div>
+        <div class="panel-body">
+          <p>stock: <%= @item.stock %></p>
+          <% if user_signed_in? && !current_user.admin? %>
+          <div class="col-xs-4">
+            <% if @item.stock == 0 %>
+              <p>It's out of stock</p>
+            <% elsif @item.stock == @cart_item_quantity %>
+              <p>Can not add any more</p>
+            <% else %>
+              <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
+                <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
+                <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
 
       <% if user_signed_in? && current_user.admin? %>
         <div>
-        <%= link_to "Edit", edit_item_path(@item), class: "btn-sm btn-success" %>
-        <%= link_to "Destroy", item_path(@item), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
+        <%= link_to "Edit", edit_item_path(@item), class: "btn-lg btn-default" %>
+        <%= link_to "Destroy", item_path(@item), method: :delete, class: "btn-lg btn-default", "data-confirm" => "本当に消しますか?" %>
         </div>
-      <% else %>
       <% end %>
 
+      <!-- favorite -->
 
+      <% if user_signed_in? %>
+        <% if @item.favorited_by?(current_user) %>
+          <%= link_to item_favorites_path(@item), class: "btn-default col-xs-12", method: :delete do %>
+            <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @item.favorites.count %> favorit
+          <% end %>
+        <% else %>
+          <%= link_to item_favorites_path(@item), class: "btn-default col-xs-12", method: :post do %>
+            <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+            <%= @item.favorites.count %> favorit
+          <% end %>
+        <% end %>
+      <% end %>
 
-        <!-- commennt -->
+      <!-- favorite -->
+    </div>
+  </div>
 
-        <div>
+  <div class="row">
+    <div class="col-md-offset-2">
+        <!-- review -->
+
+      <div>
         <h4>Rewiew</h4>
         <div id="reviews_area">
         <% @item.reviews.each do |review| %>
@@ -91,26 +116,9 @@
             <%= form.submit "コメントをする" %>
             </div>
         <% end %>
-        </div>
-    </div>
-
-        <!-- comment -->
-
-  	<% if user_signed_in? && !current_user.admin? %>
-      <div class="col-xs-4">
-        <h2>カート</h2>
-        <% if @item.stock == 0 %>
-          <p>It's out of stock</p>
-        <% elsif @item.stock == @cart_item_quantity %>
-          <p>Can not add any more</p>
-        <% else %>
-          <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
-            <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
-            <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
-          <% end %>
-        <% end %>
+      <%= paginate @reviews, class: "pagenate" %>
       </div>
-  	<% end %>
-
+        <!-- review -->
+    </div>
   </div>
 </div>
