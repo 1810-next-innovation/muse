@@ -6,9 +6,12 @@ class ContactsController < ApplicationController
 
 	def create
 		contact = Contact.new(contact_params)
-		contact.save
-		redirect_to contacts_recieve_path
-
+		if contact.save
+		  @success_m = "Thank you very much for your inquiry. We will confirm the contents of the inquiry and we will respond later from the person in charge. Sorry to have kept you waiting for a while, thank you."
+		  redirect_to new_contact_path
+    else
+	    redirect_to new_contact_path
+		end
 	end
 
 	def index

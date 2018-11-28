@@ -4,27 +4,36 @@
     <div class="col-md-10 col-md-offset-1 clearfix">
     	<h1>Edit Receivers</h1>
 <!-- cocoon -->
+    <div class="receiver-box">
 			<label>Receiver Name</label>
 			<label style="padding-left: 80px;">Post Code</label>
 			<label style="padding-left: 110px;">Address</label>
 			<label style="padding-left: 120px;">Phone Number</label>
-			
+		</div>
+
   		<%= form_for(@user) do |f| %>
-			<div class="field">
+			<div class="field"> <!-- receiver-all -->
 			  <%= f.fields_for :receivers do |r| %>
 			    <%= render 'receiver_fields', f: r %>
 			  <% end %>
 			</div>
 
-			<div class="field">
+     <!-- div class="receiver-edit-box"> -->
+			<div class="field"> <!-- add-receiver clearfix -->
 			  <%= link_to_add_association 'Receiver +', f, :receivers,
 			  	data: { association_insertion_method: 'before' },
-			  	class: "btn btn-md btn-primary" %>
+			  	class: "btn-default" %>
 			</div>
-			<%= f.submit 'Update Receiver', class: "col-xs-12 btn btn-primary" %>
-			<% end %>
+
+			<!-- <div class="update-receiver clearfix"> -->
+			  <%= f.submit 'Update Receiver', class: "btn-default" %>
+			  <% end %>
+		  </div>
+		<!-- </div> -->
 <!-- cocoon -->
-			<%= link_to 'Back', :back %>
+	     <div class="back-mypage">
+	      <%= link_to 'Back', :back %>
+	     </div>
 		</div>
 	</div>
 </div>
