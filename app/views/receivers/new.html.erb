@@ -1,8 +1,0 @@
-<h1>宛先追加</h1>
-<%= form_for(@receiver, url: {controller: :receivers, action: :create }) do |f| %>
-	<%= f.text_field :receiver_name %>
-	<%= f.number_field :receiver_post_code %>
-	<%= f.text_area :receiver_address %>
-	<%= f.telephone_field :receiver_phone_number %>
-	<%= f.submit "保存" %>
-<% end %>
