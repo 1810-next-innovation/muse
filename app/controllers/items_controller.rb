@@ -13,8 +13,7 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 
 		@review = Review.new
-		@reviews = @item.reviews
-		@reviews = @reviews.page(params[:page])
+		@reviews = @item.reviews.page(params[:page])
 
 		if user_signed_in? && !current_user.admin?
 			if @cart_item.blank?
