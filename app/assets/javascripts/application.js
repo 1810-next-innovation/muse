@@ -16,6 +16,7 @@
   //= require cocoon
   //= require_tree .
 
+
   $(function(){
     $(".submit_select").change(function(){
       $(".submit_form").submit();

@@ -592,6 +592,34 @@ a.btn:active:after {
   width: 50px !important;
 }
 
+/*----------------------- cart ------------------------*/
+#cart {
+  width: 70%;
+  line-height: 1.5em;
+  margin: 0 auto;
+}
+
+.empty-m {
+  color: #84c1ff;
+  text-align: center;
+}
+
+.text-center a {
+  width: 90%;
+}
+
+.cart-img {
+  width: 50px;
+}
+
+.form-control {
+  width: 60px;
+}
+
+.table > thead:first-child > tr:first-child > th,
+.table-condensed > tbody > tr > td {
+  text-align: center;
+}
 
 /*gridのgutter調整*/
 .row-0{
