@@ -6,7 +6,7 @@
 <!-- エラー文 -->
 			<% if @item.errors.any? %>
 	      <div class="error-explanation">
-	        <h2><%= @item.errors.count %>件のエラーが発生しました。</h2>
+	        <h2><%= @item.errors.count %>errors occured</h2>
 	        <ul>
 	          <% @item.errors.full_messages.each do |message| %>
 	            <li><%= message %></li>
