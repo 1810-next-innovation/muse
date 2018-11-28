@@ -5,8 +5,11 @@ class OrdersController < ApplicationController
   	@orders = current_user.orders.page(params[:page]).reverse_order
   end
 
-  def index_all
-    @orders = Order.page(params[:page])
+  def orders_all
+    @orders = Order.all.page(params[:page]).reverse_order
+		@orders_in_preparation = Order.where(status: "in_preparation").page(params[:page]).reverse_order
+		@orders_sent = Order.where(status: "sent").page(params[:page]).reverse_order
+		@orders_delivered = Order.where(status: "delivered").page(params[:page]).reverse_order
   end
 
   def update_status

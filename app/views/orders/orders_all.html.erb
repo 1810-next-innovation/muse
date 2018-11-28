@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<h1>Orders</h1>
+		<div style="text-align: center;">
+			<div class="tab-menu btn-group">
+				<div class="btn btn-default btn-lg active">All</div>
+				<div class="btn btn-default btn-lg">In Preparation</div>
+				<div class="btn btn-default btn-lg">Sent</div>
+				<div class="btn btn-default btn-lg">Delivered</div>
+			</div>
+		</div>
+		<div class="tab-contents">
+			<ul>
+				<li class="show"><%= render "list", orders: @orders %></li>
+				<li><%= render "list", orders: @orders_in_preparation %></li>
+				<li><%= render "list", orders: @orders_sent %></li>
+				<li><%= render "list", orders: @orders_delivered %></li>
+			</ul>
+		</div>
+	</div>
+</div>
