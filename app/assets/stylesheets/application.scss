@@ -604,38 +604,21 @@ a.btn:active:after {
   text-align: center;
 }
 
-.btn-order {
-  position: relative;
-  display: inline-block;
-  padding: .5em 4em;
-  border: 2px solid #afafb0;
-  color: #afafb0;
+.text-center a {
+  width: 90%;
+}
+
+.cart-img {
+  width: 50px;
+}
+
+.form-control {
+  width: 60px;
+}
+
+.table > thead:first-child > tr:first-child > th,
+.table-condensed > tbody > tr > td {
   text-align: center;
-  text-decoration: none;
-  transition: .3s;
-}
-
-.btn-order:hover {
-  color: #fff;
-}
-
-.btn-order::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  content: '';
-  background: #afafb0;
-  transform-origin: right top;
-  transform: scale(0, 1);
-  transition: transform .3s;
-}
-
-.btn-order:hover::before {
-  transform-origin: left top;
-  transform: scale(1, 1);
 }
 
 /*gridのgutter調整*/

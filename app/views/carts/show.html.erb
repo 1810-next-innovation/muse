@@ -24,9 +24,10 @@
 	            <tr>
 	              <td><%= cart_item.item.release_date %></td>
 	              <td><%= link_to (attachment_image_tag cart_item.item, :item_image, :fill, 100, 100,
-	              class: "pull-left profile-thumb", fallback: "no_image_big.jpg", alt: "Item Image"),
+	              class: "pull-left profile-thumb cart-img", fallback: "no_image_big.jpg", alt: "Item Image"),
 								item_path(cart_item.item) %>
-	              <%= link_to cart_item.item.item_name, item_path(cart_item.item) %>
+	              <%= link_to cart_item.item.item_name, item_path(cart_item.item) %></td>
+	              <td>
 	              ¥<%= cart_item.item.price %></td>
 	              <td>
 	                <% if cart_item.item.stock != 0 %>
@@ -48,8 +49,10 @@
 			</div>
 			<div class="col-xs-3">
 				<div class="panel panel-dafault">
-					<p class="text-center"><strong>Grand Total</strong> : ¥<%= @grand_total %></p>
-					<p class="text-center"><%= link_to "Checkout", new_user_order_path(current_user), class: "btn-order btn-block" %></p>
+					<p class="text-center">
+						<strong>Grand Total</strong> : ¥<%= @grand_total %></p>
+					<p class="text-center">
+						<%= link_to "Checkout", new_user_order_path(current_user), class: "btn-default" %></p>
 	      </div>
 				<div class="">
 	        <%= paginate @cart_items, class: "pagenate" %>
