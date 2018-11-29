@@ -1,4 +1,6 @@
 class ArtistsController < ApplicationController
+	before_action :admin_user
+
   def new
   	@artist = Artist.new
     @artist = Artist.all
@@ -16,7 +18,8 @@ class ArtistsController < ApplicationController
     redirect_to new_item_path
   end
 
-private
+	private
+
 	def artist_params
   	params.require(:artist).permit(:artist_name)
   end

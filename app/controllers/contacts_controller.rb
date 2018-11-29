@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+	before_action :admin_user, only: [:receive, :destroy]
 
 	def new
 		@contact = Contact.new
@@ -33,7 +34,8 @@ class ContactsController < ApplicationController
 	end
 
 	private
-    def contact_params
-        params.require(:contact).permit(:name, :email, :body)
-    end
+
+  def contact_params
+      params.require(:contact).permit(:name, :email, :body)
+  end
 end

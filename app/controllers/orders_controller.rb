@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+	before_action :correct_user, only: [:index, :show, :new, :create]
+	before_action :admin_user, only: [:orders_all, :update_status]
   before_action :stock_or_empty_check, only: [:new, :create]
 
   def index
@@ -94,10 +96,11 @@ class OrdersController < ApplicationController
 		else
 			render "/orders/new"
 		end
-
   end
 
-  def stock_or_empty_check #在庫がない商品がある場合、カートに何も入っていない場合は購入できないようにする
+  private
+
+	def stock_or_empty_check #在庫がない商品がある場合、カートに何も入っていない場合は購入できないようにする
     if current_cart.cart_items.any? { |n| n.item.stock == 0 } #在庫がない商品がある場合
       flash[:danger] = "There was a item out of stock"
       redirect_back(fallback_location: cart_path(current_cart))
@@ -107,7 +110,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
   def order_params
   	params.require(:order).permit(:grand_total,
                                   :payment_method,
