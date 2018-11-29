@@ -656,6 +656,48 @@ a.btn:active:after {
   text-align: center;
 }
 
+/*------------------------------ order ------------------------------*/
+
+.order-cart-item-container{
+  width: 100%;
+  transition: all  0.3s ease;
+}
+
+.order-cart-item-container:hover {
+  background-color: #efefef;
+}
+
+.order-cart-item-main {
+  margin: 10px;
+}
+
+.order-cart-item-number {
+  float:left;
+  width: 7%;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 75px;
+}
+
+.order-cart-item-title,.order-cart-item-artist {
+  float: right;
+  width: 80%;
+}
+.order-cart-item-details {
+  float: left;
+  width: 20%;
+}
+
+.order-cart-item-info{
+  float: left;
+  padding-left: 30px;
+}
+
+.order-cart-item-info p {
+  font-weight: 700;
+  font-size: 18px;
+}
+
 /*----------------------- user receiver edit ------------------------*/
 .receiver-box {
   width: 82%;

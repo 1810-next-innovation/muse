@@ -1,39 +1,37 @@
 <!-- Receiver内容の編集画面 -->
 <div class="container">
   <div class="row">
+
     <div class="col-md-10 col-md-offset-1 clearfix">
     	<h1>Edit Receivers</h1>
-<!-- cocoon -->
-    <div class="receiver-box">
+		</div>
+
+		<div class="col-md-8 col-md-offset-2 clearfix">
 			<label>Receiver Name</label>
-			<label style="padding-left: 80px;">Post Code</label>
-			<label style="padding-left: 110px;">Address</label>
-			<label style="padding-left: 120px;">Phone Number</label>
-		</div>
-
-  		<%= form_for(@user) do |f| %>
-			<div class="field"> <!-- receiver-all -->
-			  <%= f.fields_for :receivers do |r| %>
-			    <%= render 'receiver_fields', f: r %>
-			  <% end %>
-			</div>
-
-     <!-- div class="receiver-edit-box"> -->
-			<div class="field"> <!-- add-receiver clearfix -->
-			  <%= link_to_add_association 'Receiver +', f, :receivers,
-			  	data: { association_insertion_method: 'before' },
-			  	class: "btn-default" %>
-			</div>
-
-			<!-- <div class="update-receiver clearfix"> -->
-			  <%= f.submit 'Update Receiver', class: "btn-default" %>
-			  <% end %>
-		  </div>
-		<!-- </div> -->
+			<label style="margin-left:80px" >Post Code</label>
+			<label style="margin-left:110px">Address</label>
+			<label style="margin-left:120px">Phone Number</label>
 <!-- cocoon -->
-	     <div class="back-mypage">
-	      <%= link_to 'Back', :back %>
-	     </div>
+  		<%= form_for(@user) do |f| %>
+				<div class="field">
+			  	<%= f.fields_for :receivers do |r| %>
+			    	<%= render 'receiver_fields', f: r %>
+			  	<% end %>
+				</div>
+
+				<div class="field">
+			  	<%= link_to_add_association 'Receiver +', f, :receivers,
+			  		data: { association_insertion_method: 'before' },
+			  		class: "btn-default" %>
+				</div>
+
+				<%= f.submit 'Update Receiver', class: "btn-default" %>
+			<% end %>
+<!-- cocoon -->
+	  	<div class="back-mypage">
+	    	<%= link_to 'Back', :back %>
+	  	</div>
 		</div>
+
 	</div>
 </div>

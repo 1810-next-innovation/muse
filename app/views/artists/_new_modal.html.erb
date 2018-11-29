@@ -6,8 +6,8 @@
     <div class="modalcontents">
 <!--モーダルエリアここまで -->
 
-		<div class="container">
-	  	<h2>New Artist</h2>
+    <div class="container">
+      <h2>New Artist</h2>
       <div>
         <%= form_for(@artist) do |f| %>
           <%= f.text_field :artist_name %>
@@ -16,17 +16,22 @@
       </div>
     </div>
 
-    <div>
-      <ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Artist Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
       <% @artists.each do |artist| %>
-        <li>
-          <%= artist.artist_name %>
-
-          <%= link_to "Destroy", artist_path(artist), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に消しますか?" %>
-        </li>
+        <tr>
+          <td><%= artist.artist_name %></td>
+          <td><%= link_to "Destroy", artist_path(artist), method: :delete, class: "btn-xs btn-danger", "data-confirm" => "本当に消しますか?" %></td>
+        </tr>
       <% end %>
-      </ul>
-  	</div>
+      </tbody>
+    </table>
 <!-- モーダルエリアここから -->
     </div>
     <div id="closemodal" class="closemodal">

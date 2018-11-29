@@ -110,7 +110,7 @@
       <div>
         <h4>ALL Rewiew</h4>
         <div id="reviews_area">
-        <% @item.reviews.each do |review| %>
+        <% @reviews.each do |review| %>
         <% unless review.id.nil? %>
         <p class="r-name">Reviewer：<%= review.reviewer_name %></p>
         <hr class="r-hr">
@@ -135,8 +135,8 @@
             <%= form.submit "Comment" %>
             </div>
         <% end %>
-      <%= paginate @reviews, class: "pagenate" %>
       </div>
+      <%= paginate @reviews, class: "pagenate" %>
         <!-- review -->
     </div>
   </div>
