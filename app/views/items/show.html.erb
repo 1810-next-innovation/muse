@@ -1,71 +1,83 @@
-<div class="container">
+<div class="container details-main">
   <div class="row">
 
     <div class="col-md-3">
-      <div>
+      <div class="cd-image">
         <%= attachment_image_tag @item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
       </div>
-      <div>
+      <div class="cd-price">
         <p>￥ <%= @item.price %></p>
       </div>
-      <div>
-        <div>Opnion</div>
+      <div class="opinion-box">
+        <h3 class="o-title">Opnion</h3>
         <p><%= @item.opinion %></p>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= @item.item_name %>
-        </div>
-        <div class="panel-body">
-          <ul>
-            <li><strong>Artist:  </strong><%= @item.artist.artist_name %></li>
-            <li><strong>Genre:  </strong><%= @item.genre.genre_name %></li>
-            <li><strong>Label:  </strong><%= @item.label.label_name %></li>
-            <li><strong>Release:  </strong><%= @item.release_date %></li>
-          </ul>
-        </div>
+      <div class="item-name-box">
+        <h3 class="item-name"><%= @item.item_name %></h3>
       </div>
-      <div>
+        <div id="item-detail-box">
+          <dl>
+            <dt>Artist:</dt>
+            <dd><%= @item.artist.artist_name %></dd>
+
+            <dt>Genre:</dt>
+            <dd><%= @item.genre.genre_name %></dd>
+
+            <dt>Label:</dt>
+            <dd><%= @item.label.label_name %></dd>
+
+            <dt>Release_date:</dt>
+            <dd><%= @item.release_date %></dd>
+          </dl>
+        </div>
+
         <% @item.discs.each do |disc| %>
-          <%= disc.disc_name %>
-          <% disc.music_names.each do |music| %>
-            <%= music.music_name %>
-            <p>Artist: <%= music.artist.artist_name %></p>
-            <p>Genre: <%= music.genre.genre_name %></p>
-          <% end %>
+          <p class="main-disc-name"><%= disc.disc_name %></p>
+            <table id="cd-detail-box">
+              <tr>
+                <th>Music Name</th>
+                <th>Artist</th>
+                <th>Genre</th>
+              </tr>
+              <% disc.music_names.each do |music| %>
+              <tr>
+                <td><%= music.music_name %></td>
+                <td><%= music.artist.artist_name %></td>
+                <td><%= music.genre.genre_name %></td>
+              </tr>
+              <% end %>
+            </table>
         <% end %>
       </div>
-    </div>
 
     <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">Cart</div>
-        <div class="panel-body">
-          <p>stock: <%= @item.stock %></p>
+      <div class="ready-order-box">
+        <div class="ready-order">
+          <p class="item-stock">Item Stock: <%= @item.stock %></p>
+
           <% if user_signed_in? && !current_user.admin? %>
-          <div class="col-xs-4">
+          <div>
             <% if @item.stock == 0 %>
               <p>It's out of stock</p>
             <% elsif @item.stock == @cart_item_quantity %>
               <p>Can not add any more</p>
             <% else %>
               <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
+                <p class="item-stock">Quantity:</p>
                 <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
-                <%= f.submit "Add to cart", class: "btn btn-success btn-sm" %>
+                <%= f.submit "Add to cart", class: "btn-cart" %>
               <% end %>
             <% end %>
-          </div>
           <% end %>
-        </div>
       </div>
 
       <% if user_signed_in? && current_user.admin? %>
         <div>
-        <%= link_to "Edit", edit_item_path(@item), class: "btn-lg btn-default" %>
-        <%= link_to "Destroy", item_path(@item), method: :delete, class: "btn-lg btn-default", "data-confirm" => "本当に消しますか?" %>
+        <%= link_to "Edit", edit_item_path(@item), class: "btn-lg btn-edit" %>
+        <%= link_to "Destroy", item_path(@item), method: :delete, class: "btn-lg btn-des", "data-confirm" => "本当に消しますか?" %>
         </div>
       <% end %>
 
@@ -73,12 +85,12 @@
 
       <% if user_signed_in? %>
         <% if @item.favorited_by?(current_user) %>
-          <%= link_to item_favorites_path(@item), class: "btn-default col-xs-12", method: :delete do %>
+          <%= link_to item_favorites_path(@item), class: "btn-favorite col-xs-12", method: :delete do %>
             <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
             <%= @item.favorites.count %> favorit
           <% end %>
         <% else %>
-          <%= link_to item_favorites_path(@item), class: "btn-default col-xs-12", method: :post do %>
+          <%= link_to item_favorites_path(@item), class: "btn-favorite col-xs-12", method: :post do %>
             <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
             <%= @item.favorites.count %> favorit
           <% end %>
@@ -86,6 +98,8 @@
       <% end %>
 
       <!-- favorite -->
+        </div>
+      </div>
     </div>
   </div>
 
@@ -94,26 +108,31 @@
         <!-- review -->
 
       <div>
-        <h4>Rewiew</h4>
+        <h4>ALL Rewiew</h4>
         <div id="reviews_area">
         <% @reviews.each do |review| %>
         <% unless review.id.nil? %>
-        <p>Reviewer：<%= review.reviewer_name %></p>
-        <p>Review：<%= review.review_text %></p>
-        <p><%= link_to 'コメントを削除する', item_reviews_path(item_id: review.item_id, review_id: review.id), method: :delete %>
+        <p class="r-name">Reviewer：<%= review.reviewer_name %></p>
+        <hr class="r-hr">
+        <p class="r-text">Review：<%= review.review_text %></p>
+        <hr class="r-hr">
+
+        <p><%= link_to 'Comment Delete', item_reviews_path(item_id: review.item_id, review_id: review.id), method: :delete %>
         </p>
         <% end %>
         <% end %>
         </div>
+
+        <h4>Rewiew</h4>
         <%= form_with(model: [@item, @review], local: true ) do |form| %>
-            <div>
-            <%= form.text_field :reviewer_name %>
+            <div class="r-comment">
+            <%= form.text_field :reviewer_name, :placeholder => "Your Name" %>
             </div>
-            <div>
-            <%= form.text_area :review_text %>
-            </div>
+            <div class="r-comment">
+            <%= form.text_area :review_text, :placeholder => "Your Comment" %>
+            </div class="r-comment">
             <div class="actions">
-            <%= form.submit "コメントをする" %>
+            <%= form.submit "Comment" %>
             </div>
         <% end %>
       </div>
