@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
-	before_aciton :correct_user
+	# before_action :authenticate_user!
+	# before_action :correct_user, only: [:show]
 
 	def show
 		@user = User.find(params[:user_id])

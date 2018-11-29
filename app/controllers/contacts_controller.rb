@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-	before_action :admin_user, only: [:receive, :destroy]
+	# before_action :admin_user, only: [:receive, :destroy]
 
 	def new
 		@contact = Contact.new
