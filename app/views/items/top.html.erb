@@ -49,7 +49,7 @@
                 <p> <%= item.artist.artist_name %></p>
               </div>
               <div class="rnk-artist">
-                <p><%= item.item_name %></p>
+                <p><%= link_to item.item_name, item_path(item) %></p>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
                 <p><%= item.artist.artist_name %></p>
               </div>
               <div class="rnk-artist">
-                <p><%= item.item_name %></p>
+                <p><%= link_to item.item_name, item_path(item) %></p>
               </div>
             </div>
           </div>
