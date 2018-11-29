@@ -410,7 +410,7 @@ h1:after {
  display:none;
  }
 
-.content input, button, textarea {
+.content input,.content button, .content textarea {
   border: 1px solid #3a3a3a;
   width: 75%;
   margin: 0 0 20px;
@@ -509,11 +509,11 @@ video {
 }
 
 /*--------------------- about us ----------------------*/
-dl,dt,dd {
+#about dl,#about dt,#about dd {
   box-sizing: border-box;
 }
 
-dl {
+#about dl {
   background: #eeeeee5c;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
@@ -523,17 +523,17 @@ dl {
   margin-bottom: 20px;
 }
 
-dt,dd {
+#about dt,#about dd {
   padding: 10px 10px 0 10px;
   border-top: 1px solid #ccc;
 }
 
-dt {
+#about dt {
   width: 40%;
   float: left;
 }
 
-dd {
+#about dd {
   background: #fff;
   margin-left: 40%;
   padding-bottom: 10px;
@@ -680,6 +680,177 @@ a.btn:active:after {
 .back-mypage {
   width: 30px;
 }*/
+
+/*----------------------- item show ------------------------*/
+
+.details-main {
+  margin-top: 20px;
+}
+
+#item-detail-box dl,dt,dd {
+  box-sizing: border-box;
+}
+
+#item-detail-box dl {
+  border-bottom: 1px solid #ccc;
+  margin: 0 auto;
+  margin-bottom: 3px;
+}
+
+#item-detail-box dt,#item-detail-box dd {
+  padding: 10px 10px 0 10px;
+  border-top: 1px solid #ccc;
+}
+
+#item-detail-box dt {
+  width: 30%;
+  float: left;
+  padding-left: 50px;
+}
+
+#item-detail-box dd {
+  background: #fff;
+  margin-left: 30%;
+  padding-bottom: 10px;
+}
+
+.main-disc-name {
+  font-size: 15px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+#cd-detail-box {
+  width: 100%;
+  background: rgba(204,204,204,0.28);
+}
+
+#cd-detail-box th,#cd-detail-box td {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  line-height: 1.5;
+}
+
+#cd-detail-box th {
+  padding: 2px;
+  font-weight: bold;
+  vertical-align: top;
+  background: #3f3f3f;
+  text-align: center;
+  color: #fff;
+}
+
+#cd-detail-box td {
+  padding: 2px;
+  vertical-align: top;
+}
+
+#cd-detail-box tr:nth-child(even) {
+  background: #fff;
+}
+
+.cd-price {
+  margin-top: 20px;
+}
+
+.cd-price p {
+  text-align: center;
+  font-family: verdana;
+  font-size: 160%;
+}
+#reviews_area {
+  width: 75%;
+}
+
+.r-name,.r-text {
+  margin-bottom: 2px;
+}
+
+.r-hr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 0;
+    border-top: 1px solid #b3b1b147;
+}
+
+.btn-cart {
+  display: inline-block;
+  padding: 0.3em 1em;
+  letter-spacing: 0.1em; /*文字間隔*/
+  text-decoration: none;
+  text-align: center;
+  color: #e95464;
+  border: solid 2px #e95464;
+  border-radius: 3px;
+  transition: .4s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-cart:hover {
+  background: #da536e;
+  color: #fff;
+}
+
+.btn-favorite {
+  display: inline-block;
+  padding: 0.3em 1em;
+  letter-spacing: 0.1em; /*文字間隔*/
+  text-decoration: none;
+  text-align: center;
+  color: #afafb0;
+  border: solid 2px #afafb0;
+  border-radius: 3px;
+  transition: .4s;
+  margin-top: 10px;
+}
+
+.btn-favorite:hover {
+  background: #afafb0;
+  color: #fff;
+}
+
+.btn-edit,.btn-des {
+  display: inline-block;
+  padding: 1.0em 1em;
+  letter-spacing: 0.1em; /*文字間隔*/
+  text-decoration: none;
+  text-align: center;
+  color: #afafb0;
+  border: solid 2px #afafb0;
+  border-radius: 3px;
+  transition: .4s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-edit,.btn-des:hover {
+    background: #afafb0;
+    color: #fff;
+}
+
+.item-stock {
+  font-size: 20px;
+  margin: 0px;
+  display: inline-block;
+}
+
+.r-comment input {
+  border: 1px solid #3a3a3a;
+  width: 30%;
+  margin: 0 0 10px;
+}
+
+.r-comment button, .r-comment textarea {
+  border: 1px solid #3a3a3a;
+  width: 75%;
+  margin: 0 0 10px;
+}
+
+.actions {
+  margin-top: 0px;
+}
+
 
 
 /*gridのgutter調整*/
