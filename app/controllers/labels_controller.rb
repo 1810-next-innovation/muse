@@ -1,4 +1,6 @@
 class LabelsController < ApplicationController
+	before_action :admin_user
+
   def new
   	@label = Label.new
     @labels = Label.all
@@ -32,7 +34,8 @@ class LabelsController < ApplicationController
     redirect_to new_item_path
   end
 
-private
+	private
+
 	def label_params
   	params.require(:label).permit(:label_name)
   end

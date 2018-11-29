@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+	before_action :correct_user
   before_action :setup_cart_item!, only:[:add_item, :update_item, :delete_item]
 
   def show
@@ -29,6 +30,7 @@ class CartsController < ApplicationController
   end
 
   private
+
   def setup_cart_item!
   	@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   end

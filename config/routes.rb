@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-  get 'users/:id/receivers', to: 'users#receivers', as: "user_receivers"
-  get 'users/:id/edit_receivers', to: 'users#edit_receivers', as: "edit_user_receivers"
-devise_for :users, controllers: {
-        sessions: 'users/sessions',
-        registrations: 'users/registrations'
-      }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+	devise_for :users, controllers: {
+	        sessions: 'users/sessions',
+	        registrations: 'users/registrations'
+	      }
   resources :users do
     resource :favorites, only: [:show]
 		resources :carts, only: [:show]
 		resources :orders, only: [:index, :show, :new, :create]
   end
+	get 'users/:id/receivers', to: 'users#receivers', as: "user_receivers"
+  get 'users/:id/edit_receivers', to: 'users#edit_receivers', as: "edit_user_receivers"
 
   get 'contacts/about', to: 'contacts#about'
   get 'contacts/term', to: 'contacts#term'
@@ -20,7 +18,6 @@ devise_for :users, controllers: {
 
   root 'items#top'
   get 'items/about', to: 'items#about'
-
   resources :items do
     resource :favorites, only: [:create, :destroy]
     resource :reviews, only: [:create, :destroy]

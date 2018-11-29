@@ -1,4 +1,6 @@
 class GenresController < ApplicationController
+	before_action :admin_user
+
   def new
   	@genre = Genre.new
     @genres = Genre.all
@@ -16,7 +18,8 @@ class GenresController < ApplicationController
     redirect_to new_item_path
   end
 
-private
+	private
+
 	def genre_params
   	params.require(:genre).permit(:genre_name)
   end

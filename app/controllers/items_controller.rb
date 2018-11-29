@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
+	before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
 	def top
 		@items_monthly = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse.take(5)
-
 		@items_weekly = Item.all.sort_by{ |k, v| k.weekly_sales }.reverse.take(5)
 	end
 
@@ -93,7 +93,8 @@ class ItemsController < ApplicationController
 		redirect_to items_path
 	end
 
-private
+	private
+
 	def item_params
   	params.require(:item).permit(:label_id, :artist_id, :genre_id, :item_name, :item_image, :price, :stock, :release_date, :opinion,
   															 discs_attributes: [:id, :disc_name, :_destroy,
