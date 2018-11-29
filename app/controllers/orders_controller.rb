@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-	before_action :correct_user, only: [:index, :show, :new, :create]
-	before_action :admin_user, only: [:orders_all, :update_status]
+	# before_action :correct_user, only: [:index, :show, :new, :create]
+	# before_action :admin_user, only: [:orders_all, :update_status]
   before_action :stock_or_empty_check, only: [:new, :create]
 
   def index
