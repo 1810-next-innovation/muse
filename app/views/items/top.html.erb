@@ -42,7 +42,8 @@
                 <div class="lank"><%= n %></div>
               </div>
               <div class="rnk-item-details">
-                <img src="assets/img/rnk1.jpg">
+                <%= attachment_image_tag @item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
+
               </div>
               <div class="rnk-title">
                 <p> <%= item.artist.artist_name %></p>
@@ -66,7 +67,7 @@
                 <div class="lank"><%= n %></div>
               </div>
               <div class="rnk-item-details">
-                <img src="assets/img/rnk1.jpg">
+                <%= attachment_image_tag @item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
               </div>
               <div class="rnk-title">
                 <p><%= item.artist.artist_name %></p>

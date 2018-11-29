@@ -81,5 +81,7 @@ end
 		release_date: Faker::Date.between(20.days.ago, Date.today),
 		opinion: Faker::Lorem.sentence,
 		stock: rand(100),
+		monthly_sales: rand(300)
+		weekly_sales: rand(100)
 	)
 end
