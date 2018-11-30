@@ -70,7 +70,7 @@ end
 # 	)
 # end
 
-50.times do |n|
+11.times do |n|
 	Item.create!(
 		label_id: rand(1..5),
 		artist_id: rand(1..5),

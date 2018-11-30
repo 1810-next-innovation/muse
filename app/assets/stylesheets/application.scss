@@ -627,7 +627,7 @@ a.btn:active:after {
   width: 50px !important;
 }
 
-/*----------------------- cart ------------------------*/
+/*---------------------------- cart ---------------------------------*/
 #cart {
   width: 70%;
   line-height: 1.5em;
@@ -653,7 +653,8 @@ a.btn:active:after {
 
 .table > thead:first-child > tr:first-child > th,
 .table-condensed > tbody > tr > td {
-  text-align: center;
+  /*text-align: center;*/
+  padding-left: 50px;
 }
 
 /*------------------------------ order ------------------------------*/
