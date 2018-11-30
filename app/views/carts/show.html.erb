@@ -31,7 +31,7 @@
 	              ¥<%= cart_item.item.price %></td>
 	              <td>
 	                <% if cart_item.item.stock != 0 %>
-	                  <%= form_for(cart_item, url: update_item_path(cart_item), method: :patch ) do |f| %>
+	                  <%= form_for(cart_item, url: update_cart_item_path(cart_item), method: :patch ) do |f| %>
 	                    <%= f.number_field :quantity, min: 1, max: cart_item.item.stock, onchange: "submit(this.form)", class: "form-control" %>
 	                  <% end %>
 	                <% else %>
@@ -39,7 +39,7 @@
 	                <% end %>
 	              </td>
 	              <td>
-	                <%= link_to "", delete_item_path(cart_item), method: :delete,
+	                <%= link_to "", delete_cart_item_path(cart_item), method: :delete,
 	                class: "glyphicon glyphicon-trash", style: "font-size: 20px" %>
 	              </td>
 	            </tr>

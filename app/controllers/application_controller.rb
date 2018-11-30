@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	# before_action :configure_permitted_parameters, if: :devise_controller?
+	before_action :configure_permitted_parameters, if: :devise_controller?
 
 	protect_from_forgery with: :exception
 
@@ -12,21 +12,16 @@ class ApplicationController < ActionController::Base
   private
 
 	def admin_user
-		flash[:alert] = "You don't have permission"
 		unless user_signed_in? && current_user.admin?
-			redirect_to(root_url)
+			flash[:alert] = "You don't have permission"
+			redirect_to root_path
 			return
 		end
 	end
 
 	def correct_user
-		flash[:alert] = "You don't have permission"
-		if params[:user_id] != nil
-			@user = User.find(params[:user_id])
-		else
-			@user = User.find(params[:id])
-		end
-		unless user_signed_in? && @user == current_user
+		unless user_signed_in? && params[:id].to_i == current_user.id
+			flash[:alert] = "You don't have permission"
 			redirect_to root_path
 			return
 		end

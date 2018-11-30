@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-	# before_action :correct_user, only: [:index, :show, :new, :create]
-	# before_action :admin_user, only: [:orders_all, :update_status]
+	before_action :correct_user2, only: [:index, :new, :create]
+	before_action :correct_user_order, only: [:show]
+	before_action :admin_user, only: [:orders_all, :update_status]
   before_action :stock_or_empty_check, only: [:new, :create]
 
   def index
@@ -27,6 +28,7 @@ class OrdersController < ApplicationController
 	end
 
   def new
+		binding.pry
   	@order = current_cart.build_order
     @receivers = current_user.receivers.all
     @cart_items = current_cart.cart_items.all
@@ -99,6 +101,24 @@ class OrdersController < ApplicationController
   end
 
   private
+
+	def correct_user2
+		unless user_signed_in? && params[:user_id].to_i == current_user.id
+			flash[:alert] = "You don't have permission"
+			redirect_to root_path
+			return
+		end
+	end
+
+	def correct_user_order
+		unless user_signed_in? &&
+			 		 params[:user_id].to_i == current_user.id &&
+					 current_user.orders.find_by(order_id: params[:id]).any?
+			flash[:alert] = "You don't have permission"
+			redirect_to root_path
+			return
+		end
+	end
 
 	def stock_or_empty_check #在庫がない商品がある場合、カートに何も入っていない場合は購入できないようにする
     if current_cart.cart_items.any? { |n| n.item.stock == 0 } #在庫がない商品がある場合

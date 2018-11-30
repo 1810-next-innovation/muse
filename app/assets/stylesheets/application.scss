@@ -306,7 +306,7 @@ h1:after {
 .local-nav li{
   float: left;
   margin: 0 1px;
-  background: #fff;
+  background: black;
   color: #3a3a3a;
 }
 
@@ -942,4 +942,6 @@ a.btn:active:after {
     }
 }
 
-
+.active {
+	background: black;
+}

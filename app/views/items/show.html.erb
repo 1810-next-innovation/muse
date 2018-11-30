@@ -65,7 +65,7 @@
             <% elsif @item.stock == @cart_item_quantity %>
               <p>Can not add any more</p>
             <% else %>
-              <%= form_for(@cart_item, url: add_item_path(@item.id) ) do |f| %>
+              <%= form_for(@cart_item, url: add_cart_item_path(@item.id) ) do |f| %>
                 <p class="item-stock">Quantity:</p>
                 <%= f.select :quantity, [*1..@item.stock - @cart_item_quantity] %>
                 <%= f.submit "Add to cart", class: "btn-cart" %>

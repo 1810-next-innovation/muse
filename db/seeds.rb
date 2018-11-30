@@ -9,11 +9,6 @@
 # 	load(path)
 # end
 
-# コマンド
-# rails db:migrate:reset
-# rails db:seed
-# rails db:seed:item
-
 gimei = Gimei.name
 address = Gimei.address
 
@@ -64,13 +59,7 @@ end
 	Genre.create!(genre_name: Faker::Music.genre)
 end
 
-# 20.times do |n|
-# 	Label.create!(
-# 		label_name: "",
-# 	)
-# end
-
-50.times do |n|
+11.times do |n|
 	Item.create!(
 		label_id: rand(1..5),
 		artist_id: rand(1..5),

@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-	# before_action :admin_user, only: [:destroy]
+	before_action :admin_user, only: [:destroy]
 
 	def create
 		@item = Item.find(params[:item_id])

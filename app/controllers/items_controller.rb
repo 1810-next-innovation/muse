@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	# before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
+	before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
 	def top
 		@items_monthly = Item.all.sort_by{ |k, v| k.monthly_sales }.reverse.take(5)
