@@ -16,9 +16,9 @@
     <div><img src="assets/img/slider1.jpg"></div>
     <div><img src="assets/img/slider2.jpg"></div>
     <div><img src="assets/img/slider3.jpg"></div>
-    <div><img src="assets/img/slider1.jpg"></div>
-    <div><img src="assets/img/slider2.jpg"></div>
-    <div><img src="assets/img/slider3.jpg"></div>
+    <div><img src="assets/img/slider4.jpg"></div>
+    <div><img src="assets/img/slider5.jpg"></div>
+    <div><img src="assets/img/slider6.jpg"></div>
   </div>
 </div>
 
@@ -42,7 +42,7 @@
                 <div class="lank"><%= n %></div>
               </div>
               <div class="rnk-item-details">
-                <%= attachment_image_tag @item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
+                <%= attachment_image_tag item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
 
               </div>
               <div class="rnk-title">
@@ -67,7 +67,7 @@
                 <div class="lank"><%= n %></div>
               </div>
               <div class="rnk-item-details">
-                <%= attachment_image_tag @item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
+                <%= attachment_image_tag item,:item_image, :fill, 100, 100, class: "col-md-12 pull-left profile-thumb ", fallback: "no_image_big.jpg", alt: "Item Image" %>
               </div>
               <div class="rnk-title">
                 <p><%= item.artist.artist_name %></p>
